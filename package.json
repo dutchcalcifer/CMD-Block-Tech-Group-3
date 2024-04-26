@@ -4,12 +4,13 @@
   "description": "Repository for CMD Block Tech Group 3.",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon routes.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^3.1.10",
     "express": "^4.19.2"
   },
   "devDependencies": {
