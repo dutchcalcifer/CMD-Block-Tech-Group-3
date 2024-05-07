@@ -1,9 +1,10 @@
-// import modules and routes
+// import modules, routes and middleware
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const dotenv = require("dotenv").config();
 const routes = require("./src/routes/route.js");
+const urlencodedMiddleware = require("./src/middleware/urlencoded.middleware.js");
 const app = express();
 
 // set static files folder
@@ -13,6 +14,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 // set view engine folder
 app.set("views", path.join(__dirname, "src/views"));
+
+// middleware
+app.use(urlencodedMiddleware);
 
 // routes
 app.use("/", routes);

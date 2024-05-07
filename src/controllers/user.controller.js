@@ -12,7 +12,18 @@ const getUsers = async (req, res) => {
   }
 };
 
+// POST
+const newUser = async (req, res) => {
+  try {
+    await User.create(req.body);
+    res.redirect("/");
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 // export functions
 module.exports = {
   getUsers,
+  newUser,
 };
