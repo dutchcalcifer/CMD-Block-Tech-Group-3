@@ -1,7 +1,16 @@
 // import modules and user controller
 const express = require("express");
 const router = express.Router();
-const { getUsers } = require("../controllers/user.controller");
+const { getUsers, newUser } = require("../controllers/user.controller");
+
+// create account page
+router.get("/create", async (req, res) => {
+  try {
+    res.render("pages/create");
+  } catch (error) {
+    console.error(error);
+  }
+});
 
 // GET
 router.get("/", async (req, res) => {
@@ -12,6 +21,9 @@ router.get("/", async (req, res) => {
     console.error(error);
   }
 });
+
+// POST
+router.post("/create", newUser);
 
 // export route
 module.exports = router;
