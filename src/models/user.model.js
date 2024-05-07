@@ -1,5 +1,7 @@
+// import mongoose module
 const mongoose = require("mongoose");
 
+// user schema
 const UserSchema = mongoose.Schema(
   {
     name: {
@@ -40,6 +42,8 @@ const UserSchema = mongoose.Schema(
   }
 );
 
+// set user model
 const User = mongoose.model("User", UserSchema);
 
+// export user model
 module.exports = User;

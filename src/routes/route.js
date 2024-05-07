@@ -1,8 +1,9 @@
+// import modules and user controller
 const express = require("express");
 const router = express.Router();
 const { getUsers } = require("../controllers/user.controller");
 
-// get all games
+// GET
 router.get("/", async (req, res) => {
   try {
     const users = await getUsers();
@@ -12,4 +13,5 @@ router.get("/", async (req, res) => {
   }
 });
 
+// export route
 module.exports = router;

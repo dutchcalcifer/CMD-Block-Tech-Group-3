@@ -1,5 +1,7 @@
+// import user model
 const User = require("../models/user.model");
 
+// GET
 const getUsers = async (req, res) => {
   try {
     const users = await User.find({});
@@ -10,6 +12,7 @@ const getUsers = async (req, res) => {
   }
 };
 
+// export functions
 module.exports = {
   getUsers,
 };
