@@ -1,5 +1,6 @@
 // import user model
 const User = require("../models/user.model");
+const bcrypt = require("bcrypt");
 
 // GET
 const getUsers = async (req, res) => {
@@ -15,7 +16,8 @@ const getUsers = async (req, res) => {
 // POST
 const newUser = async (req, res) => {
   try {
-    await User.create(req.body);
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    await User.create({ ...req.body, password: hashedPassword });
     res.redirect("/");
   } catch (error) {
     console.error(error);
