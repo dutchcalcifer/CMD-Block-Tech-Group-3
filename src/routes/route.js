@@ -1,19 +1,51 @@
 // import modules and user controller
 const express = require("express");
 const router = express.Router();
-const { getUsers, newUser } = require("../controllers/user.controller");
+const {
+  getUsers,
+  newUser,
+  loginUser,
+} = require("../controllers/user.controller");
 
-// create account page
-router.get("/create", async (req, res) => {
+//index
+//index page
+router.get("/", async (req, res) => {
   try {
-    res.render("pages/create");
+    res.render("index");
   } catch (error) {
     console.error(error);
   }
 });
 
-// GET
-router.get("/", async (req, res) => {
+// login
+// login page
+router.get("/login", async (req, res) => {
+  try {
+    res.render("pages/login");
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+// POST login account
+router.post("/login", loginUser);
+
+// register
+// register page
+router.get("/register", async (req, res) => {
+  try {
+    res.render("pages/register");
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+// POST register account
+router.post("/register", newUser);
+
+// home
+// GET homepage
+router.get("/home", async (req, res) => {
   try {
     const users = await getUsers();
     res.render("index", { users });
@@ -21,9 +53,6 @@ router.get("/", async (req, res) => {
     console.error(error);
   }
 });
-
-// POST
-router.post("/create", newUser);
 
 // export route
 module.exports = router;

@@ -1,6 +1,7 @@
 // import modules, routes and middleware
 const express = require("express");
 const mongoose = require("mongoose");
+const session = require("express-session");
 const path = require("path");
 const dotenv = require("dotenv").config();
 const routes = require("./src/routes/route.js");

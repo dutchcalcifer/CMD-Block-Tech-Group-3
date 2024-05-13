@@ -3,32 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Band Buddy</title>
     <link rel="stylesheet" href="/css/style.css" />
+    <title>Welcome</title>
   </head>
   <body>
-    <h1>Band Buddy</h1>
-        <a href="/create">Add user</a>
-    <ul>
-      <% users.forEach(user => { %>
-      <li>
-        <h2><%= user.name %></h2>
-        <p><%= user.email %></p>
-        <p><%= user.password %></p>
-        <h3>User Instruments</h3>
-        <ul>
-          <%user.userInstruments.forEach(userInstruments => { %>
-          <li><%= userInstruments %></li>
-          <% }); %>
-        </ul>
-        <h3>User Instruments Request</h3>
-        <ul>
-          <%user.userInstrumentsRequest.forEach(userInstrumentsRequest => { %>
-          <li><%= userInstrumentsRequest %></li>
-          <% }); %>
-        </ul>
-      </li>
-      <% }); %>
-    </ul>
+    <h1>Welcome to Music Buddy</h1>
+    <a href="register">Register</a>
+    <a href="login">Login</a>
   </body>
 </html>

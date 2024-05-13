@@ -2,3 +2,14 @@
   box-sizing: border-box;
   margin: 0;
 }
+
+body,
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form > * {
+  max-width: 20rem;
+}
