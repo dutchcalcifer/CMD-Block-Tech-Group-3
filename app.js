@@ -1,4 +1,5 @@
 // import modules, routes and middleware
+const sessionMiddelware = require('./src/middleware/session.middelware.js')
 const express = require("express");
 const mongoose = require("mongoose");
 const session = require("express-session");
@@ -18,6 +19,7 @@ app.set("views", path.join(__dirname, "src/views"));
 
 // middleware
 app.use(urlencodedMiddleware);
+app.use(sessionMiddelware);
 
 // routes
 app.use("/", routes);

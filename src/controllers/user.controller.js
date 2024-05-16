@@ -9,6 +9,15 @@ const loginUser = async (req, res) => {
     if (user) {
       const match = await bcrypt.compare(req.body.password, user.password);
       if (match) {
+        req.session.user = user;
+        if(req.session){
+          console.log('session aangemaakt')
+          res.redirect('login')
+        }
+        else {
+          console.log('fail')
+          res.redirect('login')
+        }
         console.log("login succes!");
         res.redirect("login");
       } else {
