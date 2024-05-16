@@ -10,27 +10,19 @@ const loginUser = async (req, res) => {
       const match = await bcrypt.compare(req.body.password, user.password);
       if (match) {
         req.session.user = user;
-        if(req.session){
-          console.log('session aangemaakt')
-          res.redirect('login')
-        }
-        else {
-          console.log('fail')
-          res.redirect('login')
-        }
-        console.log("login succes!");
-        res.redirect("login");
+        console.log("Login successful!");
+        return res.redirect("login");
       } else {
-        console.log("Password incorect!");
-        res.redirect("login");
+        console.log("Incorrect password!");
       }
     } else {
-      console.log("no user found!");
-      res.redirect("login");
+      console.log("No user found!");
     }
-  } catch {
-    console.log("error");
-    res.redirect("login");
+    // If user or password is incorrect, or user not found
+    res.status(401).redirect("login"); // Unauthorized
+  } catch (error) {
+    console.log("Error:", error.message);
+    res.status(500).redirect("login"); // Internal Server Error
   }
 };
 
