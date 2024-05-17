@@ -6,6 +6,8 @@ const {
   getUsers,
   newUser,
   loginUser,
+  userUpdate,
+  userDelete
 } = require("../controllers/user.controller");
 
 //index
@@ -47,13 +49,38 @@ router.post("/register", newUser);
 // home
 // GET homepage
 router.get("/home", async (req, res) => {
-  try {
-    const users = await getUsers();
-    res.render("index", { users });
-  } catch (error) {
-    console.error(error);
+  if(req.session && req.session.user) {
+    try {
+      const users = await getUsers();
+      res.render("index", { users });
+    } catch (error) {
+      console.error(error);
+      res.redirect('login')
+    }
+  }
+  else {
+    res.redirect('login')
   }
 });
+
+//  GET edit
+router.get("/edit", async (req, res) => {
+  if(req.session && req.session.user) {
+    try {
+      res.render("pages/edit", { user : req.session.user })
+    }
+    catch (error) {
+      console.error(error);
+    }
+  }
+})
+
+//  GET userDelete
+router.get("/delete", userDelete);
+
+
+//  POST edit update 
+router.post("/edit", userUpdate) 
 
 // export route
 module.exports = router;

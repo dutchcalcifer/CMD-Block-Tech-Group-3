@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <h1>Edit pagina</h1>
+    <a href="/">Back</a>
+    <form action="/edit" method="POST">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" value="<%= user.name %>" required />
+      <label for="email">Email</label>
+      <input type="text" id="email" name="email" value="<%= user.email %>" required />
+      <label for="userInstruments">User Instruments</label>
+      <input type="text" id="userInstruments" name="userInstruments" value="<%= user.userInstruments %>" required />
+      <label for="userInstrumentsRequest">User Instruments Request</label>
+      <input
+        type="text"
+        id="userInstrumentsRequest"
+        name="userInstrumentsRequest"
+        value="<%= user.userInstrumentsRequest %>"
+        required
+      />
+      <button type="submit">Add user</button>
+      <a href="/delete">User Delete</a>
+    </form>
+  </body>
+</html>

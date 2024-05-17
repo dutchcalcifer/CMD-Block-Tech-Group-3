@@ -48,9 +48,35 @@ const getUsers = async (req, res) => {
   }
 };
 
+// POST userUpdate
+const userUpdate = async (req, res) => {
+  try {
+    const userId = req.session.user._id;
+    await User.findByIdAndUpdate(userId, req.body);
+    res.redirect("/home")
+  }
+  catch(error) {
+    console.error(error)
+  }
+}
+
+// GET userDelete
+const userDelete = async (req, res) => {
+  try {
+    const userId = req.session.user._id;
+    await User.findByIdAndDelete(userId, req.body);
+    res.redirect("/home")
+  }
+  catch(error) {
+    console.error(error)
+  }
+}
+
 // export functions
 module.exports = {
   loginUser,
   getUsers,
   newUser,
+  userUpdate,
+  userDelete,
 };
