@@ -14,7 +14,8 @@
     "eslint": "^9.2.0",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
-    "mongoose": "^8.3.3"
+    "mongoose": "^8.3.3",
+    "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"

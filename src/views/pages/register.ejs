@@ -3,29 +3,115 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register</title>
-    <link rel="stylesheet" href="/css/style.css" />
+    <title>User Form</title>
   </head>
   <body>
-    <h1>Register</h1>
-    <a href="/">Back</a>
-    <form action="/register" method="POST">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required />
-      <label for="email">Email</label>
-      <input type="text" id="email" name="email" required />
-      <label for="password">Password</label>
-      <input type="text" id="password" name="password" required />
-      <label for="userInstruments">User Instruments</label>
-      <input type="text" id="userInstruments" name="userInstruments" required />
-      <label for="userInstrumentsRequest">User Instruments Request</label>
+    <form action="/register" method="POST" enctype="multipart/form-data">
+      <h1>User Registration Form</h1>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required /><br /><br />
+
+      <label for="isSoloArtist">Are you a solo artist?</label>
+      <input
+        type="checkbox"
+        id="isSoloArtist"
+        name="isSoloArtist"
+        value="true"
+      /><br /><br />
+
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+      /><br /><br />
+
+      <label for="bandName">Band Name:</label>
+      <input type="text" id="bandName" name="bandName" /><br /><br />
+
+      <h2>Members</h2>
+      <div id="members">
+        <div class="member">
+          <label for="memberName">Name:</label>
+          <input type="text" name="memberName" /><br /><br />
+
+          <label for="memberPfp">Profile Picture:</label>
+          <input type="file" name="memberPfp" /><br /><br />
+
+          <label for="memberGender">Gender:</label>
+          <input type="text" name="memberGender" required /><br /><br />
+
+          <label for="memberBirthday">Birthday:</label>
+          <input type="date" name="memberBirthday" required /><br /><br />
+        </div>
+      </div>
+      <button type="button" onclick="addMember()">Add Member</button
+      ><br /><br />
+
+      <label for="genres">Genres:</label>
+      <input type="text" id="genres" name="genres" required /><br /><br />
+
+      <label for="userInstruments">Instruments:</label>
       <input
         type="text"
-        id="userInstrumentsRequest"
-        name="userInstrumentsRequest"
+        id="userInstruments"
+        name="userInstruments"
         required
-      />
-      <button type="submit">Add user</button>
+      /><br /><br />
+
+      <label for="description">Description:</label>
+      <textarea
+        id="description"
+        name="description"
+        maxlength="125"
+        required
+      ></textarea
+      ><br /><br />
+
+      <label for="country">Country:</label>
+      <input type="text" id="country" name="country" required /><br /><br />
+
+      <label for="state">State:</label>
+      <input type="text" id="state" name="state" required /><br /><br />
+
+      <label for="city">City:</label>
+      <input type="text" id="city" name="city" required /><br /><br />
+
+      <label for="postalCode">Postal Code:</label>
+      <input
+        type="text"
+        id="postalCode"
+        name="postalCode"
+        required
+      /><br /><br />
+
+      <label for="language">Language:</label>
+      <input type="text" id="language" name="language" /><br /><br />
+
+      <button type="submit">Submit</button>
     </form>
+
+    <script>
+      function addMember() {
+        const memberDiv = document.createElement("div");
+        memberDiv.classList.add("member");
+        memberDiv.innerHTML = `
+                <label for="memberName">Name:</label>
+                <input type="text" name="memberName"><br><br>
+
+                <label for="memberPfp">Profile Picture:</label>
+                <input type="file" name="memberPfp"><br><br>
+
+                <label for="memberGender">Gender:</label>
+                <input type="text" name="memberGender" required><br><br>
+
+                <label for="memberBirthday">Birthday:</label>
+                <input type="date" name="memberBirthday" required><br><br>
+            `;
+        document.getElementById("members").appendChild(memberDiv);
+      }
+    </script>
   </body>
 </html>

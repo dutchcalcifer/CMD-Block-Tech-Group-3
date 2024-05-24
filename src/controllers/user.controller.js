@@ -1,6 +1,9 @@
 // import user model
 const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
+const multer = require("multer");
+const storage = require("../middleware/multer.middleware");
+const upload = multer({ storage: storage });
 
 // POST login
 const loginUser = async (req, res) => {
@@ -26,14 +29,20 @@ const loginUser = async (req, res) => {
   }
 };
 
-// POST register
 const newUser = async (req, res) => {
   try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    await User.create({ ...req.body, password: hashedPassword });
-    res.redirect("/");
+    upload.single("memberPfp")(req, res, async (err) => {
+      if (err) console.error(err);
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      await User.create({
+        ...req.body,
+        password: hashedPassword,
+        memberPfp: req.file.filename,
+      });
+      res.redirect("/");
+    });
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
 };
 
@@ -53,24 +62,22 @@ const userUpdate = async (req, res) => {
   try {
     const userId = req.session.user._id;
     await User.findByIdAndUpdate(userId, req.body);
-    res.redirect("/home")
+    res.redirect("/home");
+  } catch (error) {
+    console.error(error);
   }
-  catch(error) {
-    console.error(error)
-  }
-}
+};
 
 // GET userDelete
 const userDelete = async (req, res) => {
   try {
     const userId = req.session.user._id;
     await User.findByIdAndDelete(userId, req.body);
-    res.redirect("/home")
+    res.redirect("/home");
+  } catch (error) {
+    console.error(error);
   }
-  catch(error) {
-    console.error(error)
-  }
-}
+};
 
 // export functions
 module.exports = {
