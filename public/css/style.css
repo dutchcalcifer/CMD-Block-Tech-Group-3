@@ -5,6 +5,9 @@
   --light-purple: #AF90DC;
   --light-white: rgba(255, 255, 255, 0.8);
   --drop-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+  --body-text: 1em "Jost", Arial, Helvetica, sans-serif;
+  --header-text: 1.3em bold "Jost", Arial, Helvetica, sans-serif;
 }
 
 * {
