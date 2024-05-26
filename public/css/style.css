@@ -1,3 +1,12 @@
+:root{
+  --textbox-color: #E1E1E1;
+  --text-color: #000000;
+  --dark-purple: #5E2BA7; 
+  --light-purple: #AF90DC;
+  --light-white: rgba(255, 255, 255, 0.8);
+  --drop-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -12,4 +21,4 @@ form {
 
 form > * {
   max-width: 20rem;
-}
+} 
