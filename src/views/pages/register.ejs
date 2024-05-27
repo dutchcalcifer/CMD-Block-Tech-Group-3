@@ -9,7 +9,24 @@
   <body>
     <form action="/register" method="POST" enctype="multipart/form-data">
       <h1>User Registration Form</h1>
+
+      <section class="container-progressbar">
+        <ul id="progressbar-ul">
+            <li class="progressbar"></li>
+            <li class="progressbar"></li>
+            <li class="progressbar"></li>
+            <li class="progressbar"></li>
+            <li class="progressbar"></li>
+            <li class="progressbar"></li>
+            <li class="progressbar"></li>
+            <li class="progressbar"></li>
+            <li class="progressbar"></li>
+            <li class="progressbar"></li>
+        </ul>
+    </section>
+
       <div><%- include ("../partials/genreSelect") %></div>
+      <div><%- include ("../partials/instrumentSelect") %></div>
 
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" required /><br /><br />
