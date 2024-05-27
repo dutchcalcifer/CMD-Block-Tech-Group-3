@@ -85,13 +85,13 @@ router.post("/edit", userUpdate)
 
 // register-genres
 // register-genres page
-router.get("/register-genres", async (req, res) => {
-  try {
-    res.render("pages/register-genres");
-  } catch (error) {
-    console.error(error);
-  }
-});
+// router.get("/register-genres", async (req, res) => {
+//   try {
+//     res.render("pages/register-genres");
+//   } catch (error) {
+//     console.error(error);
+//   }
+// });
 
 
 // export route
