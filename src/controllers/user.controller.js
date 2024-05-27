@@ -31,18 +31,19 @@ const loginUser = async (req, res) => {
 
 const newUser = async (req, res) => {
   try {
-    upload.single("memberPfp")(req, res, async (err) => {
+    upload.any("memberPfp")(req, res, async (err) => {
       if (err) console.error(err);
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      const fileNames = req.files.map((file) => file.filename);
       await User.create({
         ...req.body,
         password: hashedPassword,
-        memberPfp: req.file.filename,
+        memberPfp: fileNames,
       });
       res.redirect("/");
     });
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 };
 
