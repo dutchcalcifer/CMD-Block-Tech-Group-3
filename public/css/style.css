@@ -28,10 +28,18 @@ form > * {
 } 
 
 /* Buttons */
-.progressbar, .style-genre{
+.progressbar, .style-choice-button{
   border-radius: 20px;
   border: 2px solid var(--secondary-color);  
 }
+
+.style-choice-button{
+  color: var(--primary-color);
+  box-shadow: var(--drop-shadow);
+  height: 4.5vh;
+}
+
+
 
 /* Progressbar */
 .container-progressbar{
@@ -86,18 +94,14 @@ h2, .help-text, p{
 
 
 
-/* Genres */
-.container-genres{
+/* Container choice buttons */
+.container-choice{
   display: grid;
   grid-template-columns: repeat(3, 100px);
   gap: 1em;
 }
 
-.style-genre{
-  color: var(--primary-color);
-  box-shadow: var(--drop-shadow);
-  height: 4.5vh;
-}
+
 
 
 
