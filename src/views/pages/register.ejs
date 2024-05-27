@@ -31,6 +31,9 @@
       <div><%- include ("../partials/birthdays.ejs") %></div>
       <div><%- include ("../partials/genreSelect") %></div>
       <div><%- include ("../partials/instrumentSelect") %></div>
+      <div><%- include ("../partials/addVideo") %></div>
+      <div><%- include ("../partials/addDiscription") %></div>
+      <div><%- include ("../partials/addLocation") %></div>
 
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" required /><br /><br />
@@ -84,38 +87,10 @@
         required
       /><br /><br />
 
-      <label for="description">Description:</label>
-      <textarea
-        id="description"
-        name="description"
-        maxlength="125"
-        required
-      ></textarea
-      ><br /><br />
-
-      <label for="country">Country:</label>
-      <input type="text" id="country" name="country" required /><br /><br />
-
-      <label for="state">State:</label>
-      <input type="text" id="state" name="state" required /><br /><br />
-
-      <label for="city">City:</label>
-      <input type="text" id="city" name="city" required /><br /><br />
-
-      <label for="postalCode">Postal Code:</label>
-      <input
-        type="text"
-        id="postalCode"
-        name="postalCode"
-        required
-      /><br /><br />
-
-      <label for="language">Language:</label>
-      <input type="text" id="language" name="language" /><br /><br />
-
       <button type="submit">Submit</button>
     </form>
 
+    <script src="script.js"></script>
     <script>
       function addMember() {
         const memberDiv = document.createElement("div");

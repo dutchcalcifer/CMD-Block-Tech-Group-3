@@ -103,6 +103,16 @@ h2, .help-text, p{
 
 
 
+/* Video and audio */
+#mediaPreview {
+  margin-top: 20px;
+}
+
+video, audio {
+  width: 100%;
+  max-width: 400px;
+}
+
 
 
 @media (max-width: 767px) {
