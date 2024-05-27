@@ -1,13 +1,13 @@
 :root{
   --textbox-color: #E1E1E1;
   --text-color: #000000;
-  --dark-purple: #5E2BA7; 
-  --light-purple: #AF90DC;
+  --primary-color: #5E2BA7; 
+  --secondary-color: #AF90DC;
   --light-white: rgba(255, 255, 255, 0.8);
-  --drop-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  --help-text: rgba(0, 0, 0, 0.5);
+  --drop-shadow: 0 3px 3px 1px rgba(0, 0, 0, 0.2);
 
-  --body-text: 1em "Jost", Arial, Helvetica, sans-serif;
-  --header-text: 1.3em bold "Jost", Arial, Helvetica, sans-serif;
+  --all-text: 1em "Jost", Arial, Helvetica, sans-serif;
 }
 
 * {
@@ -20,8 +20,87 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1em;
 }
 
 form > * {
   max-width: 20rem;
 } 
+
+/* Buttons */
+.progressbar, .style-genre{
+  border-radius: 20px;
+  border: 2px solid var(--secondary-color);  
+}
+
+/* Progressbar */
+.container-progressbar{
+  margin-bottom: 2.5em;
+}
+
+.progressbar{
+  flex: 1; 
+  text-align: center;
+  /*background-color: blue;*/
+  margin: 0 5px;
+  height: 1vh;
+  width: 6.5vw;
+}
+
+#progressbar-ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style-type: none;
+  width: 100%;
+  padding: 0; 
+  margin: 0;
+}
+
+
+
+/* Text */
+h1, h2, p, .style-genre{
+  font: var(--all-text);
+}
+
+h1{
+  font-size: 1.3em;
+  font-weight: 700;
+  margin-bottom: 0.7em;
+}
+
+h2{
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+.help-text{
+  color:var(--help-text);
+  margin-bottom: 1.3em;
+}
+
+h2, .help-text, p{
+  text-align: left !important;
+}
+
+
+
+/* Genres */
+.container-genres{
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  gap: 1em;
+}
+
+.style-genre{
+  color: var(--primary-color);
+  box-shadow: var(--drop-shadow);
+  height: 4.5vh;
+}
+
+
+
+@media (max-width: 767px) {
+  /* CSS rules for mobile devices */
+}
