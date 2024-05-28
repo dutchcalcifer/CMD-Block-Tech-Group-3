@@ -3,12 +3,11 @@
       <div id="members">
         <div class="member">
           <label for="memberName">Name:</label>
-          <input type="text" name="memberName" /><br /><br />
+          <input type="text" name="memberName" required/><br /><br />
 
           <label for="memberPfp">Profile Picture:</label>
-          <input type="file" name="memberPfp" accept="image/png, image/jpeg"
-          /><br /><br /> 
+          <input type="file" name="memberPfp" accept="image/png, image/jpeg" required/>
         </div>
       </div>
       <button type="button" onclick="addMember()">Add Member</button
-      ><br /><br />
+      >
