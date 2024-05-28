@@ -63,6 +63,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    function validateForm() {
+        const currentPartial = partials[currentIndex];
+        const inputs = currentPartial.querySelectorAll('input[required], textarea[required]');
+        for (let i = 0; i < inputs.length; i++) {
+            if (!inputs[i].value) {
+                alert('Please fill in all required fields.');
+                return false;
+            }
+        }
+        return true;
+    }
+
     document.getElementById('prevBtn').addEventListener('click', function() {
         if (currentIndex > 0) {
             currentIndex--;
@@ -71,9 +83,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('nextBtn').addEventListener('click', function() {
-        if (currentIndex < partials.length - 1) {
-            currentIndex++;
-            showPartial(currentIndex);
+        if (validateForm()) {
+            if (currentIndex < partials.length - 1) {
+                currentIndex++;
+                showPartial(currentIndex);
+            }
         }
     });
 
