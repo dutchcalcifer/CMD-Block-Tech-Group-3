@@ -32,6 +32,9 @@ input[type="password"], input[type="email"], input[type="text"]{
   height: 1.8125em;
   width: 20.875em;
   margin-bottom: 2.75em;
+}
+
+input[type="password"], input[type="email"]{
   text-indent: 3.5em;
 }
 
@@ -54,6 +57,11 @@ input[type="email"]{
   background-image: url(../img/mail_icon.svg);
 }
 
+
+
+
+
+
 /* Buttons */
 .progressbar, .style-choice-button{
   border-radius: 20px;
@@ -70,6 +78,20 @@ input[type="email"]{
   display: none;
 }
 
+#nextBtn{
+  background-color: var(--primary-color);
+    color: var(--light-white);
+    width: 5.9375em;
+    height: 3.375em;
+    border-color: var(--primary-color);
+    border-radius: 3em;
+}
+
+#prevBtn{
+  background: none;
+  border: none;
+  color: var(--primary-color);
+}
 
 
 /* Progressbar */
