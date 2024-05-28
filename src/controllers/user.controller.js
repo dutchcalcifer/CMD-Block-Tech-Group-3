@@ -45,7 +45,7 @@ const userUpdate = async (req, res) => {
   try {
     const userId = req.session.user._id;
     await User.findByIdAndUpdate(userId, req.body);
-    res.redirect("/home");
+    res.redirect("/foryou");
   } catch (error) {
     console.error(error);
   }
@@ -56,7 +56,7 @@ const userDelete = async (req, res) => {
   try {
     const userId = req.session.user._id;
     await User.findByIdAndDelete(userId, req.body);
-    res.redirect("/home");
+    res.redirect("/");
   } catch (error) {
     console.error(error);
   }
@@ -69,7 +69,7 @@ const userLogin = async (req, res) => {
     if (user && (await bcrypt.compare(req.body.password, user.password))) {
       req.session.user = user;
       if (req.session) {
-        res.redirect("home");
+        res.redirect("foryou");
       } else {
         res.redirect("login");
       }

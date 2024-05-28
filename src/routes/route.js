@@ -45,11 +45,11 @@ router.get("/login", async (req, res) => {
 router.post("/login", userLogin);
 
 // GET homepage
-router.get("/home", async (req, res) => {
+router.get("/foryou", async (req, res) => {
   try {
     if (req.session && req.session.user) {
       const users = await usersGet();
-      res.render("pages/home", { users });
+      res.render("pages/foryou", { users });
     } else {
       res.redirect("/login");
     }
@@ -58,11 +58,11 @@ router.get("/home", async (req, res) => {
   }
 });
 
-// GET edit user page
-router.get("/edit", async (req, res) => {
+// GET settings user page
+router.get("/settings", async (req, res) => {
   try {
     if (req.session && req.session.user) {
-      res.render("pages/edit", { user: req.session.user });
+      res.render("pages/settings", { user: req.session.user });
     } else {
       res.redirect("/login");
     }
