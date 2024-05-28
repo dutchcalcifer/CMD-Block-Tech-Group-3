@@ -39,6 +39,10 @@ form > * {
   height: 4.5vh;
 }
 
+.hidden {
+  display: none;
+}
+
 
 
 /* Progressbar */
