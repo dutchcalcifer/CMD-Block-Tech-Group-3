@@ -93,3 +93,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     showPartial(currentIndex); // Initialize the first partial to be visible
 });
+
+
+
+
+// progressbar coloring
+let currentStep = 0;
+
+const steps = document.querySelectorAll('.progressbar');
+const nextButton = document.getElementById('nextBtn');
+const prevButton = document.getElementById('prevBtn');
+
+nextButton.addEventListener('click', () => {
+    if (currentStep < steps.length) {
+        steps[currentStep].classList.add('active');
+        currentStep++;
+    }
+});
+
+prevButton.addEventListener('click', () => {
+    if (currentStep > 0) {
+        currentStep--;
+        steps[currentStep].classList.remove('active');
+    }
+});

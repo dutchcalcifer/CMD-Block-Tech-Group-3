@@ -102,10 +102,14 @@ input[type="email"]{
 .progressbar{
   flex: 1; 
   text-align: center;
-  /*background-color: blue;*/
+  /* background-color: blue; */
   margin: 0 5px;
   height: 1vh;
   width: 6.5vw;
+}
+
+.progressbar.active{
+  background-color: var(--primary-color);
 }
 
 #progressbar-ul{
