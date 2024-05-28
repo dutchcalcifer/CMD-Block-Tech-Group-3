@@ -1,3 +1,4 @@
+// import modules
 const multer = require("multer");
 const path = require("path");
 
@@ -10,5 +11,5 @@ const storage = multer.diskStorage({
   },
 });
 
-// Export the middleware
+// Export middleware
 module.exports = storage;

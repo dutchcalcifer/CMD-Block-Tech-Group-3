@@ -1,17 +1,17 @@
 // import modules and user controller
-const session = require("express-session")
+const session = require("express-session");
 const express = require("express");
 const router = express.Router();
 const {
-  getUsers,
-  newUser,
-  loginUser,
+  userCreate,
+  usersGet,
   userUpdate,
-  userDelete
+  userDelete,
+  userLogin,
+  userLogout,
 } = require("../controllers/user.controller");
 
-//index
-//index page
+// GET index page
 router.get("/", async (req, res) => {
   try {
     res.render("index");
@@ -20,21 +20,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// login
-// login page
-router.get("/login", async (req, res) => {
-  try {
-    res.render("pages/login");
-  } catch (error) {
-    console.error(error);
-  }
-});
-
-// POST login account
-router.post("/login", loginUser);
-
-// register
-// register page
+// GET register page
 router.get("/register", async (req, res) => {
   try {
     res.render("pages/register");
@@ -43,56 +29,66 @@ router.get("/register", async (req, res) => {
   }
 });
 
-// POST register account
-router.post("/register", newUser);
+// POST register new user
+router.post("/register", userCreate);
 
-// home
-// GET homepage
-router.get("/home", async (req, res) => {
-  if(req.session && req.session.user) {
-    try {
-      const users = await getUsers();
-      res.render("index", { users });
-    } catch (error) {
-      console.error(error);
-      res.redirect('login')
-    }
-  }
-  else {
-    res.redirect('login')
+// GET login page
+router.get("/login", async (req, res) => {
+  try {
+    res.render("pages/login");
+  } catch (error) {
+    console.error(error);
   }
 });
 
-//  GET edit
-router.get("/edit", async (req, res) => {
-  if(req.session && req.session.user) {
-    try {
-      res.render("pages/edit", { user : req.session.user })
+// POST login user
+router.post("/login", userLogin);
+
+// GET homepage
+router.get("/home", async (req, res) => {
+  try {
+    if (req.session && req.session.user) {
+      const users = await usersGet();
+      res.render("pages/home", { users });
+    } else {
+      res.redirect("/login");
     }
-    catch (error) {
-      console.error(error);
-    }
+  } catch (error) {
+    console.error(error);
   }
-})
+});
 
-//  GET userDelete
-router.get("/delete", userDelete);
+// GET edit user page
+router.get("/edit", async (req, res) => {
+  try {
+    if (req.session && req.session.user) {
+      res.render("pages/edit", { user: req.session.user });
+    } else {
+      res.redirect("/login");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+});
 
+//  POST edit user
+router.post("/edit", userUpdate);
 
-//  POST edit update 
-router.post("/edit", userUpdate) 
+// GET delete
+router.get("/delete", (req, res) => {
+  try {
+    if (req.session && req.session.user) {
+      userDelete(req, res);
+    } else {
+      res.redirect("/login");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+});
 
-
-// register-genres
-// register-genres page
-// router.get("/register-genres", async (req, res) => {
-//   try {
-//     res.render("pages/register-genres");
-//   } catch (error) {
-//     console.error(error);
-//   }
-// });
-
+// GET logout
+router.get("/logout", userLogout);
 
 // export route
 module.exports = router;
