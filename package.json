@@ -4,7 +4,8 @@
   "description": "Repository for CMD Block Tech Group 3.",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "build": "node app.js",
+    "dev": "nodemon app.js"
   },
   "license": "MIT",
   "dependencies": {

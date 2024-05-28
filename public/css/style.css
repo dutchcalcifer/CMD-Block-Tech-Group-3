@@ -35,6 +35,10 @@ input[type="password"], input[type="email"], input[type="text"]{
   text-indent: 3.5em;
 }
 
+form > * {
+  max-width: 20rem;
+}
+
 /* Tekstveld svg position */
 input[type="password"], input[type="email"], input[type="text"]{
   background-repeat: no-repeat;
