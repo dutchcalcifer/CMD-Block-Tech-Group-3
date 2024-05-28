@@ -23,9 +23,32 @@ form {
   padding: 1em;
 }
 
-form > * {
-  max-width: 20rem;
-} 
+/* Tekstveld  */
+input[type="password"], input[type="email"], input[type="text"]{
+  border: none;
+  border-bottom: solid 0.125em;
+  border-color: var(--primary-color);
+  background-color:var(--textbox-color) ;
+  height: 1.8125em;
+  width: 20.875em;
+  margin-bottom: 2.75em;
+  text-indent: 3.5em;
+}
+
+/* Tekstveld svg position */
+input[type="password"], input[type="email"], input[type="text"]{
+  background-repeat: no-repeat;
+  background-position: 0.9375em center;
+}
+
+/* Tekstveld svgs */
+input[type="password"]{
+  background-image: url(../img/password_icon.svg);
+}
+
+input[type="email"]{
+  background-image: url(../img/mail_icon.svg);
+}
 
 /* Buttons */
 .progressbar, .style-choice-button{
