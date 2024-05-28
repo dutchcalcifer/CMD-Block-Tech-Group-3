@@ -13,6 +13,7 @@ A school project where users can make an account to look for new band users depe
 - Express-Session
 - Mongoose
 - Nodemon
+- Multer
 
 ## Installation
 1. Clone the repository.

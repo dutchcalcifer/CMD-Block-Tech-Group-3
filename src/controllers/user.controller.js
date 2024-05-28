@@ -1,35 +1,17 @@
-// import user model
-const User = require("../models/user.model");
+// import module
 const bcrypt = require("bcrypt");
 const multer = require("multer");
+
+// import middleware
 const storage = require("../middleware/multer.middleware");
+// set middleware
 const upload = multer({ storage: storage });
 
-// POST login
-const loginUser = async (req, res) => {
-  try {
-    const user = await User.findOne({ name: req.body.name });
-    if (user) {
-      const match = await bcrypt.compare(req.body.password, user.password);
-      if (match) {
-        req.session.user = user;
-        console.log("Login successful!");
-        return res.redirect("login");
-      } else {
-        console.log("Incorrect password!");
-      }
-    } else {
-      console.log("No user found!");
-    }
-    // If user or password is incorrect, or user not found
-    res.status(401).redirect("login"); // Unauthorized
-  } catch (error) {
-    console.log("Error:", error.message);
-    res.status(500).redirect("login"); // Internal Server Error
-  }
-};
+// import model
+const User = require("../models/user.model");
 
-const newUser = async (req, res) => {
+// POST create user
+const userCreate = async (req, res) => {
   try {
     upload.any("memberPfp")(req, res, async (err) => {
       if (err) console.error(err);
@@ -47,8 +29,8 @@ const newUser = async (req, res) => {
   }
 };
 
-// GET
-const getUsers = async (req, res) => {
+// GET read users
+const usersGet = async (req, res) => {
   try {
     const users = await User.find({});
     return users;
@@ -58,7 +40,7 @@ const getUsers = async (req, res) => {
   }
 };
 
-// POST userUpdate
+// POST update user
 const userUpdate = async (req, res) => {
   try {
     const userId = req.session.user._id;
@@ -69,7 +51,7 @@ const userUpdate = async (req, res) => {
   }
 };
 
-// GET userDelete
+// GET delete user
 const userDelete = async (req, res) => {
   try {
     const userId = req.session.user._id;
@@ -80,11 +62,42 @@ const userDelete = async (req, res) => {
   }
 };
 
+// POST login user and create session
+const userLogin = async (req, res) => {
+  try {
+    const user = await User.findOne({ name: req.body.name });
+    if (user && (await bcrypt.compare(req.body.password, user.password))) {
+      req.session.user = user;
+      if (req.session) {
+        res.redirect("home");
+      } else {
+        res.redirect("login");
+      }
+    } else {
+      res.redirect("login");
+    }
+  } catch (error) {
+    console.error(error);
+    res.redirect("/");
+  }
+};
+
+// GET logout user and destroy session
+const userLogout = (req, res) => {
+  try {
+    req.session.destroy();
+    res.redirect("/login");
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 // export functions
 module.exports = {
-  loginUser,
-  getUsers,
-  newUser,
+  userCreate,
+  usersGet,
   userUpdate,
   userDelete,
+  userLogin,
+  userLogout,
 };
