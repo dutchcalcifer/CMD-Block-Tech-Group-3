@@ -71,6 +71,19 @@ router.get("/settings", async (req, res) => {
   }
 });
 
+// GET profile user page
+router.get("/profile", async (req, res) => {
+  try {
+    if (req.session && req.session.user) {
+      res.render("pages/profile", { user: req.session.user });
+    } else {
+      res.redirect("/login");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 //  POST edit user
 router.post("/edit", userUpdate);
 
