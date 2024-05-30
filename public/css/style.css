@@ -10,6 +10,19 @@
   --all-text: 1em "Jost", Arial, Helvetica, sans-serif;
 }
 
+/* Fonts */
+@font-face {
+  font-family: "Jost-Medium";
+src: url(../fonts/Jost-Medium.ttf);
+}
+
+@font-face {
+  font-family: "Jost-Regular";
+src: url(../fonts/Jost-Regular.ttf);
+}
+
+
+
 * {
   box-sizing: border-box;
   margin: 0;
