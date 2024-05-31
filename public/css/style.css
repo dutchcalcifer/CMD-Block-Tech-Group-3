@@ -28,6 +28,14 @@ src: url(../fonts/Jost-Regular.ttf);
   margin: 0;
 }
 
+a, button, input, form{
+  font-family:Jost-Medium ;
+}
+
+p, label{
+  font-family:Jost-Regular;
+}
+
 body,
 form {
   display: flex;
