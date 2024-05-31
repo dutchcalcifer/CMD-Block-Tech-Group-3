@@ -37,13 +37,17 @@ p, label{
 }
 
 body,
-form {
+form,
+form .form-group {
   display: flex;
   flex-direction: column;
+}
+
+body,
+form {
   align-items: center;
   padding: 1em;
 }
-
 
 
 
@@ -101,6 +105,10 @@ input[type="password"], input[type="email"]{
 
 form > * {
   max-width: 20rem;
+}
+
+form {
+  width: 100%;
 }
 
 
