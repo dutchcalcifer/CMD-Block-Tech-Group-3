@@ -44,6 +44,46 @@ form {
   padding: 1em;
 }
 
+
+
+
+/* Text */
+h1, h2, h3, h4, h5, p, .style-genre{
+  font: var(--all-text);
+}
+
+h1, .profile h2{
+  font-weight: 700;
+}
+
+h1{
+  font-size: 1.3em;
+  margin-bottom: 0.7em;
+}
+
+h2, h4{
+  font-weight: 600;
+}
+
+h2{
+  margin-bottom: 0.5em;
+}
+
+.help-text{
+  color:var(--help-text);
+  margin-bottom: 1.3em;
+}
+
+h2, .help-text, p{
+  text-align: left !important;
+}
+
+.profile h2, h4{
+  color: var(--primary-color);
+}
+
+
+
 /* Tekstveld  */
 input[type="password"], input[type="email"], input[type="text"]{
   border: none;
@@ -63,11 +103,15 @@ form > * {
   max-width: 20rem;
 }
 
+
+
 /* Tekstveld svg position */
 input[type="password"], input[type="email"], input[type="text"]{
   background-repeat: no-repeat;
   background-position: 0.9375em center;
 }
+
+
 
 /* Tekstveld svgs */
 input[type="password"]{
@@ -137,33 +181,6 @@ input[type="email"]{
   width: 100%;
   padding: 0; 
   margin: 0;
-}
-
-
-
-/* Text */
-h1, h2, p, .style-genre{
-  font: var(--all-text);
-}
-
-h1{
-  font-size: 1.3em;
-  font-weight: 700;
-  margin-bottom: 0.7em;
-}
-
-h2{
-  font-weight: 600;
-  margin-bottom: 0.5em;
-}
-
-.help-text{
-  color:var(--help-text);
-  margin-bottom: 1.3em;
-}
-
-h2, .help-text, p{
-  text-align: left !important;
 }
 
 

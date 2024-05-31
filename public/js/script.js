@@ -105,7 +105,7 @@ const nextButton = document.getElementById('nextBtn');
 const prevButton = document.getElementById('prevBtn');
 
 nextButton.addEventListener('click', () => {
-    if (currentStep < steps.length - 1) {
+    if (currentStep < steps.length) {
         steps[currentStep].classList.add('active');
         currentStep++;
     }
