@@ -65,7 +65,7 @@ const userDelete = async (req, res) => {
 // POST login user and create session
 const userLogin = async (req, res) => {
   try {
-    const user = await User.findOne({ name: req.body.name });
+    const user = await User.findOne({ email: req.body.email });
     if (user && (await bcrypt.compare(req.body.password, user.password))) {
       req.session.user = user;
       if (req.session) {
