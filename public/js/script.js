@@ -48,10 +48,13 @@ function addMember() {
 // });
 
 
+
+
 // Next and prev button
 document.addEventListener('DOMContentLoaded', function() {
     const partials = document.querySelectorAll('.partial');
     let currentIndex = 0;
+    let currentStep = 1;
 
     function showPartial(index) {
         partials.forEach((partial, i) => {
@@ -72,13 +75,31 @@ document.addEventListener('DOMContentLoaded', function() {
                 return false;
             }
         }
+        // Update the progress bar here if validation succeeds
+        updateProgressBar(true);
         return true;
+    }
+
+    function updateProgressBar(isNext) {
+        const steps = document.querySelectorAll('.progressbar');
+        if (isNext) {
+            if (currentStep < steps.length) {
+                steps[currentStep].classList.add('active');
+                currentStep++;
+            }
+        } else {
+            if (currentStep > 1) {
+                currentStep--;
+                steps[currentStep].classList.remove('active');
+            }
+        }
     }
 
     document.getElementById('prevBtn').addEventListener('click', function() {
         if (currentIndex > 0) {
             currentIndex--;
             showPartial(currentIndex);
+            updateProgressBar(false); // Update progress bar when going back
         }
     });
 
@@ -92,28 +113,4 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     showPartial(currentIndex); // Initialize the first partial to be visible
-});
-
-
-
-
-// progressbar coloring
-let currentStep = 1;
-
-const steps = document.querySelectorAll('.progressbar');
-const nextButton = document.getElementById('nextBtn');
-const prevButton = document.getElementById('prevBtn');
-
-nextButton.addEventListener('click', () => {
-    if (currentStep < steps.length) {
-        steps[currentStep].classList.add('active');
-        currentStep++;
-    }
-});
-
-prevButton.addEventListener('click', () => {
-    if (currentStep > 1) {
-        currentStep--;
-        steps[currentStep].classList.remove('active');
-    }
 });
