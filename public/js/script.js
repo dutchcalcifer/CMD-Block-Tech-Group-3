@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // progressbar coloring
-let currentStep = 0;
+let currentStep = 1;
 
 const steps = document.querySelectorAll('.progressbar');
 const nextButton = document.getElementById('nextBtn');
@@ -112,7 +112,7 @@ nextButton.addEventListener('click', () => {
 });
 
 prevButton.addEventListener('click', () => {
-    if (currentStep > 0) {
+    if (currentStep > 1) {
         currentStep--;
         steps[currentStep].classList.remove('active');
     }
