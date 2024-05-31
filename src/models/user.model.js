@@ -23,7 +23,6 @@ const UserSchema = mongoose.Schema(
 
     bandName: {
       type: String,
-      unique: true,
     },
 
     memberName: [
