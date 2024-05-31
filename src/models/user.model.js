@@ -55,14 +55,12 @@ const UserSchema = mongoose.Schema(
     genres: [
       {
         type: String,
-        required: true,
       },
     ],
 
     userInstruments: [
       {
         type: String,
-        required: true,
       },
     ],
 
