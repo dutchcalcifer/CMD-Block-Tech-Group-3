@@ -114,3 +114,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     showPartial(currentIndex); // Initialize the first partial to be visible
 });
+
+
+
+
+// test!
+
+  
+  

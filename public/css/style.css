@@ -8,6 +8,7 @@
   --drop-shadow: 0 3px 3px 1px rgba(0, 0, 0, 0.2);
   --body-background:#efefef;
   --for-you-buttons:#efefef;
+  --for-you-card: #efefefcc;
 
   --all-text: 1em "Jost", Arial, Helvetica, sans-serif;
 }
@@ -278,3 +279,16 @@ footer nav ul li{
   
 }
 
+/* container voor alles user info op for you page */
+#user-info-container{
+  background-color: var(--for-you-card);
+  border: solid 0.1em var(--primary-color); /*Tijdelijk  */
+  height: 15.5625em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  position: fixed; 
+  bottom: 4.7em;
+  width: calc(100% - 1em); /* Bron: chatgpt */
+  box-sizing: border-box; 
+ 
+}
