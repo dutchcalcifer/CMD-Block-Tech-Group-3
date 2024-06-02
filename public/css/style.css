@@ -279,9 +279,9 @@ footer nav ul li{
   
 }
 
-/* container voor alles user info op for you page */
+/* container voor alle user info op for you page */
 #user-info-container{
-  background-color: var(--for-you-card);
+  background-color: rgba(119, 255, 117, 0.727); /*Tijdelijk  */
   border: solid 0.1em var(--primary-color); /*Tijdelijk  */
   height: 15.5625em;
   margin-left: 0.5em;
@@ -290,5 +290,61 @@ footer nav ul li{
   bottom: 4.7em;
   width: calc(100% - 1em); /* Bron: chatgpt */
   box-sizing: border-box; 
- 
+  overflow: scroll;
+}
+
+#user-info-container div:first-of-type{
+  display: flex;
+  flex-direction: column;
+
+}
+
+#user-info-container h2{
+  order: 2;
+  color: var(--primary-color);
+  font-size:  1.25em;
+  margin-left: 0.625em;
+  font-family: Jost-Medium;
+  font-weight: normal;
+}
+
+#user-info-container h3{
+  font-family:Jost-Regular ;
+  font-size: 0.875em
+
+  ;
+}
+
+#user-info-container ul:first-of-type {
+  order: 1;
+  list-style-type: none;
+  display: flex;
+  padding-left: 0;
+  margin-left: 0.625em;
+  margin-right: 0.625em;
+  margin-top:  0.625em;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#user-info-container ul:first-of-type ul{
+  margin: 0;
+  padding: 0;
+}
+
+
+#user-info-container ul:first-of-type ul:first-of-type li{
+  padding: 0.0625em 0.46875em;
+  margin-right: 0.5em;
+  background-color: var(--body-background);
+  color: var(--primary-color);
+  border-radius: 3em;
+}
+
+#user-info-container ul:first-of-type img{
+  width:2em ;
+  height: 2em;
+  padding: 0.4375em;
+  background-color: red;
+  border-radius: 3em;
 }

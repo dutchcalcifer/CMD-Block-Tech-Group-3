@@ -18,8 +18,43 @@
 
     <main>
         <div id="user-info-container">
-            <ul id="user-list"></ul>
+            <% users.forEach(user => { %>
 
+            <div>
+                <h2>test ></h2>
+                <ul>
+                    <li>
+                        <ul>
+                            <li><h3>genre</h3></li>
+                            <li><h3>genre</h3></li>
+                            <li><h3>genre</h3></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <img src="../img/location_icon.svg" alt="test">
+                    </li>
+                </ul>
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, odit? Animi veritatis nam beatae, illo atque saepe omnis necessitatibus. Laboriosam ea commodi illo quaerat suscipit perspiciatis sit inventore esse aut.</p>
+            <h4>Members</h4>
+            <ul>
+                <li> <img src="../img/location_icon.svg" alt="test img"></li>
+                <li> <img src="../img/location_icon.svg" alt="test img"></li>
+            </ul>
+                    <!-- <h2><%= user.memberName %></h2>
+                
+
+                <% user.genres.forEach(genre => { %>
+                    <h2 class="genre">genre <%= genre %></h2>
+                <% }); %>
+
+
+                <% user.memberGender.forEach(gender => { %>
+                    <h2 class="memberGender">gender: <%= gender %></h2>
+                <% }); %>-->
+
+            <% }); %> 
+            
         </div>
     </main>
 
