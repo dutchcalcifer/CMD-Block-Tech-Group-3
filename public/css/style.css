@@ -59,7 +59,7 @@ form {
 
 
 /* Text */
-h1, h2, h3, h4, h5, p, .style-genre{
+h1, h2, h3, p, .style-genre{
   font: var(--all-text);
 }
 
@@ -72,7 +72,7 @@ h1{
   margin-bottom: 0.7em;
 }
 
-h2, h4{
+h2{
   font-weight: 600;
 }
 

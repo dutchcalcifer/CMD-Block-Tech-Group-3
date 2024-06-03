@@ -18,85 +18,48 @@
         </section>
     </header> 
     
-    <main>
-        <p id="profileDescription">Lorem ipsum dolor sit amet, 
-            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <form action="/edit" method="POST">
+        <label for="profileDescription">Profile Description</label>
+        <textarea id="profileDescription" name="description" readonly><%= user.description %></textarea>
 
         <div></div>
 
         <section>
             <img src="../img/location_icon.svg" alt="location icon">
-            <h4>From</h4>
-            <p id="profileLocation">Lorem ipsum dolor sit amet, 
-                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>           
+            <label for="profileLocation">From</label>
+            <input type="text" id="profileCity" name="profileCity" value="<%= user.city %>" readonly/>
+            <input type="text" id="profileCountry" name="country" value="<%= user.country %>" readonly/>         
         </section>
 
         <section>
             <img src="../img/genre_icon.svg" alt="genre icon">
-            <h4>Genre</h4>
-            <p id="profileGenre">Lorem ipsum dolor sit amet, 
-                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <label for="profileGenre">Genre</label>
+            <input type="text" id="profileGenre" name="genres" value="<%= user.genres %>" readonly/>
         </section>
 
         <section>
             <img src="../img/instrument_icon.svg" alt="instrument icon">
-            <h4>Instrument</h4>
-            <p id="profileInstrument">Lorem ipsum dolor sit amet, 
-                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <label for="profileInstrument">Instrument</label>
+            <input type="text" id="profileInstrument" name="userInstruments" value="<%= user.userInstruments %>" readonly/>
         </section>
 
         <section>
             <img src="../img/language_icon.svg" alt="language icon">
-            <h4>Language</h4>
-            <p id="profileLanguage">Lorem ipsum dolor sit amet, 
-                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <label for="profileLanguage">Language</label>
+            <input type="text" id="profileLanguage" name="language" value="<%= user.language %>" readonly/>
         </section>
 
         <section>
             <img src="../img/member_icon.svg" alt="member icon">
-            <h4>Members</h4>
-
-            <section>
-                <img src="../img/member1_icon.svg" alt="member1 icon photo">
-                <h5>Lorem ipsum dolor sit amet</h5>
-                <p id="member1">Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </section>
-
-            <section>
-                <img src="../img/member2_icon.svg" alt="member2 icon photo">
-                <h5>Lorem ipsum dolor sit amet</h5>
-                <p id="member2">Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </section>
+            <label for="memberInfo">Members</label>
+            <input type="text" id="bandName" name="bandName" value="<%= user.bandName %>" readonly/>
         </section>
 
         <section>
             <h3>Content</h3>
         </section>
 
-    </main>
+    </form>
 
     <footer>
         <nav>
