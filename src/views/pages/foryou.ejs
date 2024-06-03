@@ -6,7 +6,7 @@
     <title>For you</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
+<body id="backgroundtest"> <!-- test!!-->
     <header id="foryouheader">
         <button id="filter" aria-label="Filter button"><img src="../img/filter.svg" alt="Filter icon"></button>
         <!-- To-Do: filter fucntie -->
@@ -18,7 +18,7 @@
 
     <main>
         <% users.forEach(user => { %>
-
+            
         <% }); %>
 
         <div id="user-info-container">
@@ -37,10 +37,10 @@
                         </ul>
                     </li>
                     <li>
-                        <img src="../img/location_icon.svg" alt="test">
+                        
                     </li>
                 </ul>
-                <h2 id="order2"><%= user.memberName %> ></h2>
+                <h2 id="order2"><%= user.email%> ></h2>
             </div>
 
             <p><%= user.description %></p>
@@ -53,6 +53,7 @@
                         <li> <img src="../img/<%= memberPfp %>" alt="test"></li>
                     <% }); %>
                 <% } else { %>
+                    
                     <li> <img src="../img/location_icon.svg" alt="test"></li>
                 <% } %>
                 
