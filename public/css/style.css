@@ -300,12 +300,12 @@ footer nav ul li{
 }
 
 #user-info-container h2{
-  order: 2;
   color: var(--primary-color);
   font-size:  1.25em;
   margin-left: 0.625em;
   font-family: Jost-Medium;
   font-weight: normal;
+  height: 2em;
 }
 
 #user-info-container h3{
@@ -315,8 +315,7 @@ footer nav ul li{
   ;
 }
 
-#user-info-container ul:first-of-type {
-  order: 1;
+#user-info-container > div > ul:first-of-type {
   list-style-type: none;
   display: flex;
   padding-left: 0;
@@ -325,11 +324,13 @@ footer nav ul li{
   margin-top:  0.625em;
   justify-content: space-between;
   align-items: center;
+  height: 2em;
 }
 
 #user-info-container ul:first-of-type ul{
   margin: 0;
   padding: 0;
+  display: flex;
 }
 
 
@@ -339,12 +340,55 @@ footer nav ul li{
   background-color: var(--body-background);
   color: var(--primary-color);
   border-radius: 3em;
+  list-style-type: none;
 }
 
-#user-info-container ul:first-of-type img{
+#user-info-container > div > ul:first-of-type img{
   width:2em ;
   height: 2em;
   padding: 0.4375em;
   background-color: red;
   border-radius: 3em;
 }
+
+#user-info-container p{
+  margin-left: 0.625em;
+  margin-right: 0.625em;
+  font-size: 1em;
+  background-color: #5E2BA7;
+  height: 4.0625em;
+}
+
+#user-info-container h4{
+  font-family: Jost-Medium;
+  font-weight: normal;
+  color: var(--text-color);
+  margin-left:0.4em ;
+  margin-top: 1.5625em;
+}
+
+#members{
+  display: flex;
+  list-style-type: none;
+  padding-left: 0.625em;
+  margin-bottom: 1em;
+}
+
+#members li{
+  margin-right: 0.5em;
+}
+
+#members li {
+  background-color: yellow;
+  width: 2em;
+  height: 2em;
+  border-radius: 3em;
+}
+
+#members li img{
+  width: 2em;
+  height: 2em;
+}
+
+
+/* Test */

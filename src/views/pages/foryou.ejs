@@ -17,29 +17,45 @@
 
 
     <main>
+        <% users.forEach(user => { %>
+
+        <% }); %>
+
         <div id="user-info-container">
             <% users.forEach(user => { %>
 
             <div>
-                <h2>test ></h2>
-                <ul>
+                
+                <ul id="order1">
                     <li>
                         <ul>
-                            <li><h3>genre</h3></li>
-                            <li><h3>genre</h3></li>
-                            <li><h3>genre</h3></li>
+                            <% user.genres.forEach(genre => { %>
+                                
+                            
+                                <li><h3><%= genre %></h3></li>
+                            <% }); %>
                         </ul>
                     </li>
                     <li>
                         <img src="../img/location_icon.svg" alt="test">
                     </li>
                 </ul>
+                <h2 id="order2"><%= user.memberName %> ></h2>
             </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, odit? Animi veritatis nam beatae, illo atque saepe omnis necessitatibus. Laboriosam ea commodi illo quaerat suscipit perspiciatis sit inventore esse aut.</p>
-            <h4>Members</h4>
-            <ul>
-                <li> <img src="../img/location_icon.svg" alt="test img"></li>
-                <li> <img src="../img/location_icon.svg" alt="test img"></li>
+
+            <p><%= user.description %></p>
+
+            <h4>Members:</h4>
+            
+            <ul id="members">
+                <% if (user.memberPfp && user.memberPfp.length > 0) { %>
+                    <% user.memberPfp.forEach(memberPfp => { %>
+                        <li> <img src="../img/<%= memberPfp %>" alt="test"></li>
+                    <% }); %>
+                <% } else { %>
+                    <li> <img src="../img/location_icon.svg" alt="test"></li>
+                <% } %>
+                
             </ul>
                     <!-- <h2><%= user.memberName %></h2>
                 
