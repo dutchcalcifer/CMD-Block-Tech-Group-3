@@ -11,8 +11,9 @@ const UserSchema = mongoose.Schema(
       trim: true,
     },
 
-    isSoloArtist: {
-      type: Boolean,
+    bandMembers: {
+      type: Number,
+      required: true,
     },
 
     password: {
@@ -23,33 +24,18 @@ const UserSchema = mongoose.Schema(
 
     bandName: {
       type: String,
+      required: true,
+      unique: true,
+      trim: true,
     },
 
-    memberName: [
-      {
-        type: String,
-      },
-    ],
+    memberPfp: {
+      type: String,
+    },
 
-    memberPfp: [
-      {
-        type: String,
-      },
-    ],
-
-    memberGender: [
-      {
-        type: String,
-        required: true,
-      },
-    ],
-
-    memberBirthday: [
-      {
-        type: Date,
-        required: true,
-      },
-    ],
+    isAdult: {
+      type: Boolean,
+    },
 
     genres: [
       {
