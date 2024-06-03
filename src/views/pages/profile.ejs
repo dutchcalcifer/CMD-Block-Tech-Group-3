@@ -18,50 +18,48 @@
         </section>
     </header> 
     
-    <main>
+    <form action="/edit" method="POST">
         <label for="profileDescription">Profile Description</label>
-        <textarea id="profileDescription" name="profileDescription"><%= user.description %></textarea>
+        <textarea id="profileDescription" name="description" readonly><%= user.description %></textarea>
 
         <div></div>
 
         <section>
             <img src="../img/location_icon.svg" alt="location icon">
             <label for="profileLocation">From</label>
-            <input type="text" id="profileCity" name="profileCity" value="<%= user.city %>"/>
-            <input type="text" id="profileCountry" name="profileCountry" value="<%= user.country %>"/>         
+            <input type="text" id="profileCity" name="profileCity" value="<%= user.city %>" readonly/>
+            <input type="text" id="profileCountry" name="country" value="<%= user.country %>" readonly/>         
         </section>
 
         <section>
             <img src="../img/genre_icon.svg" alt="genre icon">
             <label for="profileGenre">Genre</label>
-            <input type="text" id="profileGenre" name="profileGenre" value="<%= user.genres %>" />
+            <input type="text" id="profileGenre" name="genres" value="<%= user.genres %>" readonly/>
         </section>
 
         <section>
             <img src="../img/instrument_icon.svg" alt="instrument icon">
             <label for="profileInstrument">Instrument</label>
-            <input type="text" id="profileInstrument" name="profileInstrument" value="<%= user.userInstruments %>" />
+            <input type="text" id="profileInstrument" name="userInstruments" value="<%= user.userInstruments %>" readonly/>
         </section>
 
         <section>
             <img src="../img/language_icon.svg" alt="language icon">
             <label for="profileLanguage">Language</label>
-            <input type="text" id="profileLanguage" name="profileLanguage" value="<%= user.language %>" />
+            <input type="text" id="profileLanguage" name="language" value="<%= user.language %>" readonly/>
         </section>
 
         <section>
             <img src="../img/member_icon.svg" alt="member icon">
             <label for="memberInfo">Members</label>
-            <input type="text" id="memberName" name="memberName" value="<%= user.memberName %>" />
-            <input type="text" id="memberBirthday" name="memberBirthday" value="<%= user.memberBirthday %>" />
-            <input type="text" id="memberGender" name="memberGender" value="<%= user.memberGender %>" />
+            <input type="text" id="bandName" name="bandName" value="<%= user.bandName %>" readonly/>
         </section>
 
         <section>
             <h3>Content</h3>
         </section>
 
-    </main>
+    </form>
 
     <footer>
         <nav>
