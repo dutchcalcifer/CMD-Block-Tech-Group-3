@@ -15,11 +15,13 @@ const userCreate = async (req, res) => {
   try {
     upload.any()(req, res, async (err) => {
       if (err) console.error(err);
-      console.log(req.files)
-      console.log(req.files.map((file) => file.filename))
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
-      const mediaNames = req.files.map((file) => file.filename);
-      const pfpName = req.files[0]
+      const mediaNames = [];
+      const pfpName = "";
+      req.files.forEach((file) => {
+        if (file.fieldname === "memberPfp") pfpName = file.filename;
+        else if (file.fieldname === "media") mediaNames.push(file.filename);
+      });
       await User.create({
         ...req.body,
         password: hashedPassword,
