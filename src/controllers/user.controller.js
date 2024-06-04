@@ -13,14 +13,18 @@ const User = require("../models/user.model");
 // POST create user
 const userCreate = async (req, res) => {
   try {
-    upload.any("memberPfp")(req, res, async (err) => {
+    upload.any()(req, res, async (err) => {
       if (err) console.error(err);
+      console.log(req.files)
+      console.log(req.files.map((file) => file.filename))
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
-      const fileNames = req.files.map((file) => file.filename);
+      const mediaNames = req.files.map((file) => file.filename);
+      const pfpName = req.files[0]
       await User.create({
         ...req.body,
         password: hashedPassword,
-        memberPfp: fileNames,
+        memberPfp: pfpName,
+        media: mediaNames,
       });
       res.redirect("/");
     });
