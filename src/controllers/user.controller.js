@@ -17,7 +17,7 @@ const userCreate = async (req, res) => {
       if (err) console.error(err);
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
       const mediaNames = [];
-      const pfpName = "";
+      let pfpName = "";
       req.files.forEach((file) => {
         if (file.fieldname === "memberPfp") pfpName = file.filename;
         else if (file.fieldname === "media") mediaNames.push(file.filename);
