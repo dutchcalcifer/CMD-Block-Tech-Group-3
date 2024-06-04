@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body id="backgroundtest"> <!-- test!!-->
+
     <header id="foryouheader">
         <button id="filter" aria-label="Filter button"><img src="../img/filter.svg" alt="Filter icon"></button>
         <!-- To-Do: filter fucntie -->
@@ -15,58 +16,34 @@
         <!-- To-Do: Search functie -->
     </header>
 
-
     <main>
-        <% users.forEach(user => { %>
-            
-        <% }); %>
-
         <div id="user-info-container">
             <% users.forEach(user => { %>
-
-            <div>
-                
-                <ul id="order1">
-                    <li>
+                <div id="videoBackground">
+                    <video width="100%" height="100%" autoplay muted loop>
+                        <source src="../img/Eindresultaat(Mp4).mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <section>
                         <ul>
-                            <% user.genres.forEach(genre => { %>
-                                
-                            
-                                <li><h3><%= genre %></h3></li>
-                            <% }); %>
+                            <li>
+                                <ul>
+                                    <% user.genres.forEach(genre => { %>                                                                                 
+                                        <li><h3><%= genre %></h3></li>
+                                    <% }); %>
+                                </ul>
+                            </li>                               
                         </ul>
-                    </li>
-                    <li>
-                        
-                    </li>
-                </ul>
-                <h2 id="order2"><%= user.email%> ></h2>
-            </div>
-
-            <p><%= user.description %></p>
-
-            <h4>Members:</h4>
-            
-            <ul id="members">
-                <% if (user.memberPfp && user.memberPfp.length > 0) { %>
-                    <% user.memberPfp.forEach(memberPfp => { %>
-                        <li> <img src="../img/<%= memberPfp %>" alt="test"></li>
-                    <% }); %>
-                <% } else { %>
-                    
-                    <li> <img src="../img/location_icon.svg" alt="test"></li>
-                <% } %>
-                
-            </ul>
-
-            <% }); %> 
-            
+                        <h2><%= user.bandName%> ></h2>
+                        <p><%= user.description %></p>                     
+                    </section>
+                </div>
+            <% }); %>            
         </div>
     </main>
 
-
     <footer>
-        <nav>
+        <nav >
             <ul>
                 <li><a href="foryou"><img src="../img/housepurple.svg" alt="Go to for you page"></a></li>
                 <li><a href="profile"><img src="../img/profile.svg" alt="Go to profile page"></a></li>
@@ -77,4 +54,5 @@
     
     <script src="/js/script.js"></script>
 </body>
+
 </html>

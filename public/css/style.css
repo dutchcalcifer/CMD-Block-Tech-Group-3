@@ -231,6 +231,7 @@ video, audio {
   justify-content: space-between;
   padding: 1em;
   background-image: linear-gradient(to bottom, rgb(0, 0, 0, 0.4), rgba(0, 0, 0, 0));;
+  z-index: 1100;
 }
 
 #foryouheader h1{
@@ -279,29 +280,22 @@ footer nav ul li{
   
 }
 
-/* container voor alle user info op for you page */
+/* container voor alle dynamic user info op for you page */
 #user-info-container{
-  background-color: var(--for-you-card);
-  height: 15.5625em;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
+  position: relative;
+  height: 100%;
   position: fixed; 
-  bottom: 4.7em;
-  width: calc(100% - 1em); /* Bron: chatgpt */
-  box-sizing: border-box; 
+  bottom: 2.2075em;  
+  /* padding-bottom: 1.23em; */
+  width: 100%;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
-}
-
-#user-info-container div{
-  scroll-snap-align: start;
-  padding-top: 0.3em;
+  z-index: 0;
 }
 
 #user-info-container div:first-of-type{
   display: flex;
   flex-direction: column;
-
 }
 
 #user-info-container h2{
@@ -315,29 +309,20 @@ footer nav ul li{
 
 #user-info-container h3{
   font-family:Jost-Regular ;
-  font-size: 0.875em
-
-  ;
-}
-
-#user-info-container > div > ul:first-of-type {
-  list-style-type: none;
-  display: flex;
-  padding-left: 0;
-  margin-left: 0.625em;
-  margin-right: 0.625em;
-  margin-top:  0.625em;
-  justify-content: space-between;
-  align-items: center;
-  height: 2em;
+  font-size: 0.875em;
 }
 
 #user-info-container ul:first-of-type ul{
   margin: 0;
   padding: 0;
+  padding-left: 0.625em;
+  padding-top: 0.625em;
+  padding-bottom: 0.625em;
   display: flex;
 }
-
+#user-info-container ul:first-of-type{
+  padding-left: 0;
+}
 
 #user-info-container ul:first-of-type ul:first-of-type li{
   padding: 0.0625em 0.46875em;
@@ -347,14 +332,6 @@ footer nav ul li{
   border-radius: 3em;
   list-style-type: none;
 }
-
-/* #user-info-container > div > ul:first-of-type img{
-  width:2em ;
-  height: 2em;
-  padding: 0.4375em;
-  background-color: red;
-  border-radius: 3em;
-} */
 
 #user-info-container p{
   margin-left: 0.625em;
@@ -371,44 +348,42 @@ footer nav ul li{
   margin-top: 1.5625em;
 }
 
-#members{
-  display: flex;
+#user-info-container section{
+  background-color: var(--for-you-card);
+  height: 15.5625em;
+
+  z-index: 2;
+  position: absolute;
+
+  bottom: 3.2575em;
+  left:  0.625em;
+  right: 0.625em;
+}
+
+#user-info-container section:not(:last-child){
+  margin-bottom:37.7625em;
+}
+
+li{
   list-style-type: none;
-  padding-left: 0.625em;
-  margin-bottom: 1em;
 }
 
-#members li{
-  margin-right: 0.5em;
+#videoBackground{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: -2;
+  scroll-snap-align: start;
+  background-color: var(--primary-color)
 }
 
-#members li {
-  background-color: var(--body-background);
-  width: 2em;
-  height: 2em;
-  border-radius: 3em;
-}
-
-#members li img{
-  width: 2em;
-  height: 2em;
-}
-
-
-/* Test */
-#backgroundtest{
-  background:
-      conic-gradient(at 10% 50%,#0000 75%,#595959 0),
-      conic-gradient(at 10% 50%,#0000 75%,#595959 0) calc(1*32px) calc(3*32px),
-      conic-gradient(at 10% 50%,#0000 75%,#595959 0) calc(2*32px) calc(1*32px),
-      conic-gradient(at 10% 50%,#0000 75%,#595959 0) calc(3*32px) calc(4*32px),
-      conic-gradient(at 10% 50%,#0000 75%,#595959 0) calc(4*32px) calc(2*32px),
-      conic-gradient(at 50% 10%,#0000 75%,#595959 0) 0 calc(4*32px),
-      conic-gradient(at 50% 10%,#0000 75%,#595959 0) calc(1*32px) calc(2*32px),
-      conic-gradient(at 50% 10%,#0000 75%,#595959 0) calc(2*32px) 0,
-      conic-gradient(at 50% 10%,#0000 75%,#595959 0) calc(3*32px) calc(3*32px),
-      conic-gradient(at 50% 10%,#0000 75%,#595959 0) calc(4*32px) calc(1*32px),
-      #a0a0a0;
-background-size: 160px 160px;
-
+#user-info-container video{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  z-index: -1;
+  max-width: 100%;
 }
