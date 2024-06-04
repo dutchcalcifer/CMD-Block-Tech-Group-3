@@ -7,40 +7,36 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body class="profile">
-    <header>
+
+    <form action="/edit" method="POST">
+
+
+        <div id="partials-container">
+            <div class="partial" id="partial-description"><%- include ("../partials/addDiscription.ejs") %></div>
+        </div>    
+
+
         <section>
             <h1>Profile</h1>
-            <img src="../img/edit_icon.svg" alt="edit icon button">
+            <img src="../img/edit_icon.svg" alt="edit icon button" id="editIcon">
         </section>
         <section>
             <h2>Band naam enzo</h2>
             <img src="../img/band_icon.svg" alt="band icon">
         </section>
-    </header> 
-    
-    <form action="/edit" method="POST">
+
         <label for="profileDescription">Profile Description</label>
+        <img src="../img/edit_icon.svg" alt="edit description icon" class="edit-icon" id="editDescriptionIcon" style="display: none;">
         <textarea id="profileDescription" name="description" readonly><%= user.description %></textarea>
-
+        
         <div></div>
-
+        
         <section>
             <img src="../img/location_icon.svg" alt="location icon">
             <label for="profileLocation">From</label>
+            <img src="../img/edit_icon.svg" alt="edit location icon" class="edit-icon" style="display: none;">
             <input type="text" id="profileCity" name="profileCity" value="<%= user.city %>" readonly/>
             <input type="text" id="profileCountry" name="country" value="<%= user.country %>" readonly/>         
-        </section>
-
-        <section>
-            <img src="../img/genre_icon.svg" alt="genre icon">
-            <label for="profileGenre">Genre</label>
-            <input type="text" id="profileGenre" name="genres" value="<%= user.genres %>" readonly/>
-        </section>
-
-        <section>
-            <img src="../img/instrument_icon.svg" alt="instrument icon">
-            <label for="profileInstrument">Instrument</label>
-            <input type="text" id="profileInstrument" name="userInstruments" value="<%= user.userInstruments %>" readonly/>
         </section>
 
         <section>
@@ -48,17 +44,36 @@
             <label for="profileLanguage">Language</label>
             <input type="text" id="profileLanguage" name="language" value="<%= user.language %>" readonly/>
         </section>
-
+        
+        <section>
+            <img src="../img/genre_icon.svg" alt="genre icon">
+            <label for="profileGenre">Genre</label>
+            <img src="../img/edit_icon.svg" alt="edit genre icon" class="edit-icon" style="display: none;">
+            <input type="checkbox" id="profileGenre" name="genres" value="metal" <% if (user.genres.includes('metal')) { %> checked <% } %> readonly /> 
+        </section>
+        
+        <section>
+            <img src="../img/instrument_icon.svg" alt="instrument icon">
+            <label for="profileInstrument">Instrument</label>
+            <img src="../img/edit_icon.svg" alt="edit instrument icon" class="edit-icon" style="display: none;">
+            <input type="checkbox" id="userInstruments" name="userInstruments"
+            value="piano" <% if (user.userInstruments.includes('piano')) { %>
+            checked <% } %> />
+        </section>
+        
         <section>
             <img src="../img/member_icon.svg" alt="member icon">
             <label for="memberInfo">Members</label>
+            <img src="../img/edit_icon.svg" alt="edit member info icon" class="edit-icon" style="display: none;">
             <input type="text" id="bandName" name="bandName" value="<%= user.bandName %>" readonly/>
         </section>
 
         <section>
             <h3>Content</h3>
+            <input type="text" id="mediaFile" name="mediaFile" value="<%= user.mediaFile %>" readonly/>
         </section>
 
+        <button type="button" id="saveButton" style="display: none;">Save</button>
     </form>
 
     <footer>

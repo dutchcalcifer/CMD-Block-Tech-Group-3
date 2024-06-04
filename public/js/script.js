@@ -1,24 +1,3 @@
-// Add members
-function addMember() {
-    const memberDiv = document.createElement("div");
-    memberDiv.classList.add("member");
-    memberDiv.innerHTML = `
-            <label for="memberName">Name:</label>
-            <input type="text" name="memberName"><br><br>
-
-            <label for="memberPfp">Profile Picture:</label>
-            <input type="file" name="memberPfp"><br><br>
-
-            <label for="memberGender">Gender:</label>
-            <input type="text" name="memberGender" required><br><br>
-
-            <label for="memberBirthday">Birthday:</label>
-            <input type="date" name="memberBirthday" required><br><br>
-        `;
-    document.getElementById("members").appendChild(memberDiv);
-  }
-
-
 // Video script
 // document.getElementById('uploadForm').addEventListener('submit', function(event) {
 //     event.preventDefault();
@@ -48,8 +27,6 @@ function addMember() {
 // });
 
 
-
-
 // Next and prev button
 document.addEventListener('DOMContentLoaded', function() {
     const partials = document.querySelectorAll('.partial');
@@ -66,6 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+
+    // Progressbar
     function validateForm() {
         const currentPartial = partials[currentIndex];
         const inputs = currentPartial.querySelectorAll('input[required], textarea[required]');
@@ -116,7 +95,56 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+// Show/hide edit icon
+document.addEventListener('DOMContentLoaded', function() {
+    const editIcon = document.querySelector('#editIcon');
+    const editIcons = document.querySelectorAll('.edit-icon');
+    const saveButton = document.querySelector('#saveButton');
 
+    // Event listener voor de 'Save' knop
+    saveButton.addEventListener('click', function() {
+        editIcons.forEach(function(icon) {
+            icon.style.display = 'none'; // Verberg alle bewerk-iconen
+        });
+
+        saveButton.style.display = 'none'; // Verberg de 'Save' knop
+    });
+
+    // Event listener voor de hoofd bewerk-icoon
+    editIcon.addEventListener('click', function() {
+        editIcons.forEach(function(icon) {
+            icon.style.display = 'inline'; // Toon alle bewerk-iconen
+        });
+
+        saveButton.style.display = 'block'; // Toon de 'Save' knop
+    });
+});
+
+
+// Edit partials 
+document.addEventListener('DOMContentLoaded', function() {
+    const editDescriptionIcon = document.getElementById('editDescriptionIcon');
+
+    const partials = document.querySelectorAll('.partial');
+
+    function hideAllPartials() {
+        partials.forEach(partial => {
+            partial.style.display = 'none';
+        });
+    }
+
+    function showPartial(partialId) {
+        hideAllPartials();
+        document.getElementById(partialId).style.display = 'block';
+    }
+
+    editDescriptionIcon.addEventListener('click', function() {
+        showPartial('partial-description');
+    });
+
+        // Initially hide all partials
+        hideAllPartials();
+});
 
 // test!
 
