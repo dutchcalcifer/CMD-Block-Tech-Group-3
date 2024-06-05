@@ -146,7 +146,35 @@ document.addEventListener('DOMContentLoaded', function() {
         hideAllPartials();
 });
 
-// test!
+// pauze for you
+
+
+function videoPauze() {
+    var videos = document.querySelectorAll("video");
+
+    videos.forEach(function(video) {
+        video.addEventListener("click", function() {
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        });
+    });
+}
+videoPauze();
+
+
+
+
+
+
+
+
+
+
+
+
 
   
   
