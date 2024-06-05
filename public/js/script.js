@@ -121,6 +121,38 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+// Show/hide edit icon
+document.addEventListener('DOMContentLoaded', function() {
+    const editIcon = document.querySelector('#editIcon');
+    const saveButton = document.querySelector('#saveButton');
+
+    // Function to toggle readonly attributes
+    function toggleReadonly(enable) {
+        const inputs = document.querySelectorAll('input[readonly], textarea[readonly]');
+        inputs.forEach(function(input) {
+            if (enable) {
+                input.setAttribute('readonly', 'readonly');
+            } else {
+                input.removeAttribute('readonly');
+            }
+        });
+    }
+
+    // Event listener for the 'Save' button
+    saveButton.addEventListener('click', function() {
+        saveButton.style.display = 'none'; // Hide the 'Save' button
+        toggleReadonly(true); // Re-enable readonly attributes
+    });
+
+    // Event listener for the main edit icon
+    editIcon.addEventListener('click', function() {
+        saveButton.style.display = 'block'; // Show the 'Save' button
+        toggleReadonly(false); // Remove readonly attributes
+    });
+});
+
+
+
 // Edit partials 
 document.addEventListener('DOMContentLoaded', function() {
     const editDescriptionIcon = document.getElementById('editDescriptionIcon');
