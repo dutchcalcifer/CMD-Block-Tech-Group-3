@@ -51,7 +51,7 @@ const userUpdate = async (req, res) => {
   try {
     const userId = req.session.user._id;
     await User.findByIdAndUpdate(userId, req.body);
-    res.redirect("/foryou");
+    res.redirect("/profile");
   } catch (error) {
     console.error(error);
   }
