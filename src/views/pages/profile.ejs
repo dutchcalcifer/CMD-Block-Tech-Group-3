@@ -51,7 +51,13 @@
                 <img src="../img/genre_icon.svg" class="imageIcon" alt="genre icon">
                 <section>
                     <label for="profileGenre">Genre</label>
-                    <input type="checkbox" id="profileGenre" name="genres" value="metal" <% if (user.genres.includes('metal')) { %> checked <% } %> readonly /> 
+                    <% const genres = ['blues', 'classical', 'country', 'disco', 'dubstep', 'electro', 'folk', 'funk', 'hip-hop', 
+                    'house', 'jazz', 'metal', 'pop', 'punk', 'r&b', 'reggae', 'rock', 'schlager', 'soul', 'techno', 'trance']; %>
+                    <% genres.forEach(function(genre) { %>
+                        <input type="checkbox" name="genres" value="<%= genre %>"
+                        <% if (user.genres.includes(genre)) { %> checked <% } %> />
+                        <%= genre %>
+                    <% }); %>
                 </section>
             </section>
             
@@ -59,9 +65,13 @@
                 <img src="../img/instrument_icon.svg" class="imageIcon" alt="instrument icon">
                 <section>
                     <label for="profileInstrument">Instrument</label>
-                    <input type="checkbox" id="userInstruments" name="userInstruments"
-                    value="piano" <% if (user.userInstruments.includes('piano')) { %>
-                    checked <% } %> />
+                    <% const instruments = ['Accordion', 'Banjo', 'Bass', 'Bongos', 'Cello', 'Clarinet', 'Congas', 'Drums', 'Djembe', 'Flute', 'Guitar', 
+                    'Harmonica', 'Keyboard', 'Maracas', 'Piano', 'Sampler', 'Saxophone', 'Synthesizer', 'Trombone', 'Trumpet', 'Ukelele', 'Violin', 'Voice']; %>
+                    <% instruments.forEach(function(instrument) { %>
+                      <input type="checkbox" id="userInstruments" name="userInstruments" value="<%= instrument %>" 
+                      <% if (user.userInstruments.includes(instrument)) { %> checked <% } %> />
+                      <%= instrument %>
+                    <% }); %>
                 </section>
             </section>
             
