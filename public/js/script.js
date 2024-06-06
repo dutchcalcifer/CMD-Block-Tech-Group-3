@@ -43,6 +43,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    document.getElementById('prevBtn').addEventListener('click', function() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            showPartial(currentIndex);
+            updateProgressBar(false); // Update progress bar when going back
+        }
+    });
+
+    document.getElementById('nextBtn').addEventListener('click', function() {
+        if (validateForm()) {
+            if (currentIndex < partials.length - 1) {
+                currentIndex++;
+                showPartial(currentIndex);
+            }
+        }
+    });
+
+    showPartial(currentIndex); // Initialize the first partial to be visible
+
 
     // Progressbar
     function validateForm() {
@@ -73,52 +92,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
-
-    document.getElementById('prevBtn').addEventListener('click', function() {
-        if (currentIndex > 0) {
-            currentIndex--;
-            showPartial(currentIndex);
-            updateProgressBar(false); // Update progress bar when going back
-        }
-    });
-
-    document.getElementById('nextBtn').addEventListener('click', function() {
-        if (validateForm()) {
-            if (currentIndex < partials.length - 1) {
-                currentIndex++;
-                showPartial(currentIndex);
-            }
-        }
-    });
-
-    showPartial(currentIndex); // Initialize the first partial to be visible
 });
 
 
-// Show/hide edit icon
-document.addEventListener('DOMContentLoaded', function() {
-    const editIcon = document.querySelector('#editIcon');
-    const editIcons = document.querySelectorAll('.edit-icon');
-    const saveButton = document.querySelector('#saveButton');
-
-    // Event listener voor de 'Save' knop
-    saveButton.addEventListener('click', function() {
-        editIcons.forEach(function(icon) {
-            icon.style.display = 'none'; // Verberg alle bewerk-iconen
-        });
-
-        saveButton.style.display = 'none'; // Verberg de 'Save' knop
-    });
-
-    // Event listener voor de hoofd bewerk-icoon
-    editIcon.addEventListener('click', function() {
-        editIcons.forEach(function(icon) {
-            icon.style.display = 'inline'; // Toon alle bewerk-iconen
-        });
-
-        saveButton.style.display = 'block'; // Toon de 'Save' knop
-    });
-});
+// Back button profile
+document.getElementById('backButton').addEventListener('click', function() {
+    window.location.href = '/foryou';
+  });    
 
 
 // Show/hide edit icon
@@ -132,8 +112,20 @@ document.addEventListener('DOMContentLoaded', function() {
         inputs.forEach(function(input) {
             if (enable) {
                 input.setAttribute('readonly', 'readonly');
+                input.classList.remove('style-choice-button'); // Remove highlight class
             } else {
                 input.removeAttribute('readonly');
+                input.classList.add('style-choice-button'); // Add highlight class
+            }
+        });
+
+        const checkboxes = document.querySelectorAll('#profileForm input[type="checkbox"]');
+        checkboxes.forEach(function(checkbox) {
+            checkbox.disabled = enable;
+            if (enable) {
+                checkbox.classList.remove('highlight'); // Remove highlight class
+            } else {
+                checkbox.classList.add('highlight'); // Add highlight class
             }
         });
     }
@@ -178,12 +170,11 @@ document.addEventListener('DOMContentLoaded', function() {
         hideAllPartials();
 });
 
-
-
 // pauze for you
+
+
 function videoPauze() {
     var videos = document.querySelectorAll("video");
-    const contentElement = document.getElementById('user-info-container');
 
     videos.forEach(function(video) {
         video.addEventListener("click", function() {
@@ -193,78 +184,9 @@ function videoPauze() {
                 video.pause();
             }
         });
-
-        contentElement.addEventListener('scroll', () => {
-            video.pause();
-          });
     });
 }
 videoPauze();
-
-
-// in css: #user-info-container div:first-of-type.hidden {
-//     display: none; 
-//   }
-
-// search test
-document.getElementById('searchInput').addEventListener('keyup', function() {
-    let filter = this.value.toLowerCase();
-    let videoBackgrounds = document.querySelectorAll('#videoBackground');
-
-    videoBackgrounds.forEach(function(videoBackground) {
-        let bandNameElement = videoBackground.querySelector('h2');
-        let bandName = bandNameElement.textContent.toLowerCase();
-
-        if (bandName.includes(filter)) {
-            videoBackground.classList.remove('hidden');
-            if (filter !== "") { 
-                videoBackground.scrollIntoView({ behavior: 'auto' });
-            }
-        } else {
-            videoBackground.classList.add('hidden');
-        }
-    });
-
-    let noResultParagraph = document.getElementById('noResultsMessage');
-    if (!filter || !document.querySelectorAll('#videoBackground:not(.hidden)').length) {
-        if (!noResultParagraph) {
-            noResultParagraph = document.createElement('p');
-            noResultParagraph.id = 'noResultsMessage';
-            noResultParagraph.textContent = 'Geen resultaten gevonden';
-            document.body.appendChild(noResultParagraph);
-        }
-    } else {
-        if (noResultParagraph) {
-            noResultParagraph.remove();
-        }
-    }
-});
-
-// test
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
 
 
 

@@ -8,11 +8,11 @@
   </head>
   <body class="profile">
 
-    <form action="/edit" method="POST" enctype="multipart/form-data">
+    <form action="/edit" method="POST" enctype="application/json">
         <header>
             <input type="file" name="memberPfp" value="<%= user.memberPfp %>"/>
             <section>
-                <img src="../img/back_button_icon.svg" alt="back button">
+                <img src="../img/back_button_icon.svg" id="backButton" alt="back button">
                 <h1>Profile</h1>
                 <img src="../img/edit_icon.svg" alt="edit icon button" id="editIcon">
             </section>
@@ -50,11 +50,11 @@
             <section>
                 <img src="../img/genre_icon.svg" class="imageIcon" alt="genre icon">
                 <section>
-                    <label for="profileGenre">Genre</label>
+                    <label class="checkbox-label">Genre</label>
                     <% const genres = ['blues', 'classical', 'country', 'disco', 'dubstep', 'electro', 'folk', 'funk', 'hip-hop', 
                     'house', 'jazz', 'metal', 'pop', 'punk', 'r&b', 'reggae', 'rock', 'schlager', 'soul', 'techno', 'trance']; %>
                     <% genres.forEach(function(genre) { %>
-                        <input type="checkbox" name="genres" value="<%= genre %>"
+                        <input class="style-choice-button" type="checkbox" name="genres" value="<%= genre %>"
                         <% if (user.genres.includes(genre)) { %> checked <% } %> />
                         <%= genre %>
                     <% }); %>
@@ -64,11 +64,11 @@
             <section>
                 <img src="../img/instrument_icon.svg" class="imageIcon" alt="instrument icon">
                 <section>
-                    <label for="profileInstrument">Instrument</label>
+                    <label class="checkbox-label">Instrument</label>
                     <% const instruments = ['Accordion', 'Banjo', 'Bass', 'Bongos', 'Cello', 'Clarinet', 'Congas', 'Drums', 'Djembe', 'Flute', 'Guitar', 
                     'Harmonica', 'Keyboard', 'Maracas', 'Piano', 'Sampler', 'Saxophone', 'Synthesizer', 'Trombone', 'Trumpet', 'Ukelele', 'Violin', 'Voice']; %>
                     <% instruments.forEach(function(instrument) { %>
-                      <input type="checkbox" id="userInstruments" name="userInstruments" value="<%= instrument %>" 
+                      <input class="style-choice-button" type="checkbox" id="userInstruments" name="userInstruments" value="<%= instrument %>" 
                       <% if (user.userInstruments.includes(instrument)) { %> checked <% } %> />
                       <%= instrument %>
                     <% }); %>
