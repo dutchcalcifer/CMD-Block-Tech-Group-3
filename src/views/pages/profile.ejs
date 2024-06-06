@@ -31,7 +31,7 @@
             <div></div>
             
             <section>
-                <img src="../img/location_icon.svg" alt="location icon">
+                <img src="../img/location_icon.svg" class="imageIcon" alt="location icon">
                 <section>
                     <label for="profileLocation">From</label>
                     <input type="text" id="profileCity" name="profileCity" value="<%= user.city %>" readonly/>
@@ -40,7 +40,7 @@
             </section>
 
             <section>
-                <img src="../img/language_icon.svg" alt="language icon">
+                <img src="../img/language_icon.svg" class="imageIcon" alt="language icon">
                 <section>
                     <label for="profileLanguage">Language</label>
                     <input type="text" id="profileLanguage" name="language" value="<%= user.language %>" readonly/>
@@ -48,7 +48,7 @@
             </section>
             
             <section>
-                <img src="../img/genre_icon.svg" alt="genre icon">
+                <img src="../img/genre_icon.svg" class="imageIcon" alt="genre icon">
                 <section>
                     <label for="profileGenre">Genre</label>
                     <input type="checkbox" id="profileGenre" name="genres" value="metal" <% if (user.genres.includes('metal')) { %> checked <% } %> readonly /> 
@@ -56,7 +56,7 @@
             </section>
             
             <section>
-                <img src="../img/instrument_icon.svg" alt="instrument icon">
+                <img src="../img/instrument_icon.svg" class="imageIcon" alt="instrument icon">
                 <section>
                     <label for="profileInstrument">Instrument</label>
                     <input type="checkbox" id="userInstruments" name="userInstruments"

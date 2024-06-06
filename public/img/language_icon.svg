@@ -1,21 +1,8 @@
-<svg width="62" height="78" viewBox="0 0 72 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M27.5 26C34.4036 26 40 20.4036 40 13.5C40 6.59644 34.4036 1 27.5 1C20.5964 1 15 6.59644 15 13.5C15 20.4036 20.5964 26 27.5 26Z" stroke="#5E2BA7" stroke-width="2" stroke-linejoin="round"/>
-<path d="M27.4998 1C27.4998 1 22.6387 5.16667 22.6387 13.5C22.6387 21.8333 27.4998 26 27.4998 26" stroke="#5E2BA7" stroke-width="2" stroke-linejoin="round"/>
-<path d="M27.5 1C27.5 1 32.3611 5.16667 32.3611 13.5C32.3611 21.8333 27.5 26 27.5 26" stroke="#5E2BA7" stroke-width="2" stroke-linejoin="round"/>
-<path d="M15 13.5H40" stroke="#5E2BA7" stroke-width="2" stroke-linejoin="round"/>
-<path d="M37.9154 7.25H17.082" stroke="#5E2BA7" stroke-width="2" stroke-linejoin="round"/>
-<g filter="url(#filter0_d_238_1027)">
-<path d="M37.9173 19.75H17.084" stroke="#5E2BA7" stroke-width="2" stroke-linejoin="round"/>
-</g>
-<defs>
-<filter id="filter0_d_238_1027" x="-16.2493" y="18.75" width="87.5006" height="68.6667" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="33.3333"/>
-<feGaussianBlur stdDeviation="16.6667"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_238_1027"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_238_1027" result="shape"/>
-</filter>
-</defs>
+<svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.5 26C20.4036 26 26 20.4036 26 13.5C26 6.59644 20.4036 1 13.5 1C6.59644 1 1 6.59644 1 13.5C1 20.4036 6.59644 26 13.5 26Z" stroke="#5E2BA7" stroke-width="2" stroke-linejoin="round"/>
+<path d="M13.4998 1C13.4998 1 8.63867 5.16667 8.63867 13.5C8.63867 21.8333 13.4998 26 13.4998 26" stroke="#5E2BA7" stroke-width="2" stroke-linejoin="round"/>
+<path d="M13.5 1C13.5 1 18.3611 5.16667 18.3611 13.5C18.3611 21.8333 13.5 26 13.5 26" stroke="#5E2BA7" stroke-width="2" stroke-linejoin="round"/>
+<path d="M1 13.5H26" stroke="#5E2BA7" stroke-width="2" stroke-linejoin="round"/>
+<path d="M23.9173 19.75H3.08398" stroke="#5E2BA7" stroke-width="2" stroke-linejoin="round"/>
+<path d="M23.9154 7.25H3.08203" stroke="#5E2BA7" stroke-width="2" stroke-linejoin="round"/>
 </svg>

@@ -89,7 +89,7 @@ h2, .help-text, p{
   text-align: left !important;
 }
 
-.profile h2, h4{
+.profile h1, .profile h2, h4, .profile #profileBandName{
   color: var(--primary-color);
 }
 
@@ -219,6 +219,11 @@ video, audio {
 
 
 /* Profile  */
+.profile h1,
+.profile form > header > section:nth-of-type(2) input{
+  margin: 0;
+}
+
 .profile form > header > section:nth-of-type(1), 
 .profile form > header > section:nth-of-type(2),
 .profile form > main > section:nth-of-type(2),
@@ -228,29 +233,42 @@ video, audio {
   display: flex;
 }
 
-.profile form > header > section:nth-of-type(2) {
-  align-items: center;
+.profile form > main > section:nth-of-type(2) > section,
+.profile form > main > section:nth-of-type(3) > section,
+.profile form > main > section:nth-of-type(4) > section,
+.profile form > main > section:nth-of-type(5) > section{
+  position: relative;
+  margin-left: 2.5em;
+  margin-bottom: 2.5em;
 }
 
 .profile form > header{
   height: 40vh;
 }
 
+.profile form > header > section:nth-of-type(1),
+.profile form > header > section:nth-of-type(2){
+  align-items: center;
+  }
+
 .profile form > header > section:nth-of-type(1){
 justify-content: space-between;
+margin-bottom: 0.3em;
 }
 
-.profile form > header > section:nth-of-type(2) > img {
-  margin-left: auto; /* Zorgt ervoor dat de afbeelding aan de rechterkant wordt uitgelijnd */
+.profile form > header > section:nth-of-type(2) {
+  gap: 10px;
+}
+
+.profile .imageIcon{
+  position: absolute;
 }
 
 .profile #profileBandName{
   display: inline-block; /* Zorgt ervoor dat de input dynamisch meebeweegt met de ingevoerde tekst */
   min-width: 0; /* Zorgt ervoor dat de input element kleiner kan worden dan de inhoud */
-  max-width: 80%; /* Maximale breedte om te voorkomen dat het te breed wordt */
+  max-width: 50%; /* Maximale breedte om te voorkomen dat het te breed wordt */
   text-align: right;
-  border: none;
-  background: none;
   border: none;
   background: none;
 }
@@ -258,7 +276,13 @@ justify-content: space-between;
 .profile div{
   height: 0.2vh;
   width: 100%;
+  margin-top: 2em;
+  margin-bottom: 2em;
   background-color: var(--primary-color);
+}
+
+.profile input{
+  margin-bottom: 1em;
 }
 
 /* Styling voor de beschrijving sectie */
@@ -266,7 +290,7 @@ justify-content: space-between;
 .profile section textarea {
   display: block;
   width: 100%;
-  margin-bottom: 1em;
+  margin-bottom: 0.4em;
 }
 
 .profile section textarea {
