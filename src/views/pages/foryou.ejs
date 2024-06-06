@@ -11,17 +11,24 @@
     <header id="foryouheader">
         <button id="filter" aria-label="Filter button"><img src="../img/filter.svg" alt="Filter icon"></button>
         <!-- To-Do: filter fucntie -->
-        <h1>For you</h1>
-        <button id="search" aria-label="Search button"><img src="../img/search.svg" alt="search icon"></button>
-        <!-- To-Do: Search functie -->
+        <h1 class="hidden">For you</h1>
+        <form action="/For you" method="get">
+            <input type="search" id="searchInput" placeholder="">
+        </form>
+        <!-- <button id="search" aria-label="Search button"><img src="../img/search.svg" alt="search icon"></button> -->
+    
+        
+        
     </header>
 
     <main>
+        
         <div id="user-info-container">
+            
             <% users.forEach(user => { %>
                 <div id="videoBackground">
-                    <video autoplay loop>
-                         <source src="../img/Eindresultaat(Mp4).mp4" type="video/mp4"> 
+                    <video loop>
+                          <source src="../img/Eindresultaat(Mp4).mp4" type="video/mp4">  
                         Your browser does not support the video tag.
                     </video>
                     <section>
@@ -56,3 +63,4 @@
 </body>
 
 </html>
+

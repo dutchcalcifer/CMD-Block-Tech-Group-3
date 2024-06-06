@@ -29,6 +29,7 @@ src: url(../fonts/Jost-Regular.ttf);
 * {
   box-sizing: border-box;
   margin: 0;
+  overflow-x: hidden;
 }
 
 body{
@@ -52,7 +53,6 @@ form .form-group {
 
 body
 form {
-  align-items: center;
   padding: 1em;
 }
 
@@ -111,7 +111,7 @@ input[type="password"], input[type="email"]{
 }
 
 form > * {
-  max-width: 20rem;
+  /* max-width: 20rem; */
 }
 
 form {
@@ -328,6 +328,50 @@ header button img{
   height: 1.5625em;
 }
 
+/* For you search bar */
+header form{
+  padding: 0;
+  height: 2.7em;
+  width: auto;
+  margin: 0;
+}
+
+input[type="search"]{
+  background-image: url(../img/search.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1.5625em;
+  height: 1.5625em;
+  background-color: var(--for-you-buttons); 
+  border: none;
+  border-radius: 10em;
+  height: 2.7em;
+  width: 2.7em;
+  text-indent: 3.5em;
+}
+
+
+input[type="search"]:focus{
+  width: 17.5em;
+  background-position: 0.9375em center;
+}
+
+/* header form input[type="search"]:focus{
+  background-color: red !important;
+  padding-right: 10em !important;
+} */
+
+/* header form:focus{
+ width: 100% !important;
+} */
+
+
+
+
+
+
+
+
 
 /* container voor alle dynamic user info op for you page */
 #user-info-container{
@@ -435,6 +479,11 @@ li{
   object-fit: cover; 
   z-index: -1;
   max-width: 100%;
+}
+
+/* Hide items die class hidden krijgen */
+#user-info-container div:first-of-type.hidden {
+  display: none; 
 }
 
 
