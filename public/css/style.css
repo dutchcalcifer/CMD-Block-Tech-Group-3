@@ -96,18 +96,32 @@ h2, .help-text, p{
 
 
 /* Tekstveld  */
-input[type="password"], input[type="email"], input[type="text"]{
+input[type="password"], 
+input[type="email"], 
+input[type="text"],
+.profile .toggleInput{
   border: none;
   border-bottom: solid 0.125em;
   border-color: var(--primary-color);
-  background-color:var(--textbox-color) ;
+  background-color:var(--textbox-color);
   height: 1.8125em;
   width: 20.875em;
   margin-bottom: 2.75em;
 }
 
-input[type="password"], input[type="email"]{
+input[type="password"], 
+input[type="email"]{
   text-indent: 3.5em;
+}
+
+.profile input[type="text"],
+.profile textarea{
+  background-color: transparent;
+  border: 1px solid var(--body-background);
+}
+
+.profile textarea{
+  resize: none !important;
 }
 
 form > * {
@@ -119,13 +133,11 @@ form {
 }
 
 
-
 /* Tekstveld svg position */
 input[type="password"], input[type="email"], input[type="text"]{
   background-repeat: no-repeat;
   background-position: 0.9375em center;
 }
-
 
 
 /* Tekstveld svgs */
@@ -276,7 +288,7 @@ margin-bottom: 0.3em;
 .profile div{
   height: 0.2vh;
   width: 100%;
-  margin-top: 2em;
+  margin-top: 1em;
   margin-bottom: 2em;
   background-color: var(--primary-color);
 }
