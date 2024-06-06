@@ -105,43 +105,34 @@ document.getElementById('backButton').addEventListener('click', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const editIcon = document.querySelector('#editIcon');
     const saveButton = document.querySelector('#saveButton');
+    const inputs = document.querySelectorAll('input[type="text"], textarea'); // Selecteer alle input- en textarea-elementen
 
     // Function to toggle readonly attributes
     function toggleReadonly(enable) {
-        const inputs = document.querySelectorAll('input[readonly], textarea[readonly]');
         inputs.forEach(function(input) {
             if (enable) {
                 input.setAttribute('readonly', 'readonly');
-                input.classList.remove('style-choice-button'); // Remove highlight class
+                input.classList.remove('toggleInput'); // Verwijder highlight class
             } else {
                 input.removeAttribute('readonly');
-                input.classList.add('style-choice-button'); // Add highlight class
-            }
-        });
-
-        const checkboxes = document.querySelectorAll('#profileForm input[type="checkbox"]');
-        checkboxes.forEach(function(checkbox) {
-            checkbox.disabled = enable;
-            if (enable) {
-                checkbox.classList.remove('highlight'); // Remove highlight class
-            } else {
-                checkbox.classList.add('highlight'); // Add highlight class
+                input.classList.add('toggleInput'); // Voeg highlight class toe
             }
         });
     }
 
     // Event listener for the 'Save' button
     saveButton.addEventListener('click', function() {
-        saveButton.style.display = 'none'; // Hide the 'Save' button
-        toggleReadonly(true); // Re-enable readonly attributes
+        saveButton.style.display = 'none'; // Verberg de 'Save' knop
+        toggleReadonly(true); // Schakel readonly attributen weer in
     });
 
     // Event listener for the main edit icon
     editIcon.addEventListener('click', function() {
-        saveButton.style.display = 'block'; // Show the 'Save' button
-        toggleReadonly(false); // Remove readonly attributes
+        saveButton.style.display = 'block'; // Toon de 'Save' knop
+        toggleReadonly(false); // Verwijder readonly attributen
     });
 });
+
 
 
 

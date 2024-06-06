@@ -36,11 +36,11 @@ body{
   background-color:var(--body-background) ;
 }
 
-a, button, input, form{
+a, button, form{
   font-family:Jost-Medium ;
 }
 
-p, label{
+p, label, textarea, input{
   font-family:Jost-Regular;
 }
 
@@ -98,8 +98,7 @@ h2, .help-text, p{
 /* Tekstveld  */
 input[type="password"], 
 input[type="email"], 
-input[type="text"],
-.profile .toggleInput{
+input[type="text"]{
   border: none;
   border-bottom: solid 0.125em;
   border-color: var(--primary-color);
@@ -114,10 +113,26 @@ input[type="email"]{
   text-indent: 3.5em;
 }
 
+.profile .toggleInput{
+  border: none !important;
+  border-bottom: solid 0.125em !important;
+  border-color: var(--primary-color) !important;
+  background-color:var(--textbox-color) !important;  
+}
+
 .profile input[type="text"],
 .profile textarea{
   background-color: transparent;
   border: 1px solid var(--body-background);
+}
+
+.profile .toggleInput,
+.profile input[type="text"]{
+  width: 20vw;
+} 
+
+.profile textarea{
+  width: 100% !important;
 }
 
 .profile textarea{
@@ -166,6 +181,7 @@ input[type="email"]{
   display: none;
 }
 
+#saveButton,
 #nextBtn{
   background-color: var(--primary-color);
     color: var(--light-white);
@@ -277,9 +293,7 @@ margin-bottom: 0.3em;
 }
 
 .profile #profileBandName{
-  display: inline-block; /* Zorgt ervoor dat de input dynamisch meebeweegt met de ingevoerde tekst */
-  min-width: 0; /* Zorgt ervoor dat de input element kleiner kan worden dan de inhoud */
-  max-width: 50%; /* Maximale breedte om te voorkomen dat het te breed wordt */
+  width: 50%;
   text-align: right;
   border: none;
   background: none;
