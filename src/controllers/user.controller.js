@@ -1,6 +1,7 @@
 // import module
 const bcrypt = require("bcrypt");
 const multer = require("multer");
+const fs = require("fs");
 
 // import middleware
 const storage = require("../middleware/multer.middleware");
@@ -49,27 +50,22 @@ const usersGet = async (req, res) => {
 // POST update user
 const userUpdate = async (req, res) => {
   try {
-    upload.any()(req, res, async (err) => {
-      if (err) console.error(err);
-      const mediaNames = [];
-      let pfpName = "";
-      if (req.files.length > 0) {
-        req.files.forEach((file) => {
-          if (file.fieldname === "memberPfp") pfpName = file.filename;
-          if (file.fieldname === "media") mediaNames.push(file.filename);
-          if (file.fieldname === "memberPfp" == "") pfpName = req.session.user.memberPfp;
-          if (file.fieldname === "media" == "") mediaNames.push(...req.session.user.media);
+    upload.single("memberPfp")(req, res, async (err) => {
+      if (req.file) {
+        pfpName = req.file.filename;
+        fs.unlink(`public/uploads/${req.session.user.memberPfp}`, (err) => {
+          if (err) {
+            throw err;
+          }
         });
       } else {
         pfpName = req.session.user.memberPfp;
-        mediaNames.push(...req.session.user.media);
       }
       await User.findByIdAndUpdate(
         req.session.user._id,
         {
           ...req.body,
           memberPfp: pfpName,
-          media: mediaNames,
         },
         { new: true }
       );
