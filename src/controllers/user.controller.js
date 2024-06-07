@@ -56,7 +56,9 @@ const userUpdate = async (req, res) => {
       if (req.files) {
         req.files.forEach((file) => {
           if (file.fieldname === "memberPfp") pfpName = file.filename;
-          else if (file.fieldname === "media") mediaNames.push(file.filename);
+          if (file.fieldname === "media") mediaNames.push(file.filename);
+          if (file.fieldname === "memberPfp" == "") pfpName = req.session.user.memberPfp;
+          if (file.fieldname === "media" == "") mediaNames.push(...req.session.user.media);
         });
       } else {
         pfpName = req.session.user.memberPfp;
