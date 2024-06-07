@@ -1,6 +1,7 @@
 // import module
 const bcrypt = require("bcrypt");
 const multer = require("multer");
+const nodeMailer = require("nodemailer");
 
 // import middleware
 const storage = require("../middleware/multer.middleware");
@@ -9,6 +10,7 @@ const upload = multer({ storage: storage });
 
 // import model
 const User = require("../models/user.model");
+const SendmailTransport = require("nodemailer/lib/sendmail-transport");
 
 // POST create user
 const userCreate = async (req, res) => {
@@ -122,6 +124,38 @@ const userLogout = (req, res) => {
     console.error(error);
   }
 };
+
+// mail function
+
+// const html = `
+//   <h1>Bro</h1>
+//   <p>What is wrong with you</p>`;
+
+// async function mail() {
+//  const transporter = nodeMailer.createTransport({
+//     host: 'smtp.gmail.com',
+//     port: 465,
+//     secure: true,
+//     auth: {
+//       user: 'laurensantonmudde@gmail.com',
+//       pass: 'aolk mfzq hrgp uoiy'
+//     },
+//     tls: {
+//       rejectUnauthorized: false
+//   }
+//   });
+//   const info = await transporter.sendMail({
+//     from: 'Band Buddy <laurensantonmudde@gmail.com>',
+//     to: 'laurensantonmudde@gmail.com',
+//     subject: 'Test',
+//     html: html,
+//   })
+// console.log("Message sent: " + info.messageId);
+
+// }
+
+// mail()
+// .catch(e => console.log(e));
 
 // export functions
 module.exports = {

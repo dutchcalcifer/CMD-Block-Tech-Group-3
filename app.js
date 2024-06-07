@@ -5,6 +5,7 @@ const session = require("express-session");
 const path = require("path");
 const dotenv = require("dotenv").config();
 const app = express();
+const mailer = require("nodemailer");
 
 // import middleware
 const sessionMiddelware = require("./src/middleware/session.middelware.js");
@@ -38,3 +39,5 @@ mongoose
     console.error("Connection error:", error);
     process.exit(1);
   });
+
+

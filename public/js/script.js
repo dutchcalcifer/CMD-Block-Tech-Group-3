@@ -187,22 +187,64 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // pauze for you
-
-
 function videoPauze() {
     var videos = document.querySelectorAll("video");
+    const contentElement = document.getElementById('user-info-container');
 
     videos.forEach(function(video) {
         video.addEventListener("click", function() {
-            if (video.paused) {
-                video.play();
-            } else {
-                video.pause();
-            }
+
+// @@ -193,78 +184,9 @@ function videoPauze() {
+//                 video.pause();
+//             }
         });
+
+        contentElement.addEventListener('scroll', () => {
+            video.pause();
+          });
     });
 }
 videoPauze();
+
+// in css: #user-info-container div:first-of-type.hidden {
+//     display: none; 
+//   }
+
+// search test
+document.getElementById('searchInput').addEventListener('keyup', function() {
+    let filter = this.value.toLowerCase();
+    let videoBackgrounds = document.querySelectorAll('#videoBackground');
+
+    videoBackgrounds.forEach(function(videoBackground) {
+        let bandNameElement = videoBackground.querySelector('h2');
+        let bandName = bandNameElement.textContent.toLowerCase();
+
+        if (bandName.includes(filter)) {
+            videoBackground.classList.remove('hidden');
+            if (filter !== "") { 
+                videoBackground.scrollIntoView({ behavior: 'auto' });
+            }
+        } else {
+            videoBackground.classList.add('hidden');
+        }
+    });
+
+let noResultParagraph = document.getElementById('noResultsMessage');
+    if (!filter || !document.querySelectorAll('#videoBackground:not(.hidden)').length) {
+        if (!noResultParagraph) {
+            noResultParagraph = document.createElement('p');
+            noResultParagraph.id = 'noResultsMessage';
+            noResultParagraph.textContent = 'Geen resultaten gevonden';
+            document.body.appendChild(noResultParagraph);
+        }
+    } else {
+        if (noResultParagraph) {
+            noResultParagraph.remove();
+        }
+    }
+});
+
+// test
 
 
 
