@@ -9,8 +9,8 @@
   <body class="profile">
 
     <form action="/edit" method="POST" enctype="application/json">
-        <header>
-            <input type="file" name="memberPfp" value="<%= user.memberPfp %>"/>
+        <header id="backgroundSection" style="background-image: url('../uploads/<%= user.memberPfp %>');">
+            <!-- <img src="../uploads/<%= user.memberPfp %>" alt="profile picture"> -->
             <section>
                 <img src="../img/back_button_icon.svg" id="backButton" alt="back button">
                 <h1>Profile</h1>
@@ -34,7 +34,7 @@
                 <img src="../img/location_icon.svg" class="imageIcon" alt="location icon">
                 <section>
                     <label for="profileLocation">From</label>
-                    <input type="text" id="profileCity" name="profileCity" value="<%= user.city %>" readonly/>
+                    <input type="text" id="profileCity" name="city" value="<%= user.city %>" readonly/>
                     <input type="text" id="profileCountry" name="country" value="<%= user.country %>" readonly/>   
                 </section>      
             </section>
@@ -77,7 +77,7 @@
             
             <section>
                 <h3>Content</h3>
-                <input type="file" id="mediaFile" name="mediaFile" value="<%= user.mediaFile %>" readonly/>
+                <video src="../uploads/<%= user.mediaFile %>" alt="profile picture">
             </section>
 
             <button type="submit" id="saveButton" style="display: none;">Save</button>
