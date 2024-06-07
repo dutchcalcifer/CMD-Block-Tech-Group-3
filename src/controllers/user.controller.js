@@ -53,10 +53,12 @@ const userUpdate = async (req, res) => {
       if (err) console.error(err);
       const mediaNames = [];
       let pfpName = "";
-      req.files.forEach((file) => {
-        if (file.fieldname === "memberPfp") pfpName = file.filename;
-        else if (file.fieldname === "media") mediaNames.push(file.filename);
-      });
+      if (req.files.length > 0) {
+        req.files.forEach((file) => {
+          if (file.fieldname === "memberPfp") pfpName = file.filename;
+          else if (file.fieldname === "media") mediaNames.push(file.filename);
+        });
+      }
       await User.findByIdAndUpdate(
         req.session.user._id,
         {
