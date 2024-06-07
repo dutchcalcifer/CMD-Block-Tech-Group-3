@@ -194,9 +194,9 @@ function videoPauze() {
     videos.forEach(function(video) {
         video.addEventListener("click", function() {
 
-// @@ -193,78 +184,9 @@ function videoPauze() {
-//                 video.pause();
-//             }
+ function videoPauze() {
+                 video.pause();
+             }
         });
 
         contentElement.addEventListener('scroll', () => {
@@ -245,7 +245,7 @@ let noResultParagraph = document.getElementById('noResultsMessage');
 });
 
 // test
-
+console.log("hoi")
 
 
 
