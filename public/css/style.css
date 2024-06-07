@@ -379,7 +379,7 @@ header form{
   margin: 0;
 }
 
-input[type="search"]{
+input[type="search"] {
   background-image: url(../img/search.svg);
   background-repeat: no-repeat;
   background-position: center;
@@ -391,13 +391,27 @@ input[type="search"]{
   height: 2.7em;
   width: 2.7em;
   text-indent: 3.5em;
+  transition: width 0.4s ease-in-out; 
+}
+
+input[type="search"]:focus {
+  width: 17.5em; 
+  background-position: 0.9375em center;
+  outline: none;
 }
 
 
-input[type="search"]:focus{
+input[type="search"]:not(:placeholder-shown) {
   width: 17.5em;
   background-position: 0.9375em center;
 }
+
+input[type="search"]::-webkit-search-cancel-button {
+ color: red;
+}
+
+
+
 
 /* header form input[type="search"]:focus{
   background-color: red !important;
@@ -528,6 +542,8 @@ li{
 #user-info-container div:first-of-type.hidden {
   display: none; 
 }
+
+
 
 
 /* footer navigatie */

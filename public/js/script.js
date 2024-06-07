@@ -53,8 +53,10 @@ videoPauze();
 //   }
 
 // search test
-document.getElementById('searchInput').addEventListener('keyup', function() {
-    let filter = this.value.toLowerCase();
+document.querySelector('form').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
+    let filter = document.getElementById('searchInput').value.toLowerCase();
     let videoBackgrounds = document.querySelectorAll('#videoBackground');
 
     videoBackgrounds.forEach(function(videoBackground) {
@@ -71,7 +73,7 @@ document.getElementById('searchInput').addEventListener('keyup', function() {
         }
     });
 
-let noResultParagraph = document.getElementById('noResultsMessage');
+    let noResultParagraph = document.getElementById('noResultsMessage');
     if (!filter || !document.querySelectorAll('#videoBackground:not(.hidden)').length) {
         if (!noResultParagraph) {
             noResultParagraph = document.createElement('p');
@@ -86,8 +88,66 @@ let noResultParagraph = document.getElementById('noResultsMessage');
     }
 });
 
-// test
-console.log("hoi")
+
+
+
+
+
+
+const searchInput = document.getElementById('searchInput');
+const videoBackgrounds = document.querySelectorAll('#videoBackground');
+
+searchInput.addEventListener('blur', function() {
+    if (this.value.trim() === '') {
+        videoBackgrounds.forEach(function(videoBackground) {
+            videoBackground.classList.remove('hidden');
+        });
+    }
+});
+
+
+
+
+
+
+
+
+const scrollableElement = document.getElementById('user-info-container');
+let scrollPosition = 0; 
+
+searchInput.addEventListener('blur', function() {
+
+    if (this.value.trim() === '') {
+        const anyHidden = Array.from(document.querySelectorAll('[id^="videoBackground"]'))
+        .some(videoBackground => videoBackground.classList.contains('hidden'));
+        
+        if (!anyHidden) {
+            videoBackgrounds.forEach(function(videoBackground) {
+            videoBackground.classList.remove('hidden');
+            });
+
+            console.log("Scrollpositie terugkeren naar: ", scrollPosition);
+    
+            scrollableElement.scrollTop = scrollPosition;
+        } else {
+            scrollPosition = 0;
+        }
+    }
+});
+
+searchInput.addEventListener('focus', function() {
+    const anyHidden = Array.from(document.querySelectorAll('[id^="videoBackground"]'))
+
+    .some(videoBackground => videoBackground.classList.contains('hidden'));
+    if (!anyHidden) {
+        scrollPosition = scrollableElement.scrollTop;
+        console.log("Huidige scrollpositie: ", scrollPosition);
+    }
+});
+
+
+
+
 
 
 // Next and prev button
