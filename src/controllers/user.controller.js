@@ -1,6 +1,7 @@
 // import module
 const bcrypt = require("bcrypt");
 const multer = require("multer");
+const nodeMailer = require("nodemailer");
 
 // import middleware
 const storage = require("../middleware/multer.middleware");
