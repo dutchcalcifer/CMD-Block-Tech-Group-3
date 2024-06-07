@@ -49,10 +49,27 @@ const usersGet = async (req, res) => {
 // POST update user
 const userUpdate = async (req, res) => {
   try {
-    await User.findByIdAndUpdate(req.session.user._id, req.body);
-    req.session.user = await User.findById(req.session.user._id);
-    req.session.save();
-    res.redirect("/profile");
+    upload.any()(req, res, async (err) => {
+      if (err) console.error(err);
+      const mediaNames = [];
+      let pfpName = "";
+      req.files.forEach((file) => {
+        if (file.fieldname === "memberPfp") pfpName = file.filename;
+        else if (file.fieldname === "media") mediaNames.push(file.filename);
+      });
+      await User.findByIdAndUpdate(
+        req.session.user._id,
+        {
+          ...req.body,
+          memberPfp: pfpName,
+          media: mediaNames,
+        },
+        { new: true }
+      );
+      req.session.user = await User.findById(req.session.user._id);
+      req.session.save();
+      res.redirect("/profile");
+    });
   } catch (error) {
     console.error(error);
   }
