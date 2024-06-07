@@ -60,7 +60,7 @@ const userUpdate = async (req, res) => {
         });
       } else {
         pfpName = req.session.user.memberPfp;
-        mediaNames.push(...req.session.user.media)
+        mediaNames.push(...req.session.user.media);
       }
       await User.findByIdAndUpdate(
         req.session.user._id,
@@ -69,7 +69,7 @@ const userUpdate = async (req, res) => {
           memberPfp: pfpName,
           media: mediaNames,
         },
-        { new: true }
+        // { new: true }
       );
       req.session.user = await User.findById(req.session.user._id);
       req.session.save();
