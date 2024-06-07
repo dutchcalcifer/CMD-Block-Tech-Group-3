@@ -49,8 +49,9 @@ const usersGet = async (req, res) => {
 // POST update user
 const userUpdate = async (req, res) => {
   try {
-    const userId = req.session.user._id;
-    await User.findByIdAndUpdate(userId, req.body);
+    await User.findByIdAndUpdate(req.session.user._id, req.body);
+    req.session.user = await User.findById(req.session.user._id);
+    req.session.save();
     res.redirect("/profile");
   } catch (error) {
     console.error(error);
