@@ -278,19 +278,15 @@ video, audio {
   height: 40vh;
 }
 
-.profile form > #gradient{
-  background-image: linear-gradient(to top, rgba(0,0,0,0), rgb(0,0,0));
-  height: 30vh;
-}
-
 .profile form > header > section:nth-of-type(1),
 .profile form > header > section:nth-of-type(2){
   align-items: center;
   }
 
 .profile form > header > section:nth-of-type(1){
+background-image: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,0.7));
+height: 7vh; 
 justify-content: space-between;
-margin-bottom: 0.3em;
 }
 
 .profile form > header > section:nth-of-type(2) {
