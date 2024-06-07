@@ -53,7 +53,7 @@ const userUpdate = async (req, res) => {
       if (err) console.error(err);
       const mediaNames = [];
       let pfpName = "";
-      if (req.files > 0) {
+      if (req.files) {
         req.files.forEach((file) => {
           if (file.fieldname === "memberPfp") pfpName = file.filename;
           else if (file.fieldname === "media") mediaNames.push(file.filename);
@@ -69,7 +69,7 @@ const userUpdate = async (req, res) => {
           memberPfp: pfpName,
           media: mediaNames,
         },
-        // { new: true }
+        { new: true }
       );
       req.session.user = await User.findById(req.session.user._id);
       req.session.save();
