@@ -58,6 +58,9 @@ const userUpdate = async (req, res) => {
           if (file.fieldname === "memberPfp") pfpName = file.filename;
           else if (file.fieldname === "media") mediaNames.push(file.filename);
         });
+      } else {
+        pfpName = req.session.user.memberPfp;
+        mediaNames.push(...req.session.user.media)
       }
       await User.findByIdAndUpdate(
         req.session.user._id,
