@@ -166,12 +166,12 @@ input[type="email"]{
 
 
 /* Buttons */
-.progressbar, .style-choice-button{
+.progressbar, .style-choice-button, #savePhotoButton{
   border-radius: 20px;
   border: 2px solid var(--secondary-color);  
 }
 
-.style-choice-button{
+.style-choice-button, #savePhotoButton{
   color: var(--primary-color);
   box-shadow: var(--drop-shadow);
   height: 4.5vh;
@@ -195,6 +195,10 @@ input[type="email"]{
   background: none;
   border: none;
   color: var(--primary-color);
+}
+
+#fileInput, #saveButton {
+  display: none; /* Verberg deze elementen standaard */
 }
 
 
@@ -272,6 +276,11 @@ video, audio {
 
 .profile form > header{
   height: 40vh;
+}
+
+.profile form > #gradient{
+  background-image: linear-gradient(to top, rgba(0,0,0,0), rgb(0,0,0));
+  height: 30vh;
 }
 
 .profile form > header > section:nth-of-type(1),

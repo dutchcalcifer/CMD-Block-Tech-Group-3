@@ -106,6 +106,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const editIcon = document.querySelector('#editIcon');
     const saveButton = document.querySelector('#saveButton');
     const inputs = document.querySelectorAll('input[type="text"], textarea'); // Selecteer alle input- en textarea-elementen
+    const fileInput = document.querySelector('#fileInput');
+    const savePhotoButton = document.querySelector('#savePhotoButton');
+    const backgroundSection = document.querySelector('#backgroundSection');
 
     // Function to toggle readonly attributes
     function toggleReadonly(enable) {
@@ -124,12 +127,28 @@ document.addEventListener('DOMContentLoaded', function() {
     saveButton.addEventListener('click', function() {
         saveButton.style.display = 'none'; // Verberg de 'Save' knop
         toggleReadonly(true); // Schakel readonly attributen weer in
+        fileInput.style.display = 'none'; // Verberg het bestand-input
+        savePhotoButton.style.display = 'none'; // Verberg de 'Save Photo' knop
     });
 
     // Event listener for the main edit icon
     editIcon.addEventListener('click', function() {
         saveButton.style.display = 'block'; // Toon de 'Save' knop
         toggleReadonly(false); // Verwijder readonly attributen
+        fileInput.style.display = 'block'; // Toon het bestand-input
+        savePhotoButton.style.display = 'block'; // Toon de 'Save Photo' knop
+    });
+
+    // Event listener for the 'Save Photo' button
+    savePhotoButton.addEventListener('click', function() {
+        const file = fileInput.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                backgroundSection.style.backgroundImage = `url(${e.target.result})`;
+            };
+            reader.readAsDataURL(file);
+        }
     });
 });
 
