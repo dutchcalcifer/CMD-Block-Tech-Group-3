@@ -11,16 +11,18 @@
     <form action="/edit" method="POST" enctype="multipart/form-data">
         <header id="backgroundSection" style="background-image: url('../uploads/<%= user.memberPfp %>');">
             <section id="gradient">
-                <img src="../img/back_button_icon.svg" id="backButton" alt="back button">
-                <h1>Profile</h1>
-                <img src="../img/edit_icon.svg" alt="edit icon button" id="editIcon">
+                <section>
+                    <img src="../img/back_button_icon.svg" id="backButton" alt="back button">
+                    <h1>Profile</h1>
+                    <img src="../img/edit_icon.svg" alt="edit icon button" id="editIcon">
+                </section>
+                <section>
+                    <input type="text" id="profileBandName" name="bandName" value="<%= user.bandName %>" readonly/>
+                    <img src="../img/band_icon.svg" alt="band icon">
+                </section>
             </section>
             <section>
-                <input type="file" name="memberPfp" id="fileInput" accept="image/*">
-            </section>
-            <section>
-                <input type="text" id="profileBandName" name="bandName" value="<%= user.bandName %>" readonly/>
-                <img src="../img/band_icon.svg" alt="band icon">
+                <input type="file" name="memberPfp" class="mediaInput" accept="image/*">
             </section>
         </header>
 
@@ -79,7 +81,15 @@
             
             <section>
                 <h3>Content</h3>
-                <video src="../uploads/<%= user.mediaFile %>" alt="profile picture">
+                <% user.media.forEach(video => { %>
+                    <div id="videoBackground">
+                        <video loop>
+                              <source src="../uploads/<%= video %>" type="video/mp4">  
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                <% }); %> 
+                <input type="file" name="media" class="mediaInput" accept="video/*,audio/*"/>        
             </section>
 
             <button type="submit" id="saveButton">Save</button>

@@ -197,7 +197,7 @@ input[type="email"]{
   color: var(--primary-color);
 }
 
-#fileInput, #saveButton {
+#saveButton, .mediaInput {
   display: none; /* Verberg deze elementen standaard */
 }
 
@@ -256,8 +256,8 @@ video, audio {
   margin: 0;
 }
 
-.profile form > header > section:nth-of-type(1), 
-.profile form > header > section:nth-of-type(2),
+.profile form > header > section:nth-of-type(1)> section:nth-of-type(1), 
+.profile form > header > section:nth-of-type(1)> section:nth-of-type(2),
 .profile form > main > section:nth-of-type(2),
 .profile form > main > section:nth-of-type(3),
 .profile form > main > section:nth-of-type(4),
@@ -275,21 +275,25 @@ video, audio {
 }
 
 .profile form > header{
-  height: 40vh;
+  height: 35vh !important;
 }
 
-.profile form > header > section:nth-of-type(1),
-.profile form > header > section:nth-of-type(2){
+.profile form > header > section:nth-of-type(1)> section:nth-of-type(1), 
+.profile form > header > section:nth-of-type(1)> section:nth-of-type(2){
   align-items: center;
   }
 
-.profile form > header > section:nth-of-type(1){
-background-image: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,0.7));
-height: 7vh; 
-justify-content: space-between;
+  .profile form > header > section:nth-of-type(1)> section:nth-of-type(1){
+  height: 4vh; 
+  justify-content: space-between;
 }
 
-.profile form > header > section:nth-of-type(2) {
+.profile form > header > #gradient{
+  background-image: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,0.7));
+  height: 12vh;
+}
+
+.profile form > header > section:nth-of-type(1)> section:nth-of-type(2) {
   gap: 10px;
 }
 
@@ -331,9 +335,10 @@ justify-content: space-between;
 
 #backgroundSection {
   width: 100%;
-  height: 500px; /* Pas de hoogte aan naar wens */
-  background-size: cover;
+  height: 100%;
+  background-size: cover; 
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 
