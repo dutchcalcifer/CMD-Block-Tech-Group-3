@@ -40,7 +40,7 @@ function videoPauze() {
             }
         });
 
-        contentElement.addEventListener('scroll', () => {
+        contentElement?.addEventListener('scroll', () => {
             video.pause();
         });
     });
@@ -97,7 +97,7 @@ document.querySelector('form').addEventListener('submit', function(event) {
 const searchInput = document.getElementById('searchInput');
 const videoBackgrounds = document.querySelectorAll('#videoBackground');
 
-searchInput.addEventListener('blur', function() {
+searchInput?.addEventListener('blur', function() {
     if (this.value.trim() === '') {
         videoBackgrounds.forEach(function(videoBackground) {
             videoBackground.classList.remove('hidden');
@@ -115,7 +115,7 @@ searchInput.addEventListener('blur', function() {
 const scrollableElement = document.getElementById('user-info-container');
 let scrollPosition = 0; 
 
-searchInput.addEventListener('blur', function() {
+searchInput?.addEventListener('blur', function() {
 
     if (this.value.trim() === '') {
         const anyHidden = Array.from(document.querySelectorAll('[id^="videoBackground"]'))
@@ -135,7 +135,7 @@ searchInput.addEventListener('blur', function() {
     }
 });
 
-searchInput.addEventListener('focus', function() {
+searchInput?.addEventListener('focus', function() {
     const anyHidden = Array.from(document.querySelectorAll('[id^="videoBackground"]'))
 
     .some(videoBackground => videoBackground.classList.contains('hidden'));
@@ -166,7 +166,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    document.getElementById('prevBtn').addEventListener('click', function() {
+    const prevBtn = document.getElementById('prevBtn');
+
+    prevBtn?.addEventListener('click', function() {
         if (currentIndex > 0) {
             currentIndex--;
             showPartial(currentIndex);
@@ -174,7 +176,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    document.getElementById('nextBtn').addEventListener('click', function() {
+    const nextBtn = document.getElementById('nextBtn');
+    
+    nextBtn?.addEventListener('click', function() {
         if (validateForm()) {
             if (currentIndex < partials.length - 1) {
                 currentIndex++;
@@ -230,7 +234,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const saveButton = document.querySelector('#saveButton');
     const inputs = document.querySelectorAll('input[type="text"], textarea'); // Selecteer alle input- en textarea-elementen
     const mediaInputs = document.querySelectorAll('.mediaInput');
-    const savePhotoButton = document.querySelector('#savePhotoButton');
     const backgroundSection = document.querySelector('#backgroundSection');
 
     // Function to toggle readonly attributes
@@ -253,7 +256,6 @@ document.addEventListener('DOMContentLoaded', function() {
         mediaInputs.forEach(function(input) {
             input.style.display = 'none'; // Verberg het bestand-input
         });
-        savePhotoButton.style.display = 'none'; // Verberg de 'Save Photo' knop
     });
 
     // Event listener for the main edit icon
@@ -262,21 +264,6 @@ document.addEventListener('DOMContentLoaded', function() {
         toggleReadonly(false); // Verwijder readonly attributen
         mediaInputs.forEach(function(input) {
             input.style.display = 'block'; // Toon het bestand-input
-        });
-        savePhotoButton.style.display = 'block'; // Toon de 'Save Photo' knop
-    });
-
-    // Event listener for the 'Save Photo' button
-    savePhotoButton.addEventListener('click', function() {
-        mediaInputs.forEach(function(input) {
-            const file = input.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    backgroundSection.style.backgroundImage = `url(${e.target.result})`;
-                };
-                reader.readAsDataURL(file);
-            }
         });
     });
 });
@@ -339,7 +326,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById(partialId).style.display = 'block';
     }
 
-    editDescriptionIcon.addEventListener('click', function() {
+    editDescriptionIcon?.addEventListener('click', function() {
         showPartial('partial-description');
     });
 
