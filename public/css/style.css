@@ -267,7 +267,7 @@ video, audio {
   display: flex;
 }
 
-.profile .grid-choice-button{
+.profile .grid-choice-button & {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px; 
@@ -365,7 +365,7 @@ video, audio {
 }
 
 #foryouheader h1{
-  color: #efefef;
+  color: var(--body-background);
 }
 
 header button{
@@ -382,6 +382,10 @@ header button{
 header button img{
   width: 1.5625em;
   height: 1.5625em;
+}
+
+header button:first-child:active{
+  background-color: var(--secondary-color)
 }
 
 /* For you search bar */
@@ -611,6 +615,94 @@ height:3.25em ;
 #user-info-container div:first-of-type.hidden {
   display: none; 
 }
+
+/* Filter pop up */
+#filter-pop-up{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1200;
+  background-color: rgba(224, 224, 224, 0.9);
+  transition: 0.5s;
+}
+#filter-pop-up h2{
+  font-size: 1.25em;
+  font-family: Jost-Medium;
+  font-weight: normal;
+}
+
+#filter-pop-up button:first-child{
+  background-color: var(--body-background);
+  border: none;
+  width: 2em;
+  height: 2em;
+  background-image: url(../img/cross.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  border-radius: 3em;
+}
+
+#filter-pop-up button:first-child:active{
+  background-color: var(--secondary-color);
+}
+
+
+#filter-pop-up ul:first-child{
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  padding-top:  0.9375em;
+  margin-left:  0.9375em;
+  margin-right:  0.9375em;
+}
+
+#sort form{
+  padding: 0;
+}
+
+#sort fieldset{
+  background-color: var(--body-background);
+  border: none;
+}
+
+#sort fieldset:nth-of-type(2) input{
+  display: none; 
+  align-items: center;
+}
+
+
+#sort fieldset:nth-of-type(2) label{
+  width: 7.0625em;
+  height: 2.125em;
+  margin-bottom: 0.1875em;
+  border: solid 0.125em var(--secondary-color);
+  border-radius: 3em;
+  text-align: center;
+  color: var(--primary-color);
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+
+
+
+#sort fieldset:nth-of-type(2){
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625em;
+  justify-content: center;
+}
+
+
+
+
 
 
 
