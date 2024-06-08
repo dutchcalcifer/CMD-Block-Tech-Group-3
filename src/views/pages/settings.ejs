@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="settings">
+
+    <header>
+        <img src="../img/back_button_icon.svg" id="backButton" alt="back button">
+        <h1>Settings</h1>
+        <section></section>        
+    </header>
+
+    <main>
+        <section>
+            <section>
+                <img src="../uploads/<%= user.memberPfp %>" alt="profile picture" id="profileImage"> 
+            </section> 
+            <article>
+                <h2><%= user.bandName %> ></h2>
+                <p><%= user.email %></p>
+                <p><%= user.city %>, <%= user.country %></p>
+            </article> 
+        </section>
+
+        <section>
+            <h3>Accessibility</h3>
+            <section class="setting-container">
+                <section id="language-menu"> 
+                    <img src="../img/language_icon.svg" alt="language icon">
+                    <h4>Language</h4>
+                    <img src="../img/arrow_icon.svg" alt="Click to change language">
+                </section>
+                    <div class="purple-stripe"></div>
+                <section id="display-menu">
+                    <img src="../img/display_icon.svg" alt="display icon">
+                    <h4>Display</h4>
+                    <img src="../img/arrow_icon.svg" alt="Click to change display">
+                </section>
+            </section>
+        </section>
+
+        <section>
+            <h3>Account</h3>
+            <section class="setting-container">
+                <section id="email-menu">
+                    <img src="../img/mail_icon.svg" alt="email icon">
+                    <h4>Change email</h4>
+                    <img src="../img/arrow_icon.svg" alt="Click to change email">
+                </section>
+                    <div class="purple-stripe"></div>
+                <section id="password-menu">
+                    <img src="../img/password_icon.svg" alt="password icon">
+                    <h4>Change password</h4>
+                    <img src="../img/arrow_icon.svg" alt="Click to change password">
+                </section>
+                    <div class="purple-stripe"></div>
+                <section id="delete-menu">
+                    <img src="../img/delete_icon.svg" alt="delete icon">
+                    <h4>Delete account</h4>
+                    <img src="../img/arrow_icon.svg" alt="Click to delete account">
+                </section>
+                    <div class="purple-stripe"></div>
+                <section id="logout-menu">
+                    <img src="../img/logout_icon.svg" alt="logout icon">
+                    <h4>Log out</h4>
+                    <img src="../img/arrow_icon.svg" alt="Click to logout">
+                </section>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="foryou"><img src="../img/houseWhite_icon.svg" alt="Go to for you page"></a></li>
+                <li><a href="profile"><img src="../img/profilePurple_icon.svg" alt="Go to profile page"></a></li>
+                <li><a href="settings"><img src="../img/settings.svg" alt="Go to settings page"></a></li>
+            </ul>
+        </nav>
+    </footer>
+
+    <script src="/js/script.js"></script>
+  </body>
+</html>
