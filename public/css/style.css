@@ -63,6 +63,10 @@ h1, h2, h3, p, .style-genre{
   font: var(--all-text);
 }
 
+h4{
+  font-family: Jost-Regular;
+}
+
 .profile h2{
   font-weight: 700;
 }
@@ -76,9 +80,6 @@ h2{
   font-weight: 600;
 }
 
-h2{
-  margin-bottom: 0.5em;
-}
 
 .help-text{
   color:var(--help-text);
@@ -424,9 +425,7 @@ input[type="search"]:not(:placeholder-shown) {
   background-position: 0.9375em center;
 }
 
-input[type="search"]::-webkit-search-cancel-button {
- color: red;
-}
+
 
 
 
@@ -472,7 +471,7 @@ input[type="search"]::-webkit-search-cancel-button {
   margin-left: 0.625em;
   font-family: Jost-Medium;
   font-weight: normal;
-  height: 2em;
+  
 }
 
 #user-info-container h3{
@@ -490,9 +489,30 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 #user-info-container ul:first-of-type{
   padding-left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 0.625em;
 }
 
-#user-info-container ul:first-of-type ul:first-of-type li{
+#user-info-container > div > section > ul:first-child > li:nth-child(2){
+background-color: var(--body-background);
+border-radius: 3em;
+padding-left: 1em;
+width: 3em;
+height: 2em;
+align-content: center;
+text-align: center;
+color: var(--primary-color);
+font-family: Jost-regular;
+background-image:url(../img/profile.svg);
+background-repeat: no-repeat;
+background-size:  0.9375em;
+background-position: 20% center  ;
+}  
+
+
+#user-info-container section > ul:first-child ul:first-of-type li{
   padding: 0.0625em 0.46875em;
   margin-right: 0.5em;
   background-color: var(--body-background);
@@ -506,20 +526,21 @@ input[type="search"]::-webkit-search-cancel-button {
   margin-right: 0.625em;
   font-size: 1em;
   height: 4.0625em;
+  overflow: hidden;
 }
 
 #user-info-container h4{
   font-family: Jost-Medium;
   font-weight: normal;
-  color: var(--text-color);
+  color: var(--primary-color);
   margin-left:0.4em ;
-  margin-top: 1.5625em;
+  
 }
 
 #user-info-container section{
   background-color: var(--for-you-card);
   height: 15.5625em;
-
+  overflow: hidden;
   z-index: 2;
   position: absolute;
 
@@ -536,13 +557,49 @@ li{
   list-style-type: none;
 }
 
+#user-info-container section > ul:nth-of-type(2){
+  display: flex;
+  height:2em ;
+  margin-left: 0.625em;
+  margin-top: 1.5em;
+  padding: 0;
+  
+}
+
+#user-info-container section div:last-child{
+  display: flex;
+  justify-content: space-between;
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+}
+
+#user-info-container section button{
+  background-color: var(--primary-color);
+  font-family: Jost-Regular;
+  color: var(--body-background);
+  outline: none;
+  border: none;
+  border-radius: 3em;
+  height: 2.5em;
+  width: 4.8125em ;
+}
+
+#user-info-container section div:last-child ul{
+height:3.25em ;
+
+}
+
+
+
+
 #videoBackground{
   width: 100%;
   height: 100%;
   position: relative;
   z-index: -2;
   scroll-snap-align: start;
-  background-color: var(--primary-color)
+  background-color: var(--primary-color);
 }
 
 #user-info-container video{

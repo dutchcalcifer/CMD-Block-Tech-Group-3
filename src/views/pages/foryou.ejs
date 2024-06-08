@@ -39,10 +39,28 @@
                                         <li><h3><%= genre %></h3></li>
                                     <% }); %>
                                 </ul>
-                            </li>                               
+                            </li> 
+                            <li>
+                                <%= user.bandMembers %>
+                            </li>                              
                         </ul>
                         <h2><%= user.bandName%> ></h2>
-                        <p><%= user.description %></p>                     
+                        <p><%= user.description %></p>    
+                        <ul>
+                            <li><img src="../img/location_icon.svg" alt="Location icon"></li>
+                            <li><h4><%= user.city %>, <%= user.country %></h4></li>
+                        </ul>  
+                        <div>
+                            <ul>
+                                <li>
+                                    <ul>
+                                        <li><img src="../img/language_icon.svg" alt="Spoken languages icon"></li>
+                                        <li><h4><%= user.language %></h4></li>
+                                    </ul>
+                                </li> 
+                                <li><button>connect</button></li>
+                            </ul>
+                        </div>              
                     </section>
                 </div>
             <% }); %>            
