@@ -40,7 +40,7 @@ a, button, form{
   font-family:Jost-Medium ;
 }
 
-p, label, textarea, input{
+p, label, textarea, input, h4{
   font-family:Jost-Regular;
 }
 
@@ -51,20 +51,19 @@ form .form-group {
   flex-direction: column;
 }
 
-body
 form {
   padding: 1em;
+  width: 100%;
 }
 
+form > * {
+  /* max-width: 20rem; */
+}
 
 
 /* Text */
 h1, h2, h3, p, .style-genre{
   font: var(--all-text);
-}
-
-h4{
-  font-family: Jost-Regular;
 }
 
 .profile h2{
@@ -134,19 +133,10 @@ input[type="email"]{
 
 .profile textarea{
   width: 100% !important;
-}
-
-.profile textarea{
   resize: none !important;
 }
 
-form > * {
-  /* max-width: 20rem; */
-}
 
-form {
-  width: 100%;
-}
 
 
 /* Tekstveld svg position */
@@ -187,11 +177,10 @@ input[type="email"]{
   border-color: var(--primary-color);
 }
 
-.style-choice-button input[type="checkbox"]{
-  display: none;
-}
-
-.hidden {
+.style-choice-button input[type="checkbox"],
+.hidden,
+#saveButton, 
+.mediaInput {
   display: none;
 }
 
@@ -209,10 +198,6 @@ input[type="email"]{
   background: none;
   border: none;
   color: var(--primary-color);
-}
-
-#saveButton, .mediaInput {
-  display: none; /* Verberg deze elementen standaard */
 }
 
 
@@ -265,6 +250,10 @@ video, audio {
 
 
 /* Profile  */
+.profile form{
+  padding: 0;
+}
+
 .profile h1,
 .profile form > header > section:nth-of-type(2) input{
   margin: 0;
@@ -309,11 +298,17 @@ video, audio {
 
 .profile form > header > #gradient{
   background-image: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,0.7));
+  overflow: hidden;
   height: 12vh;
 }
 
 .profile form > header > section:nth-of-type(1)> section:nth-of-type(2) {
   gap: 10px;
+}
+
+.profile form > main,
+.profile form > header > #gradient{
+  padding: 1em;
 }
 
 .profile .imageIcon{
@@ -339,7 +334,6 @@ video, audio {
   margin-bottom: 1em;
 }
 
-/* Styling voor de beschrijving sectie */
 .profile section label,
 .profile section textarea {
   display: block;
@@ -348,7 +342,7 @@ video, audio {
 }
 
 .profile section textarea {
-  height: 5em; /* Pas de hoogte van de textarea naar behoefte aan */
+  height: 5em; 
   resize: vertical; /* Hiermee kan de gebruiker de hoogte van de textarea aanpassen */
 }
 
@@ -366,7 +360,7 @@ video, audio {
   display: flex;
   justify-content: space-between;
   padding: 1em;
-  background-image: linear-gradient(to bottom, rgb(0, 0, 0, 0.4), rgba(0, 0, 0, 0));;
+  background-image: linear-gradient(to bottom, rgb(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
   z-index: 1100;
 }
 

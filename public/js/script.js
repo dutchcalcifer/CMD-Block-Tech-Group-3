@@ -89,11 +89,6 @@ document.querySelector('form').addEventListener('submit', function(event) {
 });
 
 
-
-
-
-
-
 const searchInput = document.getElementById('searchInput');
 const videoBackgrounds = document.querySelectorAll('#videoBackground');
 
@@ -104,12 +99,6 @@ searchInput?.addEventListener('blur', function() {
         });
     }
 });
-
-
-
-
-
-
 
 
 const scrollableElement = document.getElementById('user-info-container');
@@ -144,9 +133,6 @@ searchInput?.addEventListener('focus', function() {
         console.log("Huidige scrollpositie: ", scrollPosition);
     }
 });
-
-
-
 
 
 
@@ -228,13 +214,12 @@ document.getElementById('backButton').addEventListener('click', function() {
   });    
 
 
-// Show/hide edit icon
-document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function() {
     const editIcon = document.querySelector('#editIcon');
     const saveButton = document.querySelector('#saveButton');
     const inputs = document.querySelectorAll('input[type="text"], textarea'); // Selecteer alle input- en textarea-elementen
     const mediaInputs = document.querySelectorAll('.mediaInput');
-    const backgroundSection = document.querySelector('#backgroundSection');
+    const choiceButtons = document.querySelectorAll('.style-choice-button');
 
     // Function to toggle readonly attributes
     function toggleReadonly(enable) {
@@ -256,6 +241,13 @@ document.addEventListener('DOMContentLoaded', function() {
         mediaInputs.forEach(function(input) {
             input.style.display = 'none'; // Verberg het bestand-input
         });
+        // Verberg ongecheckte buttons
+        choiceButtons.forEach(function(button) {
+            const checkbox = button.querySelector('input[type="checkbox"]');
+            if (!checkbox.checked) {
+                button.classList.add('hidden');
+            }
+        });
     });
 
     // Event listener for the main edit icon
@@ -265,48 +257,30 @@ document.addEventListener('DOMContentLoaded', function() {
         mediaInputs.forEach(function(input) {
             input.style.display = 'block'; // Toon het bestand-input
         });
-    });
-});
-
-
-// Choice button check 
-document.addEventListener('DOMContentLoaded', function() {
-    const choiceButtons = document.querySelectorAll('.style-choice-button input[type="checkbox"]');
-
-    choiceButtons.forEach(function(button) {
-        // Voeg klasse 'checked' toe aan aangevinkte buttons
-        if (button.checked) {
-            const parentDiv = button.parentNode;
-            parentDiv.classList.add('checked');
-        }
-
-        // Voeg eventlistener toe voor wijzigingen
-        button.addEventListener('change', function() {
-            const parentDiv = this.parentNode;
-            if (this.checked) {
-                parentDiv.classList.add('checked');
-            } else {
-                parentDiv.classList.remove('checked');
-            }
+        // Toon alle buttons
+        choiceButtons.forEach(function(button) {
+            button.classList.remove('hidden');
         });
     });
-});
 
-document.addEventListener('DOMContentLoaded', function() {
-    const choiceButtons = document.querySelectorAll('.style-choice-button');
-
+    // Initial hiding of unchecked buttons
     choiceButtons.forEach(function(button) {
         const checkbox = button.querySelector('input[type="checkbox"]');
+        if (!checkbox.checked) {
+            button.classList.add('hidden');
+        }
+    });
 
-        // Voeg eventlistener toe voor klikgebeurtenissen op de knoppen
+    // Toggle 'checked' class on click
+    choiceButtons.forEach(function(button) {
+        const checkbox = button.querySelector('input[type="checkbox"]');
         button.addEventListener('click', function() {
-            // Toggle de checked status van de checkbox
             checkbox.checked = !checkbox.checked;
-            // Voeg of verwijder de 'checked' klasse aan de knop
             button.classList.toggle('checked', checkbox.checked);
         });
     });
 });
+
 
 
 // Edit partials 
