@@ -48,9 +48,54 @@ function videoPauze() {
 videoPauze();
 
 
-// in css: #user-info-container div:first-of-type.hidden {
-//     display: none; 
-//   }
+// Filter openen
+const filterButton = document.getElementById('filter');
+const filterCloseButton = document.querySelector('#filter-pop-up button:first-child');
+
+filterButton.addEventListener('click', function(){
+    document.getElementById('filter-pop-up').style.height = "100%";
+    // document.getElementById('filter').style.backgroundColor = "var(--primary-color)";
+});
+
+filterCloseButton.addEventListener('click', function(){
+    document.getElementById('filter-pop-up').style.height = "0%";
+});
+
+// Filter checks
+const genreButtons = document.querySelectorAll('#sort fieldset:nth-of-type(2) input');
+const labels = document.querySelectorAll('#sort fieldset:nth-of-type(2) label');
+
+genreButtons.forEach(function(button) {
+    button.addEventListener('change', function() {
+        const index = Array.from(genreButtons).indexOf(button);
+        if (button.checked) {
+            labels[index].style.border = 'solid 0.125em var(--primary-color)';
+        } else {
+            labels[index].style.border = ''; 
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // search test
 document.querySelector('form').addEventListener('submit', function(event) {
@@ -176,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function() {
     showPartial(currentIndex); // Initialize the first partial to be visible
 
 
-    // Progressbar
+
     function validateForm() {
         const currentPartial = partials[currentIndex];
         const inputs = currentPartial.querySelectorAll('input[required], textarea[required]');
@@ -190,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateProgressBar(true);
         return true;
     }
-
+    // Progressbar
     function updateProgressBar(isNext) {
         const steps = document.querySelectorAll('.progressbar');
         if (isNext) {
