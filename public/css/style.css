@@ -177,6 +177,19 @@ input[type="email"]{
   height: 4.5vh;
 }
 
+.style-choice-button{
+  text-align: center;
+  align-content: center;
+}
+
+.style-choice-button.checked {
+  border-color: var(--primary-color);
+}
+
+.style-choice-button input[type="checkbox"]{
+  display: none;
+}
+
 .hidden {
   display: none;
 }
@@ -260,9 +273,14 @@ video, audio {
 .profile form > header > section:nth-of-type(1)> section:nth-of-type(2),
 .profile form > main > section:nth-of-type(2),
 .profile form > main > section:nth-of-type(3),
-.profile form > main > section:nth-of-type(4),
-.profile form > main > section:nth-of-type(5){
+.profile form > main > section:nth-of-type(6){
   display: flex;
+}
+
+.profile .grid-choice-button{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px; 
 }
 
 .profile form > main > section:nth-of-type(2) > section,

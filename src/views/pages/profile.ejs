@@ -55,13 +55,17 @@
                 <img src="../img/genre_icon.svg" class="imageIcon" alt="genre icon">
                 <section>
                     <label class="checkbox-label">Genre</label>
-                    <% const genres = ['blues', 'classical', 'country', 'disco', 'dubstep', 'electro', 'folk', 'funk', 'hip-hop', 
-                    'house', 'jazz', 'metal', 'pop', 'punk', 'r&b', 'reggae', 'rock', 'schlager', 'soul', 'techno', 'trance']; %>
-                    <% genres.forEach(function(genre) { %>
-                        <input class="style-choice-button" type="checkbox" name="genres" value="<%= genre %>"
-                        <% if (user.genres.includes(genre)) { %> checked <% } %> />
-                        <%= genre %>
-                    <% }); %>
+                    <section class="grid-choice-button">
+                        <% const genres = ['Blues', 'Classical', 'Country', 'Disco', 'Dubstep', 'Electro', 'Folk', 'Funk', 'Hip-hop', 
+                        'House', 'Jazz', 'Metal', 'Pop', 'Punk', 'R&B', 'Reggae', 'Rock', 'Schlager', 'Soul', 'Techno', 'Trance']; %>
+                        <% genres.forEach(function(genre) { %>
+                             <section class="style-choice-button">
+                                <input type="checkbox" name="genres" value="<%= genre %>"
+                                <% if (user.genres.includes(genre)) { %> checked <% } %> />
+                                 <%= genre %>
+                             </section>
+                        <% }); %>
+                    </section>
                 </section>
             </section>
             
@@ -69,18 +73,23 @@
                 <img src="../img/instrument_icon.svg" class="imageIcon" alt="instrument icon">
                 <section>
                     <label class="checkbox-label">Instrument</label>
-                    <% const instruments = ['Accordion', 'Banjo', 'Bass', 'Bongos', 'Cello', 'Clarinet', 'Congas', 'Drums', 'Djembe', 'Flute', 'Guitar', 
-                    'Harmonica', 'Keyboard', 'Maracas', 'Piano', 'Sampler', 'Saxophone', 'Synthesizer', 'Trombone', 'Trumpet', 'Ukelele', 'Violin', 'Voice']; %>
-                    <% instruments.forEach(function(instrument) { %>
-                      <input class="style-choice-button" type="checkbox" id="userInstruments" name="userInstruments" value="<%= instrument %>" 
-                      <% if (user.userInstruments.includes(instrument)) { %> checked <% } %> />
-                      <%= instrument %>
-                    <% }); %>
+                    <section class="grid-choice-button">
+                        <% const instruments = ['Accordion', 'Banjo', 'Bass', 'Bongos', 'Cello', 'Clarinet', 'Congas', 'Drums', 'Djembe', 'Flute', 'Guitar', 
+                        'Harmonica', 'Keyboard', 'Maracas', 'Piano', 'Sampler', 'Saxophone', 'Synthesizer', 'Trombone', 'Trumpet', 'Ukelele', 'Violin', 'Voice']; %>
+                        <% instruments.forEach(function(instrument) { %>
+                            <section class="style-choice-button">
+                                <input class="style-choice-button" type="checkbox" id="userInstruments" name="userInstruments" value="<%= instrument %>" 
+                                <% if (user.userInstruments.includes(instrument)) { %> checked <% } %> />
+                                <%= instrument %>
+                            </section>
+                        <% }); %>
+                    </section>
                 </section>
             </section>
             
             <section>
                 <h3>Content</h3>
+                <section>
                 <% user.media.forEach(video => { %>
                     <div id="videoBackground">
                         <video loop>

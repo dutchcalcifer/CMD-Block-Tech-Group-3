@@ -282,6 +282,44 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+// Choice button check 
+document.addEventListener('DOMContentLoaded', function() {
+    const choiceButtons = document.querySelectorAll('.style-choice-button input[type="checkbox"]');
+
+    choiceButtons.forEach(function(button) {
+        // Voeg klasse 'checked' toe aan aangevinkte buttons
+        if (button.checked) {
+            const parentDiv = button.parentNode;
+            parentDiv.classList.add('checked');
+        }
+
+        // Voeg eventlistener toe voor wijzigingen
+        button.addEventListener('change', function() {
+            const parentDiv = this.parentNode;
+            if (this.checked) {
+                parentDiv.classList.add('checked');
+            } else {
+                parentDiv.classList.remove('checked');
+            }
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const choiceButtons = document.querySelectorAll('.style-choice-button');
+
+    choiceButtons.forEach(function(button) {
+        const checkbox = button.querySelector('input[type="checkbox"]');
+
+        // Voeg eventlistener toe voor klikgebeurtenissen op de knoppen
+        button.addEventListener('click', function() {
+            // Toggle de checked status van de checkbox
+            checkbox.checked = !checkbox.checked;
+            // Voeg of verwijder de 'checked' klasse aan de knop
+            button.classList.toggle('checked', checkbox.checked);
+        });
+    });
+});
 
 
 // Edit partials 
