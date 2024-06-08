@@ -52,12 +52,12 @@ videoPauze();
 const filterButton = document.getElementById('filter');
 const filterCloseButton = document.querySelector('#filter-pop-up button:first-child');
 
-filterButton.addEventListener('click', function(){
+filterButton?.addEventListener('click', function(){
     document.getElementById('filter-pop-up').style.height = "100%";
     // document.getElementById('filter').style.backgroundColor = "var(--primary-color)";
 });
 
-filterCloseButton.addEventListener('click', function(){
+filterCloseButton?.addEventListener('click', function(){
     document.getElementById('filter-pop-up').style.height = "0%";
 });
 
@@ -65,7 +65,7 @@ filterCloseButton.addEventListener('click', function(){
 const genreButtons = document.querySelectorAll('#sort fieldset:nth-of-type(2) input');
 const labels = document.querySelectorAll('#sort fieldset:nth-of-type(2) label');
 
-genreButtons.forEach(function(button) {
+genreButtons?.forEach(function(button) {
     button.addEventListener('change', function() {
         const index = Array.from(genreButtons).indexOf(button);
         if (button.checked) {
