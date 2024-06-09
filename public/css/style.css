@@ -241,7 +241,7 @@ input[type="email"]{
 }
 
 #foryouheader h1{
-  color: #efefef;
+  color: var(--body-background);
 }
 
 header button{
@@ -259,6 +259,11 @@ header button img{
   width: 1.5625em;
   height: 1.5625em;
 }
+
+header button:first-child:active{
+  background-color: var(--secondary-color)
+}
+
 
 /* For you search bar */
 header form{
@@ -608,6 +613,157 @@ height:3.25em ;
 #user-info-container div:first-of-type.hidden {
   display: none; 
 }
+
+
+
+
+
+
+
+
+/* Filter pop up */
+#filter-pop-up{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1200;
+  background-color: var(--body-background);
+  transition: 0.5s;
+}
+#filter-pop-up h2{
+  font-size: 1.25em;
+  font-family: Jost-Medium;
+  font-weight: normal;
+  color: var(--primary-color);
+  margin-bottom: 1em;
+}
+
+#filter-pop-up button:first-child{
+  background-color: var(--body-background);
+  border: none;
+  width: 2em;
+  height: 2em;
+  background-image: url(../img/cross.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  border-radius: 3em;
+}
+
+#filter-pop-up button:first-child:active{
+  background-color: var(--secondary-color);
+}
+
+
+#filter-pop-up ul:first-child{
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  padding-top:  0.9375em;
+  margin-left:  0.9375em;
+  margin-right:  0.9375em;
+  
+}
+
+#sort form{
+  padding: 0;
+}
+
+#sort fieldset{
+  background-color: var(--body-background);
+  border: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#sort  input{
+  display: none; 
+  align-items: center;
+}
+
+#sort  label{
+  margin-top: 1em;
+  border: solid 0.125em var(--secondary-color);
+  border-radius: 3em;
+  text-align: center;
+  color: var(--primary-color);
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+}
+
+
+
+#sort fieldset:nth-of-type(1) label{
+  width: 7.0625em;
+  height: 3.4375em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1em;
+  overflow: hidden;
+}
+
+#sort fieldset:nth-of-type(1) label span{
+  overflow: hidden;
+  color: var(--secondary-color);
+}
+
+#sort fieldset:nth-of-type(2) label, #sort fieldset:nth-of-type(3) label{
+  width: 7.0625em;
+  height: 2.125em;
+}
+
+#sort fieldset{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; 
+  padding: 0;
+  
+}
+
+#sort fieldset legend{
+  padding-left: 0.9375em;
+}
+
+#sort fieldset:nth-of-type(2) , #sort fieldset:nth-of-type(3){
+  margin-top: 2.5em;
+}
+
+#sort fieldset:nth-of-type(3){
+  margin-bottom: 6.375em;
+}
+
+#filter-pop-up form > button{
+  margin-top: 2em;
+  background-color: var(--primary-color);
+  color: var(--body-background);
+  height: 3.375em ;
+  width: 22.5em ;
+  border: none;
+  border-radius: 3em;
+  position:fixed; 
+  bottom:1em; 
+  left: 50%;
+  transform: translateX(-50%);
+  
+}
+
+
 
 
 
