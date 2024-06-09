@@ -51,19 +51,24 @@ videoPauze();
 // Filter openen
 const filterButton = document.getElementById('filter');
 const filterCloseButton = document.querySelector('#filter-pop-up button:first-child');
+const filterSubmit = document.querySelector('#filter-pop-up form > button');
 
 filterButton?.addEventListener('click', function(){
     document.getElementById('filter-pop-up').style.height = "100%";
+    filterSubmit.classList.remove('hidden');
     // document.getElementById('filter').style.backgroundColor = "var(--primary-color)";
 });
 
 filterCloseButton?.addEventListener('click', function(){
     document.getElementById('filter-pop-up').style.height = "0%";
+    filterSubmit.classList.add('hidden');
 });
 
+
+
 // Filter checks
-const genreButtons = document.querySelectorAll('#sort fieldset:nth-of-type(2) input');
-const labels = document.querySelectorAll('#sort fieldset:nth-of-type(2) label');
+const genreButtons = document.querySelectorAll('#sort fieldset input');
+const labels = document.querySelectorAll('#sort fieldset label');
 
 genreButtons?.forEach(function(button) {
     button.addEventListener('change', function() {
@@ -73,6 +78,47 @@ genreButtons?.forEach(function(button) {
         } else {
             labels[index].style.border = ''; 
         }
+    });
+});
+
+
+// filter checkboxes
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('#filter-pop-up form')?.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        let filterFieldsetMember = document.querySelector('#sort fieldset:nth-of-type(3)');
+        let checkboxesMembers = filterFieldsetMember.querySelectorAll('input[type="checkbox"]:checked');
+
+        let filterFieldsetGenres = document.querySelector('#sort fieldset:nth-of-type(2)');
+        let checkboxesGenres = filterFieldsetGenres.querySelectorAll('input[type="checkbox"]:checked');
+
+        let selectedValuesGenres = Array.from(checkboxesGenres).map(cb => cb.value);
+        console.log('Selected genre Values:', selectedValuesGenres);
+
+        let selectedValuesMembers = Array.from(checkboxesMembers).map(cb => cb.value);
+        console.log('Selected Member Values:', selectedValuesMembers);
+
+        let videoBackgrounds = document.querySelectorAll('#videoBackground');
+        console.log('Video Backgrounds:', videoBackgrounds);
+
+        videoBackgrounds.forEach(function(videoBackground) {
+            let genreElements = videoBackground.querySelectorAll('.genre h3');
+            let memberElement = videoBackground.querySelector('section > ul > li:nth-child(2)');
+
+            let hasGenreMatch = !selectedValuesGenres.length || Array.from(genreElements).some(function(genreElement) {
+                let genreName = genreElement.textContent.trim();
+                return selectedValuesGenres.includes(genreName);
+            });
+
+            let hasMemberMatch = !selectedValuesMembers.length || !memberElement || selectedValuesMembers.includes(memberElement.textContent.trim());
+
+            if (hasGenreMatch && hasMemberMatch) {
+                videoBackground.classList.remove('hidden');
+            } else {
+                videoBackground.classList.add('hidden');
+            }
+        });
     });
 });
 
@@ -89,16 +135,8 @@ genreButtons?.forEach(function(button) {
 
 
 
-
-
-
-
-
-
-
-
-// search test
-document.querySelector('form').addEventListener('submit', function(event) {
+// search 
+document.querySelector('#foryouheader form')?.addEventListener('submit', function(event) {
     event.preventDefault(); 
 
     let filter = document.getElementById('searchInput').value.toLowerCase();

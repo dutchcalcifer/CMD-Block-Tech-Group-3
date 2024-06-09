@@ -161,7 +161,7 @@
                         </label>
                     </fieldset>
                     
-                    <button type="submit" class="hidden">Results</button>
+                    <button type="submit">Results</button>
                 </form>
             </section>
 
@@ -181,7 +181,7 @@
                             <li>
                                 <ul>
                                     <% user.genres.forEach(genre => { %>                                                                                 
-                                        <li><h3><%= genre %></h3></li>
+                                        <li class="genre"><h3><%= genre %></h3></li>
                                     <% }); %>
                                 </ul>
                             </li> 
