@@ -16,9 +16,7 @@
 
     <main>
         <section>
-            <section>
-                <img src="../uploads/<%= user.memberPfp %>" alt="profile picture" id="profileImage"> 
-            </section> 
+            <img src="../uploads/<%= user.memberPfp %>" alt="profile picture" id="profileImage"> 
             <article>
                 <h2><%= user.bandName %></h2>
                 <p><%= user.email %></p>
@@ -29,16 +27,20 @@
         <section>
             <h3>Accessibility</h3>
             <section class="setting-container">
-                <section id="language-menu"> 
+                <section class="setting-menu"> 
                     <img src="../img/language_icon.svg" alt="language icon">
                     <h4>Language</h4>
-                    <img src="../img/arrow_icon.svg" alt="Click to change language">
+                    <div>
+                        <img src="../img/arrow_icon.svg" alt="Click to change language">
+                    </div>
                 </section>
                     <div class="purple-stripe"></div>
-                <section id="display-menu">
+                <section class="setting-menu">
                     <img src="../img/display_icon.svg" alt="display icon">
                     <h4>Display</h4>
-                    <img src="../img/arrow_icon.svg" alt="Click to change display">
+                    <div>
+                        <img src="../img/arrow_icon.svg" alt="Click to change display">
+                    </div>
                 </section>
             </section>
         </section>
@@ -46,28 +48,36 @@
         <section>
             <h3>Account</h3>
             <section class="setting-container">
-                <section id="email-menu">
+                <section class="setting-menu">
                     <img src="../img/mail_icon.svg" alt="email icon">
                     <h4>Change email</h4>
-                    <img src="../img/arrow_icon.svg" alt="Click to change email">
+                    <div>
+                        <img src="../img/arrow_icon.svg" alt="Click to change email">
+                    </div>
                 </section>
                     <div class="purple-stripe"></div>
-                <section id="password-menu">
+                <section class="setting-menu">
                     <img src="../img/password_icon.svg" alt="password icon">
                     <h4>Change password</h4>
-                    <img src="../img/arrow_icon.svg" alt="Click to change password">
+                    <div>
+                        <img src="../img/arrow_icon.svg" alt="Click to change password">
+                    </div>
                 </section>
                     <div class="purple-stripe"></div>
-                <section id="delete-menu">
+                <section class="setting-menu">
                     <img src="../img/delete_icon.svg" alt="delete icon">
                     <h4>Delete account</h4>
-                    <img src="../img/arrow_icon.svg" alt="Click to delete account">
+                    <div>
+                        <img src="../img/arrow_icon.svg" alt="Click to delete account">
+                    </div>
                 </section>
                     <div class="purple-stripe"></div>
-                <section id="logout-menu">
+                <section class="setting-menu">
                     <img src="../img/logout_icon.svg" alt="logout icon">
                     <h4>Log out</h4>
-                    <img src="../img/arrow_icon.svg" alt="Click to logout">
+                    <div>
+                        <img src="../img/arrow_icon.svg" alt="Click to logout">
+                    </div>
                 </section>
             </section>
         </section>
@@ -77,8 +87,8 @@
         <nav>
             <ul>
                 <li><a href="foryou"><img src="../img/houseWhite_icon.svg" alt="Go to for you page"></a></li>
-                <li><a href="profile"><img src="../img/profilePurple_icon.svg" alt="Go to profile page"></a></li>
-                <li><a href="settings"><img src="../img/settings.svg" alt="Go to settings page"></a></li>
+                <li><a href="profile"><img src="../img/profile.svg" alt="Go to profile page"></a></li>
+                <li><a href="settings"><img src="../img/settingsPurple_icon.svg" alt="Go to settings page"></a></li>
             </ul>
         </nav>
     </footer>

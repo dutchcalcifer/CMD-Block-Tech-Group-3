@@ -5,7 +5,8 @@
   --secondary-color: #AF90DC;
   --light-white: rgba(255, 255, 255, 0.8);
   --help-text: rgba(0, 0, 0, 0.5);
-  --drop-shadow: 0 3px 3px 1px rgba(0, 0, 0, 0.2);
+  --drop-shadow-button: 0 3px 3px 1px rgba(0, 0, 0, 0.2);
+  --drop-shadow-settings: 0 5px 4px 0 rgba(0, 0, 0, 0.3), 0 3px 20px 0 rgba(0, 0, 0, 0.19);
   --body-background:#efefef;
   --for-you-buttons:#efefef;
   --for-you-card: #efefefcc;
@@ -61,13 +62,31 @@ form > * {
 }
 
 
-/* Text */
-h1, h2, h3, p, .style-genre{
-  font: var(--all-text);
+/* Display */
+.profile form > header > section:nth-of-type(1)> section:nth-of-type(1), 
+.profile form > header > section:nth-of-type(1)> section:nth-of-type(2),
+.profile form > main > section:nth-of-type(2),
+.profile form > main > section:nth-of-type(3),
+.profile form > main > section:nth-of-type(6),
+.settings header,
+.settings main > section:nth-of-type(1){
+  display: flex;
 }
 
-.profile h2{
-  font-weight: 700;
+/* Element spaces */
+.profile form > header > section:nth-of-type(1)> section:nth-of-type(1),
+.settings header{
+  justify-content: space-between;
+}
+
+
+/* Text */
+h1, 
+h2, 
+h3, 
+p, 
+.style-genre{
+  font: var(--all-text);
 }
 
 h1{
@@ -75,21 +94,34 @@ h1{
   margin-bottom: 0.7em;
 }
 
+.profile h1, 
+.profile #profileBandName{
+  color: var(--textbox-color); 
+}
+
 h2{
   font-weight: 600;
+}
+
+h2, 
+.help-text, 
+p{
+  text-align: left !important;
+}
+
+.profile h2{
+  font-weight: 700;
+}
+
+.profile h2, 
+.profile label, 
+h4{
+  color: var(--primary-color);
 }
 
 .help-text{
   color:var(--help-text);
   margin-bottom: 1.3em;
-}
-
-h2, .help-text, p{
-  text-align: left !important;
-}
-
-.profile h1, .profile h2, h4, .profile #profileBandName{
-  color: var(--primary-color);
 }
 
 
@@ -160,7 +192,7 @@ input[type="email"]{
 
 .style-choice-button, #savePhotoButton{
   color: var(--primary-color);
-  box-shadow: var(--drop-shadow);
+  box-shadow: var(--drop-shadow-button);
   height: 4.5vh;
 }
 
@@ -322,14 +354,6 @@ video, audio {
   margin: 0;
 }
 
-.profile form > header > section:nth-of-type(1)> section:nth-of-type(1), 
-.profile form > header > section:nth-of-type(1)> section:nth-of-type(2),
-.profile form > main > section:nth-of-type(2),
-.profile form > main > section:nth-of-type(3),
-.profile form > main > section:nth-of-type(6){
-  display: flex;
-}
-
 .profile .grid-choice-button{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -356,22 +380,16 @@ video, audio {
 
   .profile form > header > section:nth-of-type(1)> section:nth-of-type(1){
   height: 4vh; 
-  justify-content: space-between;
 }
 
 .profile form > header > #gradient{
   background-image: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,0.7));
   overflow: hidden;
-  height: 12vh;
+  height: 20vh;
 }
 
 .profile form > header > section:nth-of-type(1)> section:nth-of-type(2) {
   gap: 10px;
-}
-
-.profile form > main,
-.profile form > header > #gradient{
-  padding: 1em;
 }
 
 .profile .imageIcon{
@@ -379,6 +397,7 @@ video, audio {
 }
 
 .profile #profileBandName{
+  font-size: 1em;
   width: 50%;
   text-align: right;
   border: none;
@@ -391,10 +410,6 @@ video, audio {
   margin-top: 1em;
   margin-bottom: 2em;
   background-color: var(--primary-color);
-}
-
-.profile input{
-  margin-bottom: 1em;
 }
 
 .profile section label,
@@ -420,10 +435,44 @@ video, audio {
 
 /* Settings  */
 .settings #profileImage{
-  width: 100%;
+  width: 40%;
+}
+
+#profileImage{
+  border-radius: 50%;
+  margin-right: 1.5em;
+}
+
+.setting-container{
+  box-shadow: var(--drop-shadow-settings);
+  border-radius: 1em;
+}
+
+.settings .setting-menu{
+  display: flex;
+  justify-content: space-between;
+}
+
+.settings h3{
+  margin-bottom: 0.3em;
 }
 
 
+/* Profile and settings padding */
+.profile form > main,
+.profile form > header > #gradient,
+.settings header,
+.settings main > section:nth-of-type(1),
+.settings main > section:nth-of-type(2),
+.settings main > section:nth-of-type(3),
+.setting-container{
+  padding: 1em;
+}
+
+/* Margin */
+.profile input{
+  margin-bottom: 1em;
+}
 
 
 /* header form input[type="search"]:focus{
