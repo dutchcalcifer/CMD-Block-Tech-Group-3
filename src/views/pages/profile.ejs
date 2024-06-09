@@ -16,10 +16,6 @@
                     <h1>Profile</h1>
                     <img src="../img/edit_icon.svg" alt="edit icon button" id="editIcon">
                 </section>
-                <section>
-                    <input type="text" id="profileBandName" name="bandName" value="<%= user.bandName %>" readonly/>
-                    <img src="../img/band_icon.svg" alt="band icon">
-                </section>
             </section>
             <section>
                 <input type="file" name="memberPfp" class="mediaInput" accept="image/*">
@@ -28,7 +24,10 @@
 
         <main>
             <section>
-                <label for="profileDescription">Profile Description</label>
+                <div id="descriptionLabel">
+                    <img src="../img/band_icon.svg" alt="band icon" id="bandIcon">
+                    <label for="profileDescription"><%= user.bandName %></label>
+                </div>
                 <textarea id="profileDescription" name="description" readonly><%= user.description %></textarea>
             </section>
             
@@ -88,7 +87,7 @@
             </section>
             
             <section>
-                <h3>Content</h3>
+                <h2>Content</h2>
                 <section>
                 <% user.media.forEach(video => { %>
                     <div id="videoBackground">

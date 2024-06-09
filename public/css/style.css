@@ -37,11 +37,22 @@ body{
   background-color:var(--body-background) ;
 }
 
-a, button, form{
+#backgroundtest h1,
+.profile h1,
+.profile h2,
+.profile label,
+.settings h1,
+a, 
+button, 
+form{
   font-family:Jost-Medium ;
 }
 
-p, label, textarea, input, h4{
+p, 
+label, 
+textarea, 
+input, 
+h4{
   font-family:Jost-Regular;
 }
 
@@ -65,9 +76,9 @@ form > * {
 /* Display */
 .profile form > header > section:nth-of-type(1)> section:nth-of-type(1), 
 .profile form > header > section:nth-of-type(1)> section:nth-of-type(2),
+.profile #descriptionLabel,
 .profile form > main > section:nth-of-type(2),
 .profile form > main > section:nth-of-type(3),
-.profile form > main > section:nth-of-type(6),
 .settings header,
 .settings main > section:nth-of-type(1){
   display: flex;
@@ -94,8 +105,7 @@ h1{
   margin-bottom: 0.7em;
 }
 
-.profile h1, 
-.profile #profileBandName{
+.profile h1{
   color: var(--textbox-color); 
 }
 
@@ -114,7 +124,8 @@ p{
 }
 
 .profile h2, 
-.profile label, 
+.profile label,
+.settings h1, 
 h4{
   color: var(--primary-color);
 }
@@ -385,7 +396,7 @@ video, audio {
 .profile form > header > #gradient{
   background-image: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,0.7));
   overflow: hidden;
-  height: 20vh;
+  height: 11vh;
 }
 
 .profile form > header > section:nth-of-type(1)> section:nth-of-type(2) {
@@ -396,12 +407,8 @@ video, audio {
   position: absolute;
 }
 
-.profile #profileBandName{
-  font-size: 1em;
-  width: 50%;
-  text-align: right;
-  border: none;
-  background: none;
+.profile #bandIcon{
+  margin-right: 0.5em;
 }
 
 .purple-stripe{
