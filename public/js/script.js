@@ -84,6 +84,8 @@ genreButtons?.forEach(function(button) {
 
 // filter checkboxes
 document.addEventListener('DOMContentLoaded', function() {
+    const filterButton = document.getElementById('filter'); 
+
     document.querySelector('#filter-pop-up form')?.addEventListener('submit', function(event) {
         event.preventDefault();
 
@@ -119,18 +121,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 videoBackground.classList.add('hidden');
             }
         });
+
+    
+        if (selectedValuesGenres.length > 0 || selectedValuesMembers.length > 0) {
+            filterButton.style.backgroundColor = 'var(--secondary-color)'; 
+        } else {
+            filterButton.style.backgroundColor = ''; 
+        }
     });
+
+    
 });
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -138,6 +139,8 @@ document.addEventListener('DOMContentLoaded', function() {
 // search 
 document.querySelector('#foryouheader form')?.addEventListener('submit', function(event) {
     event.preventDefault(); 
+
+    
 
     let filter = document.getElementById('searchInput').value.toLowerCase();
     let videoBackgrounds = document.querySelectorAll('#videoBackground');
@@ -216,6 +219,9 @@ searchInput?.addEventListener('focus', function() {
         console.log("Huidige scrollpositie: ", scrollPosition);
     }
 });
+
+
+
 
 
 
