@@ -1,7 +1,9 @@
 // import module
 const bcrypt = require("bcrypt");
 const multer = require("multer");
+const fs = require("fs");
 const nodeMailer = require("nodemailer");
+const SendmailTransport = require("nodemailer/lib/sendmail-transport");
 
 // import middleware
 const storage = require("../middleware/multer.middleware");
@@ -10,7 +12,6 @@ const upload = multer({ storage: storage });
 
 // import model
 const User = require("../models/user.model");
-const SendmailTransport = require("nodemailer/lib/sendmail-transport");
 
 // POST create user
 const userCreate = async (req, res) => {
