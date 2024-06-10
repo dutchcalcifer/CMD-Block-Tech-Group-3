@@ -208,8 +208,10 @@ input[type="email"]{
 }
 
 .style-choice-button{
-  text-align: center;
-  align-content: center;
+  display: flex;
+  justify-content: center;
+  padding: 0.4em;
+  font-size: 0.9em;
 }
 
 .style-choice-button.checked {
@@ -243,6 +245,23 @@ input[type="email"]{
   display: grid;
   grid-template-columns: repeat(3, 100px);
   gap: 1em;
+}
+
+.checkbox-color {
+  box-shadow: 0 0 0 24px var(--primary-color) inset !important;
+} 
+
+.check {
+  height: 20px; 
+  width: 20px;
+  background: url(../img/checkMark_icon.svg) no-repeat center center;
+  background-color: #5E2BA7;
+  border-radius: 50%;
+  margin-left: 0.5em; 
+}
+
+.scaleNormal {
+  transform: scale(1) !important;
 }
 
 /* startscherm */

@@ -1,125 +1,3 @@
-// Video script
-// document.getElementById('uploadForm').addEventListener('submit', function(event) {
-//     event.preventDefault();
-//     const fileInput = document.getElementById('fileInput');
-//     const file = fileInput.files[0];
-
-//     if (file) {
-//         const mediaPreview = document.getElementById('mediaPreview');
-//         mediaPreview.innerHTML = '';
-
-//         const url = URL.createObjectURL(file);
-//         let mediaElement;
-
-//         if (file.type.startsWith('video/')) {
-//             mediaElement = document.createElement('video');
-//             mediaElement.controls = true;
-//         } else if (file.type.startsWith('audio/')) {
-//             mediaElement = document.createElement('audio');
-//             mediaElement.controls = true;
-//         }
-
-//         if (mediaElement) {
-//             mediaElement.src = url;
-//             mediaPreview.appendChild(mediaElement);
-//         }
-//     }
-// });
-
-// Registration Location
-console.log('Script loaded');
-
-const form = document.querySelector('form[action="/register"][method="POST"][enctype="multipart/form-data"]');
-
-if (form) {
-    console.log('Form found');
-
-    const isoLanguages = ["en", "es", "fr", "de", "zh", "ar", "hi", "ru", "pt", "bn", "ja", "jv", "ko", "vi", "tr", "fa", "ur", "it", "ms", "th", "id", "pl", "uk", "ro", "nl", "el", "he", "sv", "da", "no", "fi", "hu", "cs", "sk", "bg", "hr", "lt", "lv", "et", "sl", "sr", "mk", "mt", "ga", "cy", "sq", "hy", "ka", "be", "ky", "tk", "kk", "mn", "uz", "az", "tt", "ta", "te", "ml", "kn", "gu", "mr", "sa", "pa", "or", "as", "am", "ne", "si", "my", "km", "lo", "mn", "bo", "dz", "bh", "gn", "ay", "qu", "ts", "tn", "st", "ve", "zu", "xh", "af", "sw", "so", "rw", "ny", "ln", "kg", "ha", "yo", "ig", "ff", "bm", "sn", "om", "aa", "ti", "sg", "nd", "nr", "ss", "tn", "ts", "ve", "xh", "zu"];
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        console.log('Form submission prevented');
-        const country = document.getElementById('country').value;
-        const state = document.getElementById('state').value;
-        const city = document.getElementById('city').value;
-        const postalCode = document.getElementById('postalCode').value;
-        const language = document.getElementById('language').value;
-
-        validateLocation(country, state, city, postalCode)
-            .then(isValid => {
-                if (isValid) {
-                    if (language && !isoLanguages.includes(language)) {
-                        alert('Invalid language code');
-                    } else {
-                        alert('All inputs are valid!');
-                        // Here you can proceed with form submission or further processing
-                    }
-                } else {
-                    alert('Invalid location details');
-                }
-            })
-            .catch(error => {
-                console.error('Error during validation:', error);
-                alert('An error occurred during validation. Please try again.');
-            });
-    });
-} else {
-    console.log('Form not found');
-}
-
-async function validateLocation(country, state, city, postalCode) {
-    try {
-        console.log('Validating location:', country, state, city, postalCode);
-
-        const countryCode = await fetch(`http://api.geonames.org/searchJSON?q=${country}&maxRows=1&username=demo`)
-            .then(response => response.json())
-            .then(data => {
-                console.log('Country data:', data);
-                return data.geonames[0]?.countryCode || null;
-            });
-
-        console.log('Country code:', countryCode);
-        if (!countryCode) return false;
-
-        const stateCode = await fetch(`http://api.geonames.org/searchJSON?q=${state}&country=${countryCode}&maxRows=1&username=demo`)
-            .then(response => response.json())
-            .then(data => {
-                console.log('State data:', data);
-                return data.geonames[0]?.adminCode1 || null;
-            });
-
-        console.log('State code:', stateCode);
-        if (!stateCode) return false;
-
-        const cityExists = await fetch(`http://api.geonames.org/searchJSON?q=${city}&adminCode1=${stateCode}&country=${countryCode}&maxRows=1&username=demo`)
-            .then(response => response.json())
-            .then(data => {
-                console.log('City data:', data);
-                return data.geonames.length > 0;
-            });
-
-        console.log('City exists:', cityExists);
-        if (!cityExists) return false;
-
-        const postalCodeExists = await fetch(`http://api.geonames.org/postalCodeSearchJSON?postalcode=${postalCode}&country=${countryCode}&maxRows=1&username=demo`)
-            .then(response => response.json())
-            .then(data => {
-                console.log('Postal code data:', data);
-                return data.postalCodes.length > 0;
-            });
-
-        console.log('Postal code exists:', postalCodeExists);
-        return postalCodeExists;
-
-    } catch (error) {
-        console.error('Error fetching location data:', error);
-        return false;
-    }
-}
-
-
-
-
 // pauze for you
 function videoPauze() {
     var videos = document.querySelectorAll("video");
@@ -231,8 +109,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
-
 // search 
 document.querySelector('#foryouheader form')?.addEventListener('submit', function(event) {
     event.preventDefault(); 
@@ -321,8 +197,6 @@ searchInput?.addEventListener('focus', function() {
 });
 
 
-
-
 // Next and prev button
 document.addEventListener('DOMContentLoaded', function() {
     const partials = document.querySelectorAll('.partial');
@@ -397,19 +271,21 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
 // Back button profile
 document.getElementById('backButton').addEventListener('click', function() {
     window.location.href = '/foryou';
   });    
 
 
-  document.addEventListener('DOMContentLoaded', function() {
+// Profile edit button  
+document.addEventListener('DOMContentLoaded', function() {
     const editIcon = document.querySelector('#editIcon');
     const saveButton = document.querySelector('#saveButton');
     const inputs = document.querySelectorAll('input[type="text"], textarea'); // Selecteer alle input- en textarea-elementen
     const mediaInputs = document.querySelectorAll('.mediaInput');
     const choiceButtons = document.querySelectorAll('.style-choice-button');
+
+    let lastClickedButton = null;
 
     // Function to toggle readonly attributes
     function toggleReadonly(enable) {
@@ -424,6 +300,16 @@ document.getElementById('backButton').addEventListener('click', function() {
         });
     }
 
+    // Function to toggle visibility of .check
+    function toggleCheckVisibility(button, visible) {
+        const check = button.querySelector('.check');
+        if (visible) {
+            check.style.display = 'block';
+        } else {
+            check.style.display = 'none';
+        }
+    }
+
     // Event listener for the 'Save' button
     saveButton.addEventListener('click', function() {
         saveButton.style.display = 'none'; // Verberg de 'Save' knop
@@ -431,12 +317,14 @@ document.getElementById('backButton').addEventListener('click', function() {
         mediaInputs.forEach(function(input) {
             input.style.display = 'none'; // Verberg het bestand-input
         });
-        // Verberg ongecheckte buttons
+        // Verberg ongecheckte buttons en verwijder de .check class van alle buttons
         choiceButtons.forEach(function(button) {
             const checkbox = button.querySelector('input[type="checkbox"]');
             if (!checkbox.checked) {
                 button.classList.add('hidden');
             }
+            button.classList.remove('check');
+            toggleCheckVisibility(button, checkbox.checked);
         });
     });
 
@@ -447,18 +335,13 @@ document.getElementById('backButton').addEventListener('click', function() {
         mediaInputs.forEach(function(input) {
             input.style.display = 'block'; // Toon het bestand-input
         });
-        // Toon alle buttons
+        // Toon alle buttons en verwijder .check
         choiceButtons.forEach(function(button) {
             button.classList.remove('hidden');
+            button.classList.remove('check');
+            const checkbox = button.querySelector('input[type="checkbox"]');
+            toggleCheckVisibility(button, checkbox.checked);
         });
-    });
-
-    // Initial hiding of unchecked buttons
-    choiceButtons.forEach(function(button) {
-        const checkbox = button.querySelector('input[type="checkbox"]');
-        if (!checkbox.checked) {
-            button.classList.add('hidden');
-        }
     });
 
     // Toggle 'checked' class on click
@@ -467,10 +350,26 @@ document.getElementById('backButton').addEventListener('click', function() {
         button.addEventListener('click', function() {
             checkbox.checked = !checkbox.checked;
             button.classList.toggle('checked', checkbox.checked);
+            toggleCheckVisibility(button, checkbox.checked);
+            if (lastClickedButton && lastClickedButton !== button) {
+                lastClickedButton.classList.remove('check');
+            }
+            lastClickedButton = button;
         });
     });
 });
 
+
+
+
+// Checkmarked genre/instrument buttons
+$(document).ready(function(){
+    // Checkmark buttons
+    $('.checkbox-label').click(function(){
+        $(this).toggleClass('checkbox-color');
+        $(this).find('.check').toggleClass('scaleNormal'); 
+    });
+});
 
 
 // Edit partials 

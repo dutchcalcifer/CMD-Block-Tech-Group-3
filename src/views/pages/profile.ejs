@@ -60,8 +60,9 @@
                         <% genres.forEach(function(genre) { %>
                             <section class="style-choice-button <%= user.genres.includes(genre) ? 'checked' : 'hidden' %>">
                                 <input type="checkbox" name="genres" value="<%= genre %>"
-                                <% if (user.genres.includes(genre)) { %> checked <% } %> />
-                                 <%= genre %>
+                                <% if (user.genres.includes(genre)) { %> checked <% } %> readonly/>
+                                    <%= genre %>
+                                    <div class="check"></div>
                              </section>
                         <% }); %>
                     </section>
@@ -77,9 +78,10 @@
                         'Harmonica', 'Keyboard', 'Maracas', 'Piano', 'Sampler', 'Saxophone', 'Synthesizer', 'Trombone', 'Trumpet', 'Ukelele', 'Violin', 'Voice']; %>
                         <% instruments.forEach(function(instrument) { %>
                             <section class="style-choice-button <%= user.userInstruments.includes(instrument) ? 'checked' : 'hidden' %>">
-                                <input type="checkbox" name="userInstruments" value="<%= instrument %>" 
-                                <% if (user.userInstruments.includes(instrument)) { %> checked <% } %> />
-                                <%= instrument %>
+                                <input class="checkbox-font" type="checkbox" name="userInstruments" value="<%= instrument %>" 
+                                <% if (user.userInstruments.includes(instrument)) { %> checked <% } %> readonly/>
+                                    <%= instrument %>
+                                    <div class="check"></div> 
                             </section>
                         <% }); %>
                     </section>
@@ -115,5 +117,6 @@
     </footer>
 
     <script src="/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   </body>
 </html>
