@@ -246,8 +246,6 @@ input[type="email"]{
 }
 
 /* startscherm */
-
-
 #patternBackground{
   background-color: var(--primary-color);
   background-image: url(../img/background.svg);
@@ -309,16 +307,6 @@ input[type="email"]{
   width: 45%;
   height: 0.1em;
 }
-
-
-
-
-
-
-
-
-
-
 
 /* Progressbar */
 .container-progressbar{

@@ -133,7 +133,7 @@ function videoPauze() {
                 video.pause();
             }
         });
-
+        //pauze on scroll
         contentElement?.addEventListener('scroll', () => {
             video.pause();
         });
@@ -142,17 +142,18 @@ function videoPauze() {
 videoPauze();
 
 
-// Filter openen
+// Filter 
 const filterButton = document.getElementById('filter');
 const filterCloseButton = document.querySelector('#filter-pop-up button:first-child');
 const filterSubmit = document.querySelector('#filter-pop-up form > button');
 
+// open
 filterButton?.addEventListener('click', function(){
     document.getElementById('filter-pop-up').style.height = "100%";
     filterSubmit.classList.remove('hidden');
-    // document.getElementById('filter').style.backgroundColor = "var(--primary-color)";
 });
 
+//close
 filterCloseButton?.addEventListener('click', function(){
     document.getElementById('filter-pop-up').style.height = "0%";
     filterSubmit.classList.add('hidden');
@@ -189,9 +190,11 @@ document.addEventListener('DOMContentLoaded', function() {
         let filterFieldsetGenres = document.querySelector('#sort fieldset:nth-of-type(2)');
         let checkboxesGenres = filterFieldsetGenres.querySelectorAll('input[type="checkbox"]:checked');
 
+        //bron: chatgpt
         let selectedValuesGenres = Array.from(checkboxesGenres).map(cb => cb.value);
         console.log('Selected genre Values:', selectedValuesGenres);
 
+        //bron: chatgpt
         let selectedValuesMembers = Array.from(checkboxesMembers).map(cb => cb.value);
         console.log('Selected Member Values:', selectedValuesMembers);
 
@@ -253,6 +256,7 @@ document.querySelector('#foryouheader form')?.addEventListener('submit', functio
         }
     });
 
+    // No results
     let noResultParagraph = document.getElementById('noResultsMessage');
     if (!filter || !document.querySelectorAll('#videoBackground:not(.hidden)').length) {
         if (!noResultParagraph) {
@@ -268,7 +272,7 @@ document.querySelector('#foryouheader form')?.addEventListener('submit', functio
     }
 });
 
-
+// Scroll back to before searching
 const searchInput = document.getElementById('searchInput');
 const videoBackgrounds = document.querySelectorAll('#videoBackground');
 
@@ -279,6 +283,7 @@ searchInput?.addEventListener('blur', function() {
         });
     }
 });
+
 
 
 const scrollableElement = document.getElementById('user-info-container');
@@ -303,6 +308,7 @@ searchInput?.addEventListener('blur', function() {
         }
     }
 });
+
 
 searchInput?.addEventListener('focus', function() {
     const anyHidden = Array.from(document.querySelectorAll('[id^="videoBackground"]'))
