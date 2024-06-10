@@ -1,6 +1,7 @@
-// 
+// Register choice buttons
 document.addEventListener('DOMContentLoaded', function() {
-    const genreButtons = document.querySelectorAll('.register-choice');
+    const choiceButtons = document.querySelectorAll('.register-choice');
+    const errorMessage = document.getElementById('error-message');
 
     let lastClickedButton = null;
 
@@ -14,8 +15,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Event listener for genre buttons
-    genreButtons.forEach(function(button) {
+    // Event listener for choice buttons
+    choiceButtons.forEach(function(button) {
         const checkbox = button.querySelector('input[type="checkbox"]');
         button.addEventListener('click', function() {
             checkbox.checked = !checkbox.checked;
@@ -25,9 +26,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 lastClickedButton.classList.remove('check');
             }
             lastClickedButton = button;
+
+            // Check if any genre is checked
+            const checkedChoices = document.querySelectorAll('input[name="genres"]:checked, input[name="userInstruments"]:checked');
+            if (checkedChoices.length === 0) {
+                errorMessage.style.display = 'block'; // Show error message if no genre is checked
+            } else {
+                errorMessage.style.display = 'none'; // Hide error message if at least one genre is checked
+            }
         });
     });
 });
+
+
 
 // pauze for you
 function videoPauze() {

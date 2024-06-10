@@ -933,3 +933,10 @@ footer nav ul li{
 footer{
   height: 10vh;
 }
+
+
+/* Error handling */
+.error-message {
+  color: red;
+  /* display: none; Verberg standaard de foutmelding */
+}

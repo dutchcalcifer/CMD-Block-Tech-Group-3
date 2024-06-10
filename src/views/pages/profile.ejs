@@ -87,24 +87,28 @@
                     </section>
                 </section>
             </section>
-            
-            <section>
-                <h2>Content</h2>
-                <section>
-                <% user.media.forEach(video => { %>
-                    <div id="videoBackground">
-                        <video loop>
-                              <source src="../uploads/<%= video %>" type="video/mp4">  
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                <% }); %> 
-                <input type="file" name="media" class="mediaInput" accept="video/*,audio/*"/>        
-            </section>
 
             <button type="submit" id="saveButton">Save</button>
         </main>
     </form>
+
+    <section>
+        <h2>Content</h2>
+            <% user.media.forEach(media => { %>
+                    <video width="320" height="240" controls>
+                        <source src="../uploads/<%= media %>" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <form action="/deleteMedia/<%= user.media %>" method="POST" style="display: inline;">
+                        <button type="button">Delete</button>
+                    </form>
+            <% }); %>
+        <h2>Add Media</h2>
+        <form action="/addMedia/<%= user.media %>" method="POST">
+            <input type="text" name="newMedia" placeholder="Enter media filename">
+            <button type="button">Add Media</button>
+        </form>
+    </section>
 
     <footer>
         <nav>
