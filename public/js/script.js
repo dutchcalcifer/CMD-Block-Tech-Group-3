@@ -1,3 +1,34 @@
+// 
+document.addEventListener('DOMContentLoaded', function() {
+    const genreButtons = document.querySelectorAll('.register-choice');
+
+    let lastClickedButton = null;
+
+    // Function to toggle visibility of .check
+    function toggleCheckVisibility(button, visible) {
+        const check = button.querySelector('.check');
+        if (visible) {
+            check.style.display = 'block';
+        } else {
+            check.style.display = 'none';
+        }
+    }
+
+    // Event listener for genre buttons
+    genreButtons.forEach(function(button) {
+        const checkbox = button.querySelector('input[type="checkbox"]');
+        button.addEventListener('click', function() {
+            checkbox.checked = !checkbox.checked;
+            button.classList.toggle('checked', checkbox.checked);
+            toggleCheckVisibility(button, checkbox.checked);
+            if (lastClickedButton && lastClickedButton !== button) {
+                lastClickedButton.classList.remove('check');
+            }
+            lastClickedButton = button;
+        });
+    });
+});
+
 // pauze for you
 function videoPauze() {
     var videos = document.querySelectorAll("video");
@@ -283,7 +314,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const saveButton = document.querySelector('#saveButton');
     const inputs = document.querySelectorAll('input[type="text"], textarea'); // Selecteer alle input- en textarea-elementen
     const mediaInputs = document.querySelectorAll('.mediaInput');
-    const choiceButtons = document.querySelectorAll('.style-choice-button');
+    const choiceButtons = document.querySelectorAll('.profile-choice');
 
     let lastClickedButton = null;
 

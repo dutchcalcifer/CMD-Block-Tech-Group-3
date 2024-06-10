@@ -58,7 +58,7 @@
                         <% const genres = ['Blues', 'Classical', 'Country', 'Disco', 'Dubstep', 'Electro', 'Folk', 'Funk', 'Hip-hop', 
                         'House', 'Jazz', 'Metal', 'Pop', 'Punk', 'R&B', 'Reggae', 'Rock', 'Schlager', 'Soul', 'Techno', 'Trance']; %>
                         <% genres.forEach(function(genre) { %>
-                            <section class="style-choice-button <%= user.genres.includes(genre) ? 'checked' : 'hidden' %>">
+                            <section class="profile-choice <%= user.genres.includes(genre) ? 'checked' : 'hidden' %>">
                                 <input type="checkbox" name="genres" value="<%= genre %>"
                                 <% if (user.genres.includes(genre)) { %> checked <% } %> readonly/>
                                     <%= genre %>
@@ -77,7 +77,7 @@
                         <% const instruments = ['Accordion', 'Banjo', 'Bass', 'Bongos', 'Cello', 'Clarinet', 'Congas', 'Drums', 'Djembe', 'Flute', 'Guitar', 
                         'Harmonica', 'Keyboard', 'Maracas', 'Piano', 'Sampler', 'Saxophone', 'Synthesizer', 'Trombone', 'Trumpet', 'Ukelele', 'Violin', 'Voice']; %>
                         <% instruments.forEach(function(instrument) { %>
-                            <section class="style-choice-button <%= user.userInstruments.includes(instrument) ? 'checked' : 'hidden' %>">
+                            <section class="profile-choice <%= user.userInstruments.includes(instrument) ? 'checked' : 'hidden' %>">
                                 <input class="checkbox-font" type="checkbox" name="userInstruments" value="<%= instrument %>" 
                                 <% if (user.userInstruments.includes(instrument)) { %> checked <% } %> readonly/>
                                     <%= instrument %>

@@ -84,6 +84,12 @@ form > * {
   display: flex;
 }
 
+.profile section label,
+.profile section textarea,
+.register-choice.checked .check {
+  display: block;
+}
+
 /* Element spaces */
 .profile form > header > section:nth-of-type(1)> section:nth-of-type(1),
 .settings header{
@@ -196,31 +202,40 @@ input[type="email"]{
 
 
 /* Buttons */
-.progressbar, .style-choice-button, #savePhotoButton{
+.progressbar,
+.profile-choice,
+.register-choice,
+#savePhotoButton {
   border-radius: 20px;
-  border: 2px solid var(--secondary-color);  
+  border: 2px solid var(--secondary-color);
 }
 
-.style-choice-button, #savePhotoButton{
+.profile-choice,
+.register-choice,
+#savePhotoButton {
   color: var(--primary-color);
   box-shadow: var(--drop-shadow-button);
   height: 4.5vh;
 }
 
-.style-choice-button{
+.profile-choice,
+.register-choice {
   display: flex;
   justify-content: center;
   padding: 0.4em;
   font-size: 0.9em;
 }
 
-.style-choice-button.checked {
+.profile-choice.checked,
+.register-choice.checked {
   border-color: var(--primary-color);
 }
 
-.style-choice-button input[type="checkbox"],
+.profile-choice input[type="checkbox"],
+.register-choice input[type="checkbox"],
+.register-choice .check,
 .hidden,
-#saveButton, 
+#saveButton,
 .mediaInput {
   display: none;
 }
@@ -502,7 +517,6 @@ video, audio {
 
 .profile section label,
 .profile section textarea {
-  display: block;
   width: 100%;
   margin-bottom: 0.4em;
 }
