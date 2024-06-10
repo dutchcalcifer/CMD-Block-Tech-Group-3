@@ -4,9 +4,11 @@ const express = require("express");
 const router = express.Router();
 const {
   userCreate,
+  addMedia,
   usersGet,
   userUpdate,
   userDelete,
+  deleteMedia,
   userLogin,
   userLogout,
 } = require("../controllers/user.controller");
@@ -31,6 +33,18 @@ router.get("/register", async (req, res) => {
 
 // POST register new user
 router.post("/register", userCreate);
+
+// POST register new user
+router.post("/addMedia", addMedia);
+
+// GET complete registration page
+router.get("/completeRegistration", async (req, res) => {
+  try {
+    res.render("pages/completeRegistration");
+  } catch (error) {
+    console.error(error);
+  }
+});
 
 // GET login page
 router.get("/login", async (req, res) => {
@@ -87,11 +101,24 @@ router.get("/profile", async (req, res) => {
 //  POST edit user
 router.post("/edit", userUpdate);
 
-// GET delete
+// GET delete user
 router.get("/delete", (req, res) => {
   try {
     if (req.session && req.session.user) {
       userDelete(req, res);
+    } else {
+      res.redirect("/login");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+// GET delete media
+router.get("/deleteMedia/:id", (req, res) => {
+  try {
+    if (req.session && req.session.user) {
+      deleteMedia(req, res);
     } else {
       res.redirect("/login");
     }
