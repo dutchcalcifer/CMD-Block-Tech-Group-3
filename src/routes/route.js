@@ -1,6 +1,7 @@
 // import modules and user controller
 const session = require("express-session");
 const express = require("express");
+const User = require("../models/user.model");
 const router = express.Router();
 const {
   userCreate,
@@ -31,10 +32,24 @@ router.get("/register", async (req, res) => {
   }
 });
 
+// GET profile
+router.get("/profile/:id", async (req, res) => {
+  try {
+    if (req.session && req.session.user) {
+      const user = await User.findById(req.params.id);
+      res.render("pages/userProfile", { user });
+    } else {
+      res.redirect("/login");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 // POST register new user
 router.post("/register", userCreate);
 
-// POST register new user
+// POST register add media
 router.post("/addMedia", addMedia);
 
 // GET complete registration page
