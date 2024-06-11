@@ -562,7 +562,7 @@ video, audio {
   height: 0.2vh;
   width: 100%;
   margin-top: 1em;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   background-color: var(--primary-color);
 }
 
@@ -604,6 +604,9 @@ video, audio {
 .settings .setting-menu{
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  border: none;
+  width: 100%;
 }
 
 .settings h3{
