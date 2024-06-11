@@ -17,16 +17,14 @@
                     <img src="../img/edit_icon.svg" alt="edit icon button" id="editIcon">
                 </section>
             </section>
-            <section>
-                <input type="file" name="memberPfp" class="mediaInput" accept="image/*">
-            </section>
         </header>
+        <input type="file" name="memberPfp" class="mediaInput" accept="image/*">
 
         <main>
             <section>
                 <div id="descriptionLabel">
                     <img src="../img/band_icon.svg" alt="band icon" id="bandIcon">
-                    <label for="profileDescription"><%= user.bandName %></label>
+                    <input type="text" id="profileName" name="bandName" value="<%= user.bandName %>" readonly/>
                 </div>
                 <textarea id="profileDescription" name="description" readonly><%= user.description %></textarea>
             </section>
@@ -87,8 +85,6 @@
                     </section>
                 </section>
             </section>
-
-            <button type="submit" id="saveButton">Save</button>
         </main>
     </form>
 
@@ -108,6 +104,8 @@
             <input type="file" name="media" placeholder="Enter media filename">
             <button type="submit">Add Media</button>
         </form>
+
+        <button type="submit" id="saveButton">Save</button>
     </section>
 
     <footer>

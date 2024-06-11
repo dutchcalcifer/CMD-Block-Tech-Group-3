@@ -40,7 +40,7 @@ body{
 #backgroundtest h1,
 .profile h1,
 .profile h2,
-.profile label,
+#profileName,
 .settings h1,
 a, 
 button, 
@@ -54,6 +54,10 @@ textarea,
 input, 
 h4{
   font-family:Jost-Regular;
+}
+
+#profileName{
+  font-size: 1em;
 }
 
 body,
@@ -132,7 +136,7 @@ p{
 }
 
 .profile h2, 
-.profile label,
+#profileName,
 .settings h1, 
 h4{
   color: var(--primary-color);
@@ -217,7 +221,7 @@ input[type="email"]{
 #savePhotoButton {
   color: var(--primary-color);
   box-shadow: var(--drop-shadow-button);
-  height: 4.5vh;
+  height: 5.1vh;
 }
 
 .profile-choice,
@@ -270,12 +274,56 @@ input[type="email"]{
 } 
 
 .check {
-  height: 20px; 
-  width: 20px;
-  background: url(../img/checkMark_icon.svg) no-repeat center center;
-  background-color: #5E2BA7;
-  border-radius: 50%;
+  position: relative; /* Maakt het mogelijk om absoluut gepositioneerde kinderen relatief aan dit element te positioneren */
+  height: 20px;
+  width: 20px; 
+  background-color: #5E2BA7; 
+  border-radius: 50%; 
   margin-left: 0.5em; 
+  overflow: hidden; /* Zorgt ervoor dat de inhoud van het element niet buiten de randen van het element komt */
+  animation: fillCheck 1s forwards; /* Past de fillCheck animatie toe die 1 seconde duurt en blijft in de eindtoestand */
+}
+
+.check::after {
+  content: ''; /* Maakt een leeg pseudo-element */
+  position: absolute; /* Positioneert het pseudo-element absoluut relatief aan de ouder (.check) */
+  top: 50%; 
+  left: 50%; 
+  width: 0; 
+  height: 0; 
+  background: url('../img/checkMark_icon.svg') no-repeat center center; 
+  transform: translate(-50%, -50%); /* Verplaatst het pseudo-element zodat het perfect gecentreerd is binnen de ouder */
+  border-radius: 50%;
+}
+
+@keyframes fillCheck {
+  0% {
+      width: 20px; /* De breedte van het element aan het begin van de animatie */
+      height: 20px; /* De hoogte van het element aan het begin van de animatie */
+  }
+  100% {
+      width: 20px; /* De breedte van het element aan het einde van de animatie blijft hetzelfde */
+      height: 20px; /* De hoogte van het element aan het einde van de animatie blijft hetzelfde */
+      background-color: #fff; /* Verandert de achtergrondkleur naar wit aan het einde van de animatie */
+  }
+}
+
+@keyframes fill {
+  0% {
+      width: 0; /* Het element begint met een breedte van 0 */
+      height: 0; /* Het element begint met een hoogte van 0 */
+      background-color: #5E2BA7; /* De achtergrondkleur is paars aan het begin van de animatie */
+  }
+  100% {
+      width: 100%; /* Het element groeit naar de volledige breedte van zijn container */
+      height: 100%; /* Het element groeit naar de volledige hoogte van zijn container */
+      background-color: #5E2BA7; /* De achtergrondkleur blijft paars aan het einde van de animatie */
+  }
+}
+
+
+.check::after {
+  animation: fill 1s forwards;
 }
 
 .scaleNormal {
@@ -489,7 +537,7 @@ video, audio {
   }
 
   .profile form > header > section:nth-of-type(1)> section:nth-of-type(1){
-  height: 4vh; 
+  height: 5vh; 
 }
 
 .profile form > header > #gradient{
@@ -576,7 +624,7 @@ video, audio {
 
 /* Margin */
 .profile input{
-  margin-bottom: 1em;
+  margin: 0;
 }
 
 
