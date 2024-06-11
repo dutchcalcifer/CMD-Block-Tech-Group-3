@@ -80,7 +80,8 @@ form > * {
 .profile form > main > section:nth-of-type(2),
 .profile form > main > section:nth-of-type(3),
 .settings header,
-.settings main > section:nth-of-type(1){
+.settings main > section:nth-of-type(1),
+#buttons_NextPrev{
   display: flex;
 }
 
@@ -92,7 +93,8 @@ form > * {
 
 /* Element spaces */
 .profile form > header > section:nth-of-type(1)> section:nth-of-type(1),
-.settings header{
+.settings header,
+#buttons_NextPrev{
   justify-content: space-between;
 }
 
@@ -258,8 +260,9 @@ input[type="email"]{
 
 .container-choice{
   display: grid;
-  grid-template-columns: repeat(3, 100px);
   gap: 1em;
+  grid-template-columns: repeat(3, 100px);
+  height: 60vh;
 }
 
 .checkbox-color {

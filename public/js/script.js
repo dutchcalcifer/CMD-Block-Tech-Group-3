@@ -200,8 +200,6 @@ searchInput?.addEventListener('focus', function() {
 // Next and prev button
 document.addEventListener('DOMContentLoaded', function() {
     const choiceButtons = document.querySelectorAll('.register-choice');
-    const genreMessage = document.getElementById('genre-message');
-    const instrumentMessage = document.getElementById('instrument-message');
     const partials = document.querySelectorAll('.partial');
     let currentIndex = 0;
     let currentStep = 1;
@@ -214,30 +212,6 @@ document.addEventListener('DOMContentLoaded', function() {
             check.style.display = 'block';
         } else {
             check.style.display = 'none';
-        }
-    }
-
-    // Function to check if any genres are checked and show/hide the error message
-    function checkGenres() {
-        const checkedGenres = document.querySelectorAll('input[name="genres"]:checked');
-        if (checkedGenres.length === 0) {
-            genreMessage.style.display = 'block'; // Show genre message if no genre is checked
-            return false;
-        } else {
-            genreMessage.style.display = 'none'; // Hide genre message if at least one genre is checked
-            return true;
-        }
-    }
-
-    // Function to check if any instruments are checked and show/hide the error message
-    function checkInstruments() {
-        const checkedInstruments = document.querySelectorAll('input[name="userInstruments"]:checked');
-        if (checkedInstruments.length === 0) {
-            instrumentMessage.style.display = 'block'; // Show instrument message if no instrument is checked
-            return false;
-        } else {
-            instrumentMessage.style.display = 'none'; // Hide instrument message if at least one instrument is checked
-            return true;
         }
     }
 
@@ -281,28 +255,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to validate the form before allowing the user to proceed
     function validateForm() {
         const currentPartial = partials[currentIndex];
-
-        // Check if the current partial is the genre partial
-        if (currentPartial.id === 'genre-partial') {
-            if (!checkGenres()) {
-                return false;
-            }
-        }
-
-        // Check if the current partial is the instrument partial
-        if (currentPartial.id === 'instrument-partial') {
-            if (!checkInstruments()) {
-                return false;
-            }
-        }
-
-        // Check if any input is checked
-        const checkedInputs = currentPartial.querySelectorAll('input[type="checkbox"]:checked');
-        if (checkedInputs.length === 0) {
-            // Show error message
-            alert('Please select at least one option.');
-            return false;
-        }
 
         // Update the progress bar here if validation succeeds
         updateProgressBar(true);
