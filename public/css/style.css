@@ -10,6 +10,7 @@
   --body-background:#efefef;
   --for-you-buttons:#efefef;
   --for-you-card: #efefefcc;
+  --for-you-pauze-layer: #000000b0;
 
   --all-text: 1em "Jost", Arial, Helvetica, sans-serif;
 }
@@ -251,6 +252,7 @@ input[type="email"]{
   background-image: url(../img/background.svg);
 }
 
+
 #patternBackground img {
   width: 63.5%;
   position: absolute; 
@@ -310,6 +312,8 @@ input[type="email"]{
 
 
 /* Login page */
+
+
 #loginPage header{
   display: flex;
   width: 100%;
@@ -318,6 +322,7 @@ input[type="email"]{
   position: relative;
   margin-top: 1em;
   height: 3em;
+  color: var(--body-background);
 }
 
  #loginPage header h1{
@@ -325,14 +330,19 @@ input[type="email"]{
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  margin-bottom: 0;
-  
-
+  margin-bottom: 0; 
 }
 
-#loginPage header a{
-  
-} 
+#loginPage a{
+  padding: 0.7em;
+  background-color: var(--body-background);
+  text-decoration: none;
+  border-radius: 3em;
+  width: 2em;
+  height: 2em;
+}
+
+
 
 
 
@@ -432,6 +442,21 @@ input[type="search"]:focus {
 input[type="search"]:not(:placeholder-shown) {
   width: 17.5em;
   background-position: 0.9375em center;
+}
+
+/* pauze button */
+#pauzeButton{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: var(--for-you-pauze-layer);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  background-image: url(../img/pauzebutton.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 

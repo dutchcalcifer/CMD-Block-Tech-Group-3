@@ -4,20 +4,28 @@ function videoPauze() {
     const contentElement = document.getElementById('user-info-container');
 
     videos.forEach(function(video) {
+        const pauzeB = video.parentElement.querySelector("#pauzeButton");
+
         video.addEventListener("click", function() {
             if (video.paused) {
                 video.play();
+                pauzeB.style.display = 'none'; //pauze button uit
+
             } else {
                 video.pause();
+                pauzeB.style.display = 'block'; //pauze button aan
             }
         });
+
         //pauze on scroll
         contentElement?.addEventListener('scroll', () => {
             video.pause();
+            pauzeB.style.display = 'block'; //pauze button aan
         });
     });
 }
 videoPauze();
+
 
 
 
@@ -41,8 +49,8 @@ filterCloseButton?.addEventListener('click', function(){
 
 
 // Filter knoppen styling
-const checkboxes = document.querySelectorAll('#sort fieldset input');
-const labels = document.querySelectorAll('#sort fieldset label');
+const checkboxes = document.querySelectorAll('#sort fieldset:nth-of-type(2) input, #sort fieldset:nth-of-type(3) input');
+const labels = document.querySelectorAll('#sort fieldset:nth-of-type(2) label, #sort fieldset:nth-of-type(3) label');
 
 checkboxes?.forEach(function(checkbox) {
     checkbox.addEventListener('change', function() {
@@ -55,7 +63,6 @@ checkboxes?.forEach(function(checkbox) {
         }
     });
 });
-
 
 
 // filter checkboxes
@@ -108,18 +115,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 videoBackground.classList.add('hidden');
             }
         });
-    
-    //ALs er ook maar 1 filter aan staat word de filterknop lichtpaars
+
+        //ALs er ook maar 1 filter aan staat word de filterknop lichtpaars
         if (selectedValuesGenres.length > 0 || selectedValuesMembers.length > 0) {
             filterButton.style.backgroundColor = 'var(--secondary-color)'; 
         } else {
             filterButton.style.backgroundColor = ''; 
         }
-    });
 
-    
+
+        startSorting();
+    });  
 });
-
 
 
 // search 

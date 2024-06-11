@@ -172,8 +172,9 @@
             
             <% users.forEach(user => { %>
                 <div id="videoBackground">
+                    <div id="pauzeButton"></div>
                     <video loop>
-                          <source src="../img/Eindresultaat(Mp4).mp4" type="video/mp4">  
+                          <source src="../uploads/<%= user.media[0]%>" type="video/mp4">  
                         Your browser does not support the video tag.
                     </video>
                     <section>
