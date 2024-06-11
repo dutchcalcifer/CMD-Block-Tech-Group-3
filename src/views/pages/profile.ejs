@@ -99,14 +99,14 @@
                         <source src="../uploads/<%= media %>" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-                    <form action="/deleteMedia/<%= user.media %>" method="POST" style="display: inline;">
-                        <button type="button">Delete</button>
+                    <form action="/deleteMedia/<%= media %>" method="POST" style="display: inline;">
+                        <button type="submit">Delete</button>
                     </form>
             <% }); %>
         <h2>Add Media</h2>
-        <form action="/addMedia/<%= user.media %>" method="POST">
-            <input type="text" name="newMedia" placeholder="Enter media filename">
-            <button type="button">Add Media</button>
+        <form action="/addMedia" method="POST" enctype="multipart/form-data">
+            <input type="file" name="media" placeholder="Enter media filename">
+            <button type="submit">Add Media</button>
         </form>
     </section>
 

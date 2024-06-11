@@ -27,60 +27,127 @@
         <section>
             <h3>Accessibility</h3>
             <section class="setting-container">
-                <section class="setting-menu"> 
+                <button class="setting-menu"> 
                     <img src="../img/language_icon.svg" alt="language icon">
                     <h4>Language</h4>
                     <div>
                         <img src="../img/arrow_icon.svg" alt="Click to change language">
                     </div>
-                </section>
+                </button>
                     <div class="purple-stripe"></div>
-                <section class="setting-menu">
+                <button class="setting-menu">
                     <img src="../img/display_icon.svg" alt="display icon">
                     <h4>Display</h4>
                     <div>
                         <img src="../img/arrow_icon.svg" alt="Click to change display">
                     </div>
-                </section>
+                </button>
             </section>
         </section>
+
+        <!-- Overlay language -->
+        <form action="/edit" method="POST" enctype="multipart/form-data">
+            <section>
+                <h2>Language</h2>
+                <div></div>
+            </section>
+            <ul>
+                <li>English</li>
+                <li>Deutch</li>
+                <li>Espagnol</li>
+                <li>Nederlands</li>
+            </ul>
+        </form>
 
         <section>
             <h3>Account</h3>
             <section class="setting-container">
-                <section class="setting-menu">
+                <button class="setting-menu">
                     <img src="../img/mail_icon.svg" alt="email icon">
                     <h4>Change email</h4>
                     <div>
                         <img src="../img/arrow_icon.svg" alt="Click to change email">
                     </div>
-                </section>
+                </button>
                     <div class="purple-stripe"></div>
-                <section class="setting-menu">
+                <button class="setting-menu">
                     <img src="../img/password_icon.svg" alt="password icon">
                     <h4>Change password</h4>
                     <div>
                         <img src="../img/arrow_icon.svg" alt="Click to change password">
                     </div>
-                </section>
+                </button>
                     <div class="purple-stripe"></div>
-                <section class="setting-menu">
+                <button class="setting-menu">
                     <img src="../img/delete_icon.svg" alt="delete icon">
                     <h4>Delete account</h4>
                     <div>
                         <img src="../img/arrow_icon.svg" alt="Click to delete account">
                     </div>
-                </section>
+                </button>
                     <div class="purple-stripe"></div>
-                <section class="setting-menu">
+                <button class="setting-menu">
                     <img src="../img/logout_icon.svg" alt="logout icon">
                     <h4>Log out</h4>
                     <div>
                         <img src="../img/arrow_icon.svg" alt="Click to logout">
                     </div>
-                </section>
+                </button>
             </section>
         </section>
+
+        <!-- Overlay Email -->
+        <form action="/edit" method="POST" enctype="multipart/form-data">
+            <section>
+                <h2>Change email</h2>
+                <div></div>
+            </section>
+            <p>Current email: <%= user.email %></p>
+
+            <label for="email"><E-mail></E-mail></label>
+            <input type="email" id="email" name="email" />
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <!-- Overlay Password -->
+        <form action="/edit" method="POST" enctype="multipart/form-data">
+            <section>
+                <h2>Change password</h2>
+                <div></div>
+            </section>        
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required />
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required />
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <!-- Overlay Delete account -->
+        <form action="/edit" method="POST" enctype="multipart/form-data">
+            <section>
+                <h2>Delete account</h2>
+                <div></div>
+            </section>        
+            <p>Are you sure you want to delete your account?</p>
+
+            <button type="button">No</button>
+            <button type="submit">Yes</button>
+        </form>
+
+        <!-- Overlay Log out -->
+        <form action="/edit" method="POST" enctype="multipart/form-data">
+            <section>
+                <h2>Log out</h2>
+                <div></div>
+            </section>        
+            <p>Are you sure you want to log out?</p>
+
+            <button type="button">No</button>
+            <button type="submit">Yes</button>
+        </form>
     </main>
 
     <footer>

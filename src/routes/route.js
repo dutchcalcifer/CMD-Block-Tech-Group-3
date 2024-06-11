@@ -130,7 +130,7 @@ router.get("/delete", (req, res) => {
 });
 
 // GET delete media
-router.get("/deleteMedia/:id", (req, res) => {
+router.post("/deleteMedia/:media", (req, res) => {
   try {
     if (req.session && req.session.user) {
       deleteMedia(req, res);

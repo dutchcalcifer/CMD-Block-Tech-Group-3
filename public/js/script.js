@@ -1,45 +1,3 @@
-// Register choice buttons
-document.addEventListener('DOMContentLoaded', function() {
-    const choiceButtons = document.querySelectorAll('.register-choice');
-    const errorMessage = document.getElementById('error-message');
-
-    let lastClickedButton = null;
-
-    // Function to toggle visibility of .check
-    function toggleCheckVisibility(button, visible) {
-        const check = button.querySelector('.check');
-        if (visible) {
-            check.style.display = 'block';
-        } else {
-            check.style.display = 'none';
-        }
-    }
-
-    // Event listener for choice buttons
-    choiceButtons.forEach(function(button) {
-        const checkbox = button.querySelector('input[type="checkbox"]');
-        button.addEventListener('click', function() {
-            checkbox.checked = !checkbox.checked;
-            button.classList.toggle('checked', checkbox.checked);
-            toggleCheckVisibility(button, checkbox.checked);
-            if (lastClickedButton && lastClickedButton !== button) {
-                lastClickedButton.classList.remove('check');
-            }
-            lastClickedButton = button;
-
-            // Check if any genre is checked
-            const checkedChoices = document.querySelectorAll('input[name="genres"]:checked, input[name="userInstruments"]:checked');
-            if (checkedChoices.length === 0) {
-                errorMessage.style.display = 'block'; // Show error message if no genre is checked
-            } else {
-                errorMessage.style.display = 'none'; // Hide error message if at least one genre is checked
-            }
-        });
-    });
-});
-
-
-
 // pauze for you
 function videoPauze() {
     var videos = document.querySelectorAll("video");
@@ -241,10 +199,117 @@ searchInput?.addEventListener('focus', function() {
 
 // Next and prev button
 document.addEventListener('DOMContentLoaded', function() {
+    const choiceButtons = document.querySelectorAll('.register-choice');
+    const genreMessage = document.getElementById('genre-message');
+    const instrumentMessage = document.getElementById('instrument-message');
     const partials = document.querySelectorAll('.partial');
     let currentIndex = 0;
     let currentStep = 1;
+    let lastClickedButton = null;
 
+    // Function to toggle visibility of .check
+    function toggleCheckVisibility(button, visible) {
+        const check = button.querySelector('.check');
+        if (visible) {
+            check.style.display = 'block';
+        } else {
+            check.style.display = 'none';
+        }
+    }
+
+    // Function to check if any genres are checked and show/hide the error message
+    function checkGenres() {
+        const checkedGenres = document.querySelectorAll('input[name="genres"]:checked');
+        if (checkedGenres.length === 0) {
+            genreMessage.style.display = 'block'; // Show genre message if no genre is checked
+            return false;
+        } else {
+            genreMessage.style.display = 'none'; // Hide genre message if at least one genre is checked
+            return true;
+        }
+    }
+
+    // Function to check if any instruments are checked and show/hide the error message
+    function checkInstruments() {
+        const checkedInstruments = document.querySelectorAll('input[name="userInstruments"]:checked');
+        if (checkedInstruments.length === 0) {
+            instrumentMessage.style.display = 'block'; // Show instrument message if no instrument is checked
+            return false;
+        } else {
+            instrumentMessage.style.display = 'none'; // Hide instrument message if at least one instrument is checked
+            return true;
+        }
+    }
+
+    // Event listener for choice buttons
+    choiceButtons.forEach(function(button) {
+        const checkbox = button.querySelector('input[type="checkbox"]');
+        button?.addEventListener('click', function() {
+            checkbox.checked = !checkbox.checked;
+            button.classList.toggle('checked', checkbox.checked);
+            toggleCheckVisibility(button, checkbox.checked);
+            if (lastClickedButton && lastClickedButton !== button) {
+                lastClickedButton.classList.remove('check');
+            }
+            lastClickedButton = button;
+
+            // Check genres and instruments each time an input is clicked
+            checkGenres();
+            checkInstruments();
+        });
+    });
+
+    const prevBtn = document.getElementById('prevBtn');
+    prevBtn?.addEventListener('click', function() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            showPartial(currentIndex);
+            updateProgressBar(false); // Update progress bar when going back
+        }
+    });
+
+    const nextBtn = document.getElementById('nextBtn');
+    nextBtn?.addEventListener('click', function() {
+        if (validateForm()) {
+            if (currentIndex < partials.length - 1) {
+                currentIndex++;
+                showPartial(currentIndex);
+            }
+        }
+    });
+
+    // Function to validate the form before allowing the user to proceed
+    function validateForm() {
+        const currentPartial = partials[currentIndex];
+
+        // Check if the current partial is the genre partial
+        if (currentPartial.id === 'genre-partial') {
+            if (!checkGenres()) {
+                return false;
+            }
+        }
+
+        // Check if the current partial is the instrument partial
+        if (currentPartial.id === 'instrument-partial') {
+            if (!checkInstruments()) {
+                return false;
+            }
+        }
+
+        // Check if any input is checked
+        const checkedInputs = currentPartial.querySelectorAll('input[type="checkbox"]:checked');
+        if (checkedInputs.length === 0) {
+            // Show error message
+            alert('Please select at least one option.');
+            return false;
+        }
+
+        // Update the progress bar here if validation succeeds
+        updateProgressBar(true);
+        return true;
+    }
+
+    // Function to show partials
     function showPartial(index) {
         partials.forEach((partial, i) => {
             if (i === index) {
@@ -255,47 +320,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    const prevBtn = document.getElementById('prevBtn');
-
-    prevBtn?.addEventListener('click', function() {
-        if (currentIndex > 0) {
-            currentIndex--;
-            showPartial(currentIndex);
-            updateProgressBar(false); // Update progress bar when going back
-        }
-    });
-
-    const nextBtn = document.getElementById('nextBtn');
-    
-    nextBtn?.addEventListener('click', function() {
-        if (validateForm()) {
-            if (currentIndex < partials.length - 1) {
-                currentIndex++;
-                showPartial(currentIndex);
-            } else {
-                // Redirect to completeRegistration.ejs
-                window.location.href = '/completeRegistration';
-            }
-        }
-    });
-
-    showPartial(currentIndex); // Initialize the first partial to be visible
-
-    function validateForm() {
-        const currentPartial = partials[currentIndex];
-        const inputs = currentPartial.querySelectorAll('input[required], textarea[required]');
-        for (let i = 0; i < inputs.length; i++) {
-            if (!inputs[i].value) {
-                alert('Please fill in all required fields.');
-                return false;
-            }
-        }
-        // Update the progress bar here if validation succeeds
-        updateProgressBar(true);
-        return true;
-    }
-
-    // Progressbar
+    // Progress bar update function
     function updateProgressBar(isNext) {
         const steps = document.querySelectorAll('.progressbar');
         if (isNext) {
@@ -310,7 +335,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
+
+    // Initialize the first partial to be visible
+    showPartial(currentIndex);
 });
+
 
 
 // Back button profile
