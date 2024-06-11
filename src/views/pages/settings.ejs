@@ -25,41 +25,6 @@
         </section>
 
         <section>
-            <h3>Accessibility</h3>
-            <section class="setting-container">
-                <button class="setting-menu"> 
-                    <img src="../img/language_icon.svg" alt="language icon">
-                    <h4>Language</h4>
-                    <div>
-                        <img src="../img/arrow_icon.svg" alt="Click to change language">
-                    </div>
-                </button>
-                    <div class="purple-stripe"></div>
-                <button class="setting-menu">
-                    <img src="../img/display_icon.svg" alt="display icon">
-                    <h4>Display</h4>
-                    <div>
-                        <img src="../img/arrow_icon.svg" alt="Click to change display">
-                    </div>
-                </button>
-            </section>
-        </section>
-
-        <!-- Overlay language -->
-        <form action="/edit" method="POST" enctype="multipart/form-data">
-            <section>
-                <h2>Language</h2>
-                <div></div>
-            </section>
-            <ul>
-                <li>English</li>
-                <li>Deutch</li>
-                <li>Espagnol</li>
-                <li>Nederlands</li>
-            </ul>
-        </form>
-
-        <section>
             <h3>Account</h3>
             <section class="setting-container">
                 <button class="setting-menu">
@@ -97,7 +62,7 @@
         </section>
 
         <!-- Overlay Email -->
-        <form action="/edit" method="POST" enctype="multipart/form-data">
+        <form action="/edit" method="POST">
             <section>
                 <h2>Change email</h2>
                 <div></div>
@@ -105,28 +70,28 @@
             <p>Current email: <%= user.email %></p>
 
             <label for="email"><E-mail></E-mail></label>
-            <input type="email" id="email" name="email" />
+            <input type="email" id="email" name="email"/>
 
             <button type="submit">Submit</button>
         </form>
 
         <!-- Overlay Password -->
-        <form action="/edit" method="POST" enctype="multipart/form-data">
+        <!-- <form action="/edit" method="POST">
             <section>
                 <h2>Change password</h2>
                 <div></div>
             </section>        
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" required />
+            <input type="password" id="password" name="password"/>
 
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" required />
+            <input type="password" id="password" name="password"/>
 
             <button type="submit">Submit</button>
-        </form>
+        </form> -->
 
         <!-- Overlay Delete account -->
-        <form action="/edit" method="POST" enctype="multipart/form-data">
+        <form action="/delete" method="POST">
             <section>
                 <h2>Delete account</h2>
                 <div></div>
@@ -138,7 +103,7 @@
         </form>
 
         <!-- Overlay Log out -->
-        <form action="/edit" method="POST" enctype="multipart/form-data">
+        <form action="/logout" method="GET">
             <section>
                 <h2>Log out</h2>
                 <div></div>
