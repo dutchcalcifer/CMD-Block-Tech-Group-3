@@ -308,6 +308,35 @@ input[type="email"]{
   height: 0.1em;
 }
 
+
+/* Login page */
+#loginPage header{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content:space-between;
+  position: relative;
+  margin-top: 1em;
+  height: 3em;
+}
+
+ #loginPage header h1{
+  order: 2; 
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 0;
+  
+
+}
+
+#loginPage header a{
+  
+} 
+
+
+
+
 /* Progressbar */
 .container-progressbar{
   margin-bottom: 2.5em;
@@ -688,15 +717,19 @@ li{
   position: absolute;
 }
 
-#user-info-container section button{
+#user-info-container  a{
   background-color: var(--primary-color);
   font-family: Jost-Regular;
   color: var(--body-background);
   outline: none;
   border: none;
   border-radius: 3em;
-  height: 2.5em;
-  width: 4.8125em ;
+  padding-left: 0.65em;
+  padding-right: 0.65em;
+  padding-top: 0.45em;
+  padding-bottom: 0.45em;
+  text-decoration: none;
+  display: block;
 }
 
 #user-info-container section div:last-child ul{

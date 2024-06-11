@@ -189,7 +189,7 @@
                                 <%= user.bandMembers %>
                             </li>                              
                         </ul>
-                        <h2><%= user.bandName%> ></h2>
+                        <h2><%= user.bandName%></h2>
                         <p><%= user.description %></p>    
                         <ul>
                             <li><img src="../img/location_icon.svg" alt="Location icon"></li>
@@ -203,7 +203,7 @@
                                         <li><h4><%= user.language %></h4></li>
                                     </ul>
                                 </li> 
-                                <li><button>connect</button></li>
+                                <li><a href="/profile/<%= user._id%>">Visit profile</a></li>
                             </ul>
                         </div>              
                     </section>
