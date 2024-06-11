@@ -1,3 +1,31 @@
+function previewMedia(event) {
+    const file = event.target.files[0];
+    const inputId = event.target.id;
+    let mediaPreview;
+
+    if (inputId === 'video1') {
+        mediaPreview = document.getElementById('mediaPreview1');
+    } else if (inputId === 'video2') {
+        mediaPreview = document.getElementById('mediaPreview2');
+    }
+
+    if (file) {
+        const fileType = file.type;
+        const fileURL = URL.createObjectURL(file);
+
+        // Clear previous preview
+        mediaPreview.innerHTML = '';
+
+        if (fileType.startsWith('video')) {
+            const videoElement = document.createElement('video');
+            videoElement.setAttribute('controls', '');
+            videoElement.src = fileURL;
+            mediaPreview.appendChild(videoElement);
+        }
+    }
+}
+
+
 // pauze for you
 function videoPauze() {
     var videos = document.querySelectorAll("video");

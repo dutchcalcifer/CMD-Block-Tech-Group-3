@@ -1,8 +1,14 @@
 <h2>Add your first two video's or audio</h2>
 <p class="help-text">This way other artists or bands can see and hear how skilled you are.</p>
 
-<section class="container-choice">
-        <input type="file" name="media" accept="video/*,audio/*"/>
-        <input type="file" name="media" accept="video/*,audio/*"/>
-    <div id="mediaPreview"></div>
+<section id="video-style">
+    <div id="video-margin">
+        <div id="mediaPreview1"></div>
+        <input id="video1" type="file" name="media" accept="video/*" onchange="previewMedia(event)"/>
+    </div>
+
+    <div>
+        <div id="mediaPreview2"></div>
+        <input id="video2" type="file" name="media" accept="video/*" onchange="previewMedia(event)"/>
+    </div>
 </section>

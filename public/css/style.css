@@ -80,7 +80,8 @@ form > * {
 .profile form > main > section:nth-of-type(2),
 .profile form > main > section:nth-of-type(3),
 .settings header,
-.settings main > section:nth-of-type(1){
+.settings main > section:nth-of-type(1),
+#video-style {
   display: flex;
 }
 
@@ -145,8 +146,10 @@ input[type="text"]{
   border-color: var(--primary-color);
   background-color:var(--textbox-color);
   height: 1.8125em;
-  width: 20.875em;
+  width: 100%;
   margin-bottom: 2.75em;
+  background-repeat: no-repeat;
+  background-position: 0.9375em center;
 }
 
 input[type="password"], 
@@ -175,13 +178,6 @@ input[type="email"]{
 .profile textarea{
   width: 100% !important;
   resize: none !important;
-}
-
-
-/* Tekstveld svg position */
-input[type="password"], input[type="email"], input[type="text"]{
-  background-repeat: no-repeat;
-  background-position: 0.9375em center;
 }
 
 
@@ -219,7 +215,7 @@ input[type="email"]{
 .style-choice-button input[type="checkbox"],
 .hidden,
 #saveButton, 
-.mediaInput {
+.mediaInput{
   display: none;
 }
 
@@ -407,15 +403,26 @@ input[type="search"]:not(:placeholder-shown) {
 
 
 /* Video and audio */
-#mediaPreview {
-  margin-top: 20px;
+#mediaPreview1,
+#mediaPreview2 {
+  height: 40vh;
+  background-color: var(--textbox-color);
 }
 
-video, audio {
+video {
+  display: block;
+  height: auto;
   width: 100%;
   max-width: 400px;
 }
 
+#video-style{
+  margin-bottom: 1em;
+}
+
+#video-margin{
+  margin-right: 0.5em;
+}
 
 /* Profile  */
 .profile form{
