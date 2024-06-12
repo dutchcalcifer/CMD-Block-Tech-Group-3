@@ -619,6 +619,10 @@ video, audio {
 
 
 /* Settings  */
+.settings a{
+  text-decoration: none;
+}
+
 .settings #profileImage{
   width: 40%;
 }
