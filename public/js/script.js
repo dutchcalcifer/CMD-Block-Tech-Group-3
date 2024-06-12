@@ -266,8 +266,10 @@ document.addEventListener('DOMContentLoaded', function() {
         partials.forEach((partial, i) => {
             if (i === index) {
                 partial.classList.remove('hidden');
+                partial.style.display = 'block'; // Ensure the partial is visible
             } else {
                 partial.classList.add('hidden');
+                partial.style.display = 'none'; // Ensure other partials are hidden
             }
         });
     }
@@ -288,16 +290,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Initialize the first partial to be visible
+    // Edit partials functionality
+    const editDescriptionIcon = document.getElementById('editDescriptionIcon');
+
+    function hideAllPartials() {
+        partials.forEach(partial => {
+            partial.style.display = 'none';
+        });
+    }
+
+    function showEditPartial(partialId) {
+        hideAllPartials();
+        document.getElementById(partialId).style.display = 'block';
+    }
+
+    editDescriptionIcon?.addEventListener('click', function() {
+        showEditPartial('partial-description');
+    });
+
+    // Initially hide all partials and then show the first one
+    hideAllPartials();
     showPartial(currentIndex);
 });
 
-
-
-// Back button profile
-document.getElementById('backButton').addEventListener('click', function() {
-    window.location.href = '/foryou';
-  });    
 
 
 // Profile edit button  
@@ -380,44 +395,6 @@ document.addEventListener('DOMContentLoaded', function() {
             lastClickedButton = button;
         });
     });
-});
-
-
-
-
-// Checkmarked genre/instrument buttons
-$(document).ready(function(){
-    // Checkmark buttons
-    $('.checkbox-label').click(function(){
-        $(this).toggleClass('checkbox-color');
-        $(this).find('.check').toggleClass('scaleNormal'); 
-    });
-});
-
-
-// Edit partials 
-document.addEventListener('DOMContentLoaded', function() {
-    const editDescriptionIcon = document.getElementById('editDescriptionIcon');
-
-    const partials = document.querySelectorAll('.partial');
-
-    function hideAllPartials() {
-        partials.forEach(partial => {
-            partial.style.display = 'none';
-        });
-    }
-
-    function showPartial(partialId) {
-        hideAllPartials();
-        document.getElementById(partialId).style.display = 'block';
-    }
-
-    editDescriptionIcon?.addEventListener('click', function() {
-        showPartial('partial-description');
-    });
-
-        // Initially hide all partials
-        hideAllPartials();
 });
 
 
