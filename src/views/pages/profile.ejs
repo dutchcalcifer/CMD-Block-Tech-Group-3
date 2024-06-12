@@ -88,17 +88,21 @@
         </main>
     </form>
 
-    <section>
+    <section id="padding">
         <h2>Content</h2>
+        <div id="video-display">
             <% user.media.forEach(media => { %>
-                    <video width="320" height="240" controls>
-                        <source src="../uploads/<%= media %>" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <form action="/deleteMedia/<%= media %>" method="POST" style="display: inline;">
-                        <button type="submit">Delete</button>
-                    </form>
+                    <div>
+                        <video width="320" height="240" controls>
+                            <source src="../uploads/<%= media %>" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <form action="/deleteMedia/<%= media %>" method="POST" style="display: inline;">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </div>
             <% }); %>
+        </div>
         <h2>Add Media</h2>
         <form action="/addMedia" method="POST" enctype="multipart/form-data">
             <input type="file" name="media" placeholder="Enter media filename">

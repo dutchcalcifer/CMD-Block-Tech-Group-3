@@ -62,7 +62,7 @@ h4{
 
 body,
 form,
-form .form-group {
+form .form-group{
   display: flex;
   flex-direction: column;
 }
@@ -86,8 +86,15 @@ form > * {
 .settings header,
 .settings main > section:nth-of-type(1),
 .settings .button-display,
-#buttons_NextPrev{
+#buttons_NextPrev {
   display: flex;
+}
+
+.container-choice,
+#video-display{
+  display: grid;
+  gap: 1em;
+  grid-template-columns: repeat(2, 175px);
 }
 
 .profile section label,
@@ -121,6 +128,10 @@ h1{
 
 .profile h1{
   color: var(--textbox-color); 
+}
+
+.profile h2{
+  margin-bottom: 1em;
 }
 
 h2{
@@ -267,8 +278,6 @@ input[type="email"]{
 }
 
 .container-choice{
-  display: grid;
-  gap: 1em;
   grid-template-columns: repeat(3, 100px);
   height: 60vh;
 }
@@ -688,6 +697,7 @@ video, audio {
 /* Profile and settings padding */
 .profile form > main,
 .profile form > header > #gradient,
+.profile #padding,
 .settings header,
 .settings main > section:nth-of-type(1),
 .settings main > section:nth-of-type(2),
