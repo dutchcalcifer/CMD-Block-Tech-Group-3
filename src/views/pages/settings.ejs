@@ -27,91 +27,103 @@
         <section>
             <h3>Account</h3>
             <section class="setting-container">
-                <button class="setting-menu">
+                <a class="setting-menu" href="#emailPopup">
                     <img src="../img/mail_icon.svg" alt="email icon">
                     <h4>Change email</h4>
                     <div>
                         <img src="../img/arrow_icon.svg" alt="Click to change email">
                     </div>
-                </button>
+                </a>
                     <div class="purple-stripe"></div>
-                <button class="setting-menu">
+                <a class="setting-menu">
                     <img src="../img/password_icon.svg" alt="password icon">
                     <h4>Change password</h4>
                     <div>
                         <img src="../img/arrow_icon.svg" alt="Click to change password">
                     </div>
-                </button>
+                </a>
                     <div class="purple-stripe"></div>
-                <button class="setting-menu">
+                <a class="setting-menu" href="#deletePopup">
                     <img src="../img/delete_icon.svg" alt="delete icon">
                     <h4>Delete account</h4>
                     <div>
                         <img src="../img/arrow_icon.svg" alt="Click to delete account">
                     </div>
-                </button>
+                </a>
                     <div class="purple-stripe"></div>
-                <button class="setting-menu">
+                <a class="setting-menu" href="#logoutPopup">
                     <img src="../img/logout_icon.svg" alt="logout icon">
                     <h4>Log out</h4>
                     <div>
                         <img src="../img/arrow_icon.svg" alt="Click to logout">
                     </div>
-                </button>
+                </a>
             </section>
         </section>
 
         <!-- Overlay Email -->
-        <form action="/edit" method="POST">
-            <section>
-                <h2>Change email</h2>
-                <div></div>
+        <form id="emailPopup" class="overlay" action="/edit" method="POST">
+            <section class="popup">
+                <div class="header-popup">
+                    <h2>Change email</h2>
+                    <a class="close" href="#"></a>
+                </div>
+                <p class="text-popup">Current email: <%= user.email %></p>
+
+                <label for="email"><E-mail></E-mail></label>
+                <input type="email" id="email" name="email"/>
+
+                <button type="submit">Submit</button>
             </section>
-            <p>Current email: <%= user.email %></p>
-
-            <label for="email"><E-mail></E-mail></label>
-            <input type="email" id="email" name="email"/>
-
-            <button type="submit">Submit</button>
         </form>
 
         <!-- Overlay Password -->
-        <!-- <form action="/edit" method="POST">
-            <section>
-                <h2>Change password</h2>
-                <div></div>
-            </section>        
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password"/>
+        <!-- <form id="passwordPopup" class="overlay" action="/edit" method="POST">
+            <section class="popup">
+                <div class="header-popup">
+                    <h2>Change password</h2>
+                    <a class="close" href="#"></a>
+                </div>       
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password"/>
 
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password"/>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password"/>
 
-            <button type="submit">Submit</button>
+                <button type="submit">Submit</button>
+            </section> 
         </form> -->
 
         <!-- Overlay Delete account -->
-        <form action="/delete" method="POST">
-            <section>
-                <h2>Delete account</h2>
-                <div></div>
-            </section>        
-            <p>Are you sure you want to delete your account?</p>
+        <form id="deletePopup" class="overlay" action="/delete" method="GET">
+            <section class="popup">
+                <div class="header-popup">
+                    <h2>Delete account</h2>
+                    <a class="close" href="#"></a>
+                </div>    
+                <p class="text-popup">Are you sure you want to delete your account?</p>
 
-            <button type="button">No</button>
-            <button type="submit">Yes</button>
+                <div class="button-display">
+                    <a class="no" href="#">No</a>
+                    <button class="yes" type="submit">Yes</button>
+                </div>
+            </section>
         </form>
 
         <!-- Overlay Log out -->
-        <form action="/logout" method="GET">
-            <section>
-                <h2>Log out</h2>
-                <div></div>
-            </section>        
-            <p>Are you sure you want to log out?</p>
+        <form id="logoutPopup" class="overlay" action="/logout" method="GET">
+            <section class="popup">
+                <div class="header-popup">
+                    <h2>Log out</h2>
+                    <a class="close" href="#"></a>
+                </div>    
+                <p class="text-popup">Are you sure you want to log out?</p>
 
-            <button type="button">No</button>
-            <button type="submit">Yes</button>
+                <div class="button-display">
+                    <a class="no" href="#">No</a>
+                    <button class="yes" type="submit">Yes</button>
+                </div>
+            </section>  
         </form>
     </main>
 
