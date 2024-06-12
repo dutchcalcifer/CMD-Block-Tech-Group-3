@@ -72,6 +72,12 @@ form > * {
   /* max-width: 20rem; */
 }
 
+label, textarea {
+  width: 100%;
+  margin-bottom: 1em; /* Voegt ruimte toe tussen label en textarea, en tussen textarea en volgend element */
+}
+
+
 
 /* Display */
 .profile form > header > section:nth-of-type(1)> section:nth-of-type(1), 
@@ -83,6 +89,14 @@ form > * {
 .settings main > section:nth-of-type(1),
 #video-style {
   display: flex;
+}
+
+label, 
+textarea,
+video,
+.profile section label,
+.profile section textarea{
+  display: block;
 }
 
 /* Element spaces */
@@ -410,10 +424,9 @@ input[type="search"]:not(:placeholder-shown) {
 }
 
 video {
-  display: block;
-  height: auto;
-  width: 100%;
-  max-width: 400px;
+  overflow: hidden;
+  width: 39vw;
+  height: 40vh;
 }
 
 #video-style{
@@ -490,7 +503,6 @@ video {
 
 .profile section label,
 .profile section textarea {
-  display: block;
   width: 100%;
   margin-bottom: 0.4em;
 }
