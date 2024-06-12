@@ -31,7 +31,7 @@ const userCreate = async (req, res) => {
         memberPfp: pfpName,
         media: mediaNames,
       });
-      res.redirect("/");
+      res.redirect("/completeRegistration");
     });
   } catch (error) {
     console.error(error);
