@@ -73,10 +73,6 @@ form {
   width: 100%;
 }
 
-form > * {
-  /* max-width: 20rem; */
-}
-
 label, textarea {
   width: 100%;
   margin-bottom: 1em; /* Voegt ruimte toe tussen label en textarea, en tussen textarea en volgend element */
@@ -106,7 +102,7 @@ label, textarea {
 
 .profile section label,
 .profile section textarea,
-.register-choice.checked .check {
+.register-choice.checked .check,
 #video-style {
   display: flex;
 }
@@ -1309,10 +1305,4 @@ footer nav ul li{
 
 footer{
   height: 10vh;
-}
-
-/* Error handling */
-.error-message {
-  color: red;
-  /* display: none; Verberg standaard de foutmelding */
 }
