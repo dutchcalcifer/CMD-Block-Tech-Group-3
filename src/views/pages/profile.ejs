@@ -17,16 +17,14 @@
                     <img src="../img/edit_icon.svg" alt="edit icon button" id="editIcon">
                 </section>
             </section>
-            <section>
-                <input type="file" name="memberPfp" class="mediaInput" accept="image/*">
-            </section>
         </header>
+        <input type="file" name="memberPfp" class="mediaInput" accept="image/*">
 
         <main>
             <section>
                 <div id="descriptionLabel">
                     <img src="../img/band_icon.svg" alt="band icon" id="bandIcon">
-                    <label for="profileDescription"><%= user.bandName %></label>
+                    <input type="text" id="profileName" name="bandName" value="<%= user.bandName %>" readonly/>
                 </div>
                 <textarea id="profileDescription" name="description" readonly><%= user.description %></textarea>
             </section>
@@ -58,10 +56,11 @@
                         <% const genres = ['Blues', 'Classical', 'Country', 'Disco', 'Dubstep', 'Electro', 'Folk', 'Funk', 'Hip-hop', 
                         'House', 'Jazz', 'Metal', 'Pop', 'Punk', 'R&B', 'Reggae', 'Rock', 'Schlager', 'Soul', 'Techno', 'Trance']; %>
                         <% genres.forEach(function(genre) { %>
-                            <section class="style-choice-button <%= user.genres.includes(genre) ? 'checked' : 'hidden' %>">
+                            <section class="profile-choice <%= user.genres.includes(genre) ? 'checked' : 'hidden' %>">
                                 <input type="checkbox" name="genres" value="<%= genre %>"
-                                <% if (user.genres.includes(genre)) { %> checked <% } %> />
-                                 <%= genre %>
+                                <% if (user.genres.includes(genre)) { %> checked <% } %> readonly/>
+                                    <%= genre %>
+                                    <div class="check"></div>
                              </section>
                         <% }); %>
                     </section>
@@ -76,33 +75,42 @@
                         <% const instruments = ['Accordion', 'Banjo', 'Bass', 'Bongos', 'Cello', 'Clarinet', 'Congas', 'Drums', 'Djembe', 'Flute', 'Guitar', 
                         'Harmonica', 'Keyboard', 'Maracas', 'Piano', 'Sampler', 'Saxophone', 'Synthesizer', 'Trombone', 'Trumpet', 'Ukelele', 'Violin', 'Voice']; %>
                         <% instruments.forEach(function(instrument) { %>
-                            <section class="style-choice-button <%= user.userInstruments.includes(instrument) ? 'checked' : 'hidden' %>">
-                                <input type="checkbox" name="userInstruments" value="<%= instrument %>" 
-                                <% if (user.userInstruments.includes(instrument)) { %> checked <% } %> />
-                                <%= instrument %>
+                            <section class="profile-choice <%= user.userInstruments.includes(instrument) ? 'checked' : 'hidden' %>">
+                                <input class="checkbox-font" type="checkbox" name="userInstruments" value="<%= instrument %>" 
+                                <% if (user.userInstruments.includes(instrument)) { %> checked <% } %> readonly/>
+                                    <%= instrument %>
+                                    <div class="check"></div> 
                             </section>
                         <% }); %>
                     </section>
                 </section>
             </section>
-            
-            <section>
-                <h2>Content</h2>
-                <section>
-                <% user.media.forEach(video => { %>
-                    <div id="videoBackground">
-                        <video loop>
-                              <source src="../uploads/<%= video %>" type="video/mp4">  
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                <% }); %> 
-                <input type="file" name="media" class="mediaInput" accept="video/*,audio/*"/>        
-            </section>
-
-            <button type="submit" id="saveButton">Save</button>
         </main>
     </form>
+
+    <section id="padding">
+        <h2>Content</h2>
+        <div id="video-display">
+            <% user.media.forEach(media => { %>
+                    <div>
+                        <video width="320" height="240" controls>
+                            <source src="../uploads/<%= media %>" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <form action="/deleteMedia/<%= media %>" method="POST" style="display: inline;">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </div>
+            <% }); %>
+        </div>
+        <h2>Add Media</h2>
+        <form action="/addMedia" method="POST" enctype="multipart/form-data">
+            <input type="file" name="media" placeholder="Enter media filename">
+            <button type="submit">Add Media</button>
+        </form>
+
+        <button type="submit" id="saveButton">Save</button>
+    </section>
 
     <footer>
         <nav>
@@ -115,5 +123,6 @@
     </footer>
 
     <script src="/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   </body>
 </html>

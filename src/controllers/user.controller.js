@@ -46,9 +46,12 @@ const addMedia = async (req, res) => {
       req.files.forEach((file) => {
         if (file.fieldname === "media") mediaNames.push(file.filename);
       });
+      console.log(mediaNames)
       await User.findByIdAndUpdate(req.session.user._id, {
         $push: { media: mediaNames },
       });
+      req.session.user = await User.findById(req.session.user._id);
+      req.session.save();
       res.redirect("/profile");
     });
   } catch (error) {
@@ -113,14 +116,17 @@ const userDelete = async (req, res) => {
 const deleteMedia = async (req, res) => {
   try {
     const userId = req.session.user._id;
+    console.log(req.params)
     await User.findByIdAndUpdate(userId, {
-      $pull: { media: req.params },
+      $pull: { media: req.params.media },
     });
-    fs.unlink(`public/uploads/${req.params}`, (err) => {
+    fs.unlink(`public/uploads/${req.params.media}`, (err) => {
       if (err) {
         throw err;
       }
     });
+    req.session.user = await User.findById(req.session.user._id);
+    req.session.save();
     res.redirect("/profile");
   } catch (error) {
     console.error(error);
