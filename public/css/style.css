@@ -31,7 +31,6 @@ src: url(../fonts/Jost-Regular.ttf);
 * {
   box-sizing: border-box;
   margin: 0;
-  overflow-x: hidden;
 }
 
 body{
@@ -96,7 +95,6 @@ form .form-group,
 .profile-choice,
 .register-choice,
 .register-choice.checked .check,
-#video-style,
 .settings header,
 .settings main > section:nth-of-type(1),
 .settings .button-display{
@@ -108,7 +106,7 @@ form .form-group,
 .container-choice,
 #video-display{
   display: grid;
-  gap: 1em;
+  gap: 0.5em;
   grid-template-columns: repeat(2, 175px);
 }
 
@@ -148,10 +146,12 @@ h1{
 }
 
 .profile h2{
-  margin-bottom: 1em;
+  margin-bottom: 0.3em;
+  font-weight: 700;
 }
 
-h2{
+h2,
+.profile label{
   font-weight: 600;
 }
 
@@ -161,10 +161,7 @@ p{
   text-align: left !important;
 }
 
-.profile h2{
-  font-weight: 700;
-}
-
+.profile label,
 .profile h2, 
 #profileName,
 .settings h1, 
@@ -213,7 +210,7 @@ input[type="email"]{
 
 .profile .toggleInput,
 .profile input[type="text"]{
-  width: 20vw;
+  width: 30vw;
 } 
 
 .profile textarea{
@@ -243,6 +240,8 @@ input[type="email"]{
 .profile-choice,
 .register-choice,
 #savePhotoButton,
+#deleteMedia,
+#submitMedia,
 .completeRegistration a {
   border-radius: 20px;
   border: 2px solid var(--secondary-color);
@@ -250,10 +249,16 @@ input[type="email"]{
 
 .profile-choice,
 .register-choice,
+#submitMedia,
+#deleteMedia,
 #savePhotoButton {
   color: var(--primary-color);
   box-shadow: var(--drop-shadow-button);
   height: 5.1vh;
+}
+
+#deleteMedia{
+  width: 44vw;
 }
 
 .profile-choice,
@@ -277,6 +282,17 @@ input[type="email"]{
   display: none;
 }
 
+#submitMedia,
+#saveButton{
+  width: 100% !important;
+  margin-top: 2em;
+}
+
+#submitMedia{
+  margin-top: 1em !important;
+}
+
+#submitMedia,
 #saveButton,
 #nextBtn,
 .settings .yes,
@@ -743,18 +759,30 @@ input[type="search"]:not(:placeholder-shown) {
   background-color: var(--textbox-color);
 }
 
-video {
+.profile video{
   overflow: hidden;
-  width: 39vw;
-  height: 40vh;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
-#video-style{
+#video1,
+.profile video,
+#video-style,
+#video-display{
   margin-bottom: 1em;
+}
+
+#video-style video{
+  width: 50%;
 }
 
 #video-margin{
   margin-right: 0.5em;
+}
+
+.container-media {
+  margin-bottom: 4.2em;
 }
 
 /* Profile  */
@@ -839,6 +867,10 @@ padding: 1em;
   gap: 10px;
 }
 
+.profile form > main > section:nth-of-type(5) > section{
+  margin-bottom: 0 !important;
+}
+
 .profile .imageIcon{
   position: absolute;
 }
@@ -848,7 +880,7 @@ padding: 1em;
 }
 
 .purple-stripe{
-  height: 0.2vh;
+  height: 1px;
   width: 100%;
   margin-top: 1em;
   margin-bottom: 1em;
@@ -860,6 +892,7 @@ padding: 1em;
   width: 100%;
   margin-bottom: 0.4em;
 }
+
 
 .profile section textarea {
   height: 5em; 
@@ -1168,12 +1201,6 @@ span #accCreated{
 #user-info-container div:first-of-type.hidden, #user-info-container div:first-of-type.hiddenSearch {
   display: none; 
 }
-
-
-
-
-
-
 
 
 /* Filter pop up */
