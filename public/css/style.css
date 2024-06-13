@@ -179,7 +179,7 @@ input[type="email"]{
 }
 
 
-/* Tekstveld svg position */
+Tekstveld svg position
 input[type="password"], input[type="email"], input[type="text"]{
   background-repeat: no-repeat;
   background-position: 0.9375em center;
@@ -192,7 +192,7 @@ input[type="password"]{
 }
 
 input[type="email"]{
-  background-image: url(../img/mail_icon.svg);
+  background-image: url(../img/mail_icon.svg) 
 }
 
 
@@ -220,7 +220,7 @@ input[type="email"]{
 .style-choice-button input[type="checkbox"],
 .hidden,
 #saveButton, 
-.mediaInput {
+.mediaInput, .hiddenSearch {
   display: none;
 }
 
@@ -261,14 +261,14 @@ input[type="email"]{
   transform: translate(-50%, -50%); 
 }
 
-#log-reg{
+#log-reg, #loginPage main{
   position: absolute; 
   bottom: 1%; 
   left: 50%; 
   transform: translate(-50%, -50%); 
 }
 
-#log-reg a {
+#log-reg a, #loginPage main button  {
   height: 3.375em;
   width: 20.5em;
   border-radius: 3em;
@@ -279,9 +279,10 @@ input[type="email"]{
   text-decoration: none;
 }
 
-#log-reg a:first-of-type{
+#log-reg a:first-of-type, #loginPage main button{
   background-color: var(--body-background);
   color: var(--primary-color);
+  border: none;
 }
 
 #log-reg a:last-of-type{
@@ -323,6 +324,7 @@ input[type="email"]{
   margin-top: 1em;
   height: 3em;
   color: var(--body-background);
+  text-align: center;
 }
 
  #loginPage header h1{
@@ -333,13 +335,47 @@ input[type="email"]{
   margin-bottom: 0; 
 }
 
-#loginPage a{
-  padding: 0.7em;
-  background-color: var(--body-background);
-  text-decoration: none;
-  border-radius: 3em;
-  width: 2em;
-  height: 2em;
+#loginPage header img{
+  width: 1.6em;
+  height: 1.6em;
+  position:static;
+  margin-left: 0.9375em;
+  transform: translate(0);
+  align-items: center;
+  margin-bottom: 0;
+}
+
+#loginPage header a{
+ justify-content: center;
+ display: flex;
+ align-items: center;
+}
+
+#loginPage main form{
+  width: 100vw;
+}
+
+#loginPage main input[type="password"], #loginPage main input[type="email"]{
+  width: 100%;
+  border-color: var(--body-background);
+  background-image: none;
+  text-indent: 0.4em;
+  height: 2.3em ;
+}
+
+#loginPage main label{
+  color: var(--body-background);
+  text-align: left;
+}
+
+#loginPage main button{
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#loginPage main button:active{
+  background-color: var(--secondary-color);
 }
 
 
@@ -373,6 +409,81 @@ input[type="email"]{
   padding: 0; 
   margin: 0;
 }
+
+
+
+/* Age verification */
+#buttons_NextPrev ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+#members  > input{
+  display: none; 
+
+}
+
+#members  > label{
+  margin-top: 1em;
+  border: solid 0.125em var(--secondary-color);
+  border-radius: 10em;
+  text-align: center;
+  color: var(--primary-color);
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+}
+
+#members > label{
+  width: 13em;
+  height: 13em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1em;
+  overflow: visible;
+  position: relative;
+}
+
+#members{
+  display: flex;
+  justify-content: center;
+}
+
+#members  img {
+  position: absolute;
+  top: 1.7em;
+  right: 0em;
+  width: 2em;
+  height: 2em;
+  
+}
+
+/* member amount */
+
+#bandMembers{
+  width: 100%;
+  border: none;
+  border-bottom: solid 0.125em;
+  border-color: var(--primary-color);
+  background-color:var(--textbox-color);
+  height: 1.8125em;
+  margin-bottom: 2.75em;
+}
+
+/* bandname */
+.member input{
+  width: 100%;
+}
+
+.member > label:nth-of-type(1){
+  display: none;
+}
+
 
 
 /* For you page header */
@@ -763,6 +874,10 @@ height:3.25em ;
 }
 
 
+/* hide user id */
+span #accCreated{
+  display: none;
+}
 
 
 #videoBackground{
@@ -786,7 +901,7 @@ height:3.25em ;
 }
 
 /* Hide items die class hidden krijgen */
-#user-info-container div:first-of-type.hidden {
+#user-info-container div:first-of-type.hidden, #user-info-container div:first-of-type.hiddenSearch {
   display: none; 
 }
 
@@ -878,17 +993,42 @@ height:3.25em ;
   flex-direction: column;
   align-items: center;
   line-height: 1.1em;
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
 }
+
+.stockCheck{
+  border: solid 0.125em var(--primary-color) !important;
+}
+
+
 
 #sort fieldset:nth-of-type(1) label span{
   overflow: hidden;
   color: var(--secondary-color);
 }
 
+#sort fieldset:nth-of-type(1) label img, #sort fieldset:nth-of-type(2) label img, #sort fieldset:nth-of-type(3) label img {
+  position: absolute;
+  top: -0.2em;
+  right: -0.2em;
+  width: 1.25em;
+  height: 1.25em;
+  
+}
+
+#sort fieldset:nth-of-type(2) label img, #sort fieldset:nth-of-type(3) label img{
+  top: -0.4em;
+  right: -0.4em;
+}
+
+
+
 #sort fieldset:nth-of-type(2) label, #sort fieldset:nth-of-type(3) label{
   width: 7.0625em;
   height: 2.125em;
+  overflow: visible;
+  position: relative;
 }
 
 #sort fieldset{
@@ -925,6 +1065,20 @@ height:3.25em ;
   
 }
 
+#filter-pop-up form > button:active{
+  background-color: var(--secondary-color);
+}
+
+/* geen resultaten */
+#noResultsMessage{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1000
+  ;
+}
+
 
 
 
@@ -958,3 +1112,7 @@ footer nav ul li{
 footer{
   height: 10vh;
 }
+
+
+
+

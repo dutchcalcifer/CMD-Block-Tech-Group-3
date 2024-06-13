@@ -1,11 +1,13 @@
 <h2>Who are you?</h2>
 
 <p class="help-text">Choose the amount of members in your band. If you are a solo artist than select one member.</p>
-<label for="bandMembers">How many members do you have in your band?</label>
+<label for="bandMembers">Total members (max 10)</label>
       <input
         type="Number"
         id="bandMembers"
         name="bandMembers"
         value="true"
+        min="1"
+        max="10"
         required
       />

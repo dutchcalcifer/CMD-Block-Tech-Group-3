@@ -31,23 +31,23 @@
                 <form action="/foryou" method="get">
                     <fieldset>
                         <legend>Sort</legend>
+                        <label class="stockCheck">
+                            <input type="radio" name="sort" value="old posts" checked>
+                            Old posts <img src="../img/buttoncheck.svg" alt="Checked">
+                        </label>
+
                         <label>
-                            <input type="checkbox" name="sort" value="new posts">
+                            <input type="radio" name="sort" value="new posts">
                             New posts
                         </label>
 
                         <label>
-                            <input type="checkbox" name="sort" value="old posts">
-                            Old posts
-                        </label>
-
-                        <label>
-                            <input type="checkbox" name="sort" value="members_high_to_low">
+                            <input type="radio" name="sort" value="members_high_to_low">
                             Members <span>High to low</span>
                         </label>
 
                         <label>
-                            <input type="checkbox" name="sort" value="members_low_to_high">
+                            <input type="radio" name="sort" value="members_low_to_high">
                             Members <span>Low to high</span>
                         </label>
                     </fieldset>
@@ -56,7 +56,7 @@
                         <legend>Genres</legend>
                         <label>
                             <input type="checkbox" name="genres" value="classical">
-                            Classical
+                            Classical 
                         </label>
                         <label>
                             <input type="checkbox" name="genres" value="country">
@@ -156,8 +156,28 @@
                             4
                         </label>
                         <label>
-                            <input type="checkbox" name="members" value="5+">
-                            5+
+                            <input type="checkbox" name="members" value="5">
+                            5
+                        </label>
+                        <label>
+                            <input type="checkbox" name="members" value="6">
+                            6
+                        </label>
+                        <label>
+                            <input type="checkbox" name="members" value="7">
+                            7
+                        </label>
+                        <label>
+                            <input type="checkbox" name="members" value="8">
+                            8
+                        </label>
+                        <label>
+                            <input type="checkbox" name="members" value="9">
+                            9
+                        </label>
+                        <label>
+                            <input type="checkbox" name="members" value="10">
+                            10
                         </label>
                     </fieldset>
                     
@@ -172,6 +192,7 @@
             
             <% users.forEach(user => { %>
                 <div id="videoBackground">
+                    <span id="accCreated"><%= user.createdAt %></span>
                     <div id="pauzeButton"></div>
                     <video loop>
                           <source src="../uploads/<%= user.media[0]%>" type="video/mp4">  
@@ -186,7 +207,7 @@
                                     <% }); %>
                                 </ul>
                             </li> 
-                            <li>
+                            <li id="memberSort">
                                 <%= user.bandMembers %>
                             </li>                              
                         </ul>
