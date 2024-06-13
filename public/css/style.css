@@ -242,7 +242,8 @@ input[type="email"]{
 .progressbar,
 .profile-choice,
 .register-choice,
-#savePhotoButton {
+#savePhotoButton,
+.completeRegistration a {
   border-radius: 20px;
   border: 2px solid var(--secondary-color);
 }
@@ -612,6 +613,40 @@ input[type="email"]{
 
 .member > label:nth-of-type(1){
   display: none;
+}
+
+
+/* Complete page */
+.completeRegistration article{
+  padding: 2em;
+  height: 35vh;
+}
+
+.completeRegistration article,
+.completeRegistration p{
+  text-align: center !important;
+}
+
+.completeRegistration p,
+.completeRegistration img{
+  margin-bottom: 3em;
+}
+
+.completeRegistration a{
+  background-color: green;
+  color: white;
+  text-decoration: none;
+  border: none;
+  padding: 0.7em;
+  padding-right: 8em;
+  padding-left: 8em;
+}
+
+.completeRegistration h1{
+  color: green;
+  font-size: 1.6em;
+  font-weight: bold;
+  margin-bottom: 0.2em;
 }
 
 

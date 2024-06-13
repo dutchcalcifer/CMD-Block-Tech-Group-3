@@ -72,8 +72,8 @@
                 <section>
                     <label class="checkbox-label">Instrument</label>
                     <section class="grid-choice-button">
-                        <% const instruments = ['Accordion', 'Banjo', 'Bass', 'Bongos', 'Cello', 'Clarinet', 'Congas', 'Drums', 'Djembe', 'Flute', 'Guitar', 
-                        'Harmonica', 'Keyboard', 'Maracas', 'Piano', 'Sampler', 'Saxophone', 'Synthesizer', 'Trombone', 'Trumpet', 'Ukelele', 'Violin', 'Voice']; %>
+                        <% const instruments = ['Accordion', 'Banjo', 'Bass', 'Bongos', 'Cello', 'Clarinet', 'Congas', 'Drums', 'Flute', 'Guitar', 
+                        'Harmonica', 'Keyboard', 'Maracas', 'Piano', 'Saxophone', 'Synthesizer', 'Trombone', 'Trumpet', 'Ukelele', 'Violin', 'Voice']; %>
                         <% instruments.forEach(function(instrument) { %>
                             <section class="profile-choice <%= user.userInstruments.includes(instrument) ? 'checked' : 'hidden' %>">
                                 <input class="checkbox-font" type="checkbox" name="userInstruments" value="<%= instrument %>" 
