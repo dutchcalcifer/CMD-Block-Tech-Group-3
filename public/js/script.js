@@ -2,30 +2,36 @@
 const ageChecks = document.querySelectorAll('#members input[type="checkbox"]');
 const ageCheckLabels = document.querySelectorAll('#members > label');
 
-function ageCheckFunction(event) {
-    const index = Array.from(ageChecks).indexOf(event.target);
-    const label = ageCheckLabels[index]; 
+//Gaat over de checkboxes en voer de functie uit wanneer er een gecheckt is
+ageChecks.forEach(function(ageCheck) {
+    ageCheck.addEventListener('click', function ageCheckFunction(event) {
+        const index = Array.from(ageChecks).indexOf(event.target);
+        const label = ageCheckLabels[index];
 
-    if (event.target.checked) {
-        label.style.border = 'solid 0.125em var(--primary-color)';
-        
-        
-        if (!label.querySelector('img')) {
-            var img = document.createElement('img');
-            img.setAttribute('src', '../img/buttoncheck.svg');
-            img.setAttribute('alt', 'Checked');
-            label.appendChild(img);
+        //geeft de border een donkere selectie kleur
+        if (event.target.checked) {
+            label.style.border = 'solid 0.125em var(--primary-color)';
+
+            //Maakt een check img aan onder in de label, en deze style ik dan in css
+            if (!label.querySelector('img')) {
+                var img = document.createElement('img');
+                img.setAttribute('src', '../img/buttoncheck.svg');
+                img.setAttribute('alt', 'Checked');
+                label.appendChild(img);
+            }
+            //haalt de donkere selectie kleur van de border af
+        } else {
+            label.style.border = '';
+            //verwijderd de img
+            var imgToRemove = label.querySelector('img');
+            if (imgToRemove) {
+                imgToRemove.remove();
+            }
         }
-    } else {
-        label.style.border = '';
-        
-        
-        var imgToRemove = label.querySelector('img');
-        if (imgToRemove) {
-            imgToRemove.remove();
-        }
-    }
-}
+    });
+});
+
+
 
 function previewMedia(event) {
     const file = event.target.files[0];
@@ -64,7 +70,7 @@ function videoPauze() {
 
         video.addEventListener("click", function() {
             if (video.paused) {
-                video.play();
+                video.play(); //video speelt af
                 pauzeB.style.display = 'none'; //pauze button uit
 
             } else {
@@ -73,9 +79,9 @@ function videoPauze() {
             }
         });
 
-        //pauze on scroll
+        //pauze wanneer er gescrolled word
         contentElement?.addEventListener('scroll', () => {
-            video.pause();
+            video.pause(); //video gaat op pauze
             pauzeB.style.display = 'block'; //pauze button aan
         });
     });
@@ -83,29 +89,30 @@ function videoPauze() {
 videoPauze();
 
 
-// Filter knop
+// Filter tab openen
 const filterButton = document.getElementById('filter');
 const filterCloseButton = document.querySelector('#filter-pop-up button:first-child');
 const filterSubmit = document.querySelector('#filter-pop-up form > button');
 
-// open filter
+// open filter tab
 filterButton?.addEventListener('click', function(){
     document.getElementById('filter-pop-up').style.height = "100%";
-    filterSubmit.classList.remove('hidden');
+    filterSubmit.classList.remove('hidden'); //laat de resulataten button zien
 });
 
-//sluit filter
+//sluit filter tab
 filterCloseButton?.addEventListener('click', function(){
     document.getElementById('filter-pop-up').style.height = "0%";
-    filterSubmit.classList.add('hidden');
+    filterSubmit.classList.add('hidden'); //Haalt de resultaten button weg
 });
 
 
 
-// Filter knoppen styling
+// Filter knoppen styling (genres en members)
 const checkboxes = document.querySelectorAll('#sort fieldset:nth-of-type(2) input, #sort fieldset:nth-of-type(3) input');
 const labels = document.querySelectorAll('#sort fieldset:nth-of-type(2) label, #sort fieldset:nth-of-type(3) label');
 
+//Gaat over elke checkbox heen  
 checkboxes?.forEach(function(checkbox) {
     checkbox.addEventListener('change', function() {
         const index = Array.from(checkboxes).indexOf(checkbox);
@@ -169,6 +176,7 @@ radioButtons?.forEach(function(radioButton) {
 document.addEventListener('DOMContentLoaded', function() {
     const filterButton = document.getElementById('filter');
 
+    //laat de filter tab omhoog komen
     document.querySelector('#filter-pop-up form')?.addEventListener('submit', function(event) {
         event.preventDefault();
 
@@ -201,15 +209,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Controleert of er geen geselecteerde genres zijn OF ten minste één van de genres in het huidige 
             //video-element overeenkomt met een geselecteerd genre.
-            const hasGenreMatch = !selectedValuesGenres.length || Array.from(genreElements).some(function(genreElement) { //bron: chatgpt
+            //bron: chatgpt
+            const hasGenreMatch = !selectedValuesGenres.length || Array.from(genreElements).some(function(genreElement) { 
                 const genreName = genreElement.textContent.trim();
                 return selectedValuesGenres.includes(genreName);
             });
 
             // Controleert of er geen geselecteerde members zijn 
             // OF dat de tekstinhoud van het lid overeenkomt met ten minste één van de geselecteerde leden.
-            const hasMemberMatch = !selectedValuesMembers.length || selectedValuesMembers.includes(memberElement.textContent.trim());//bron: chatgpt
-            // return checkbox.value;
+            //bron: chatgpt
+            const hasMemberMatch = !selectedValuesMembers.length || selectedValuesMembers.includes(memberElement.textContent.trim());
+            
 
             //Hide videos gebaseerd op de matches
             if (hasGenreMatch && hasMemberMatch) {
@@ -227,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
 
-        // No results
+        // No results bericht
         let noResultP = document.getElementById('noResultsMessage');
 
         //als er geen filters zijn gevonden of er geen zichtbare video-elementen zijn met het ID 'videoBackground'
@@ -245,14 +255,11 @@ document.addEventListener('DOMContentLoaded', function() {
         sorting();
 
             
-        //wanneer je sorteert of filtert, begin je boven
+        //wanneer je sorteert of filtert, begin je boven aan de pagina
         function scrollToTop() {
             const scrollUp = document.getElementById('user-info-container');
             if (scrollUp) {
-            
                 scrollUp.scrollTop = 0;
-            } else {
-                console.error("Cant scroll up");
             }
         }
         scrollToTop();  
@@ -585,7 +592,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Event listener for the 'Save' button
-    saveButton.addEventListener('click', function() {
+    saveButton?.addEventListener('click', function() {
         saveButton.style.display = 'none'; // Verberg de 'Save' knop
         toggleReadonly(true); // Schakel readonly attributen weer in
         mediaInputs.forEach(function(input) {
@@ -603,7 +610,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Event listener for the main edit icon
-    editIcon.addEventListener('click', function() {
+    editIcon?.addEventListener('click', function() {
         saveButton.style.display = 'block'; // Toon de 'Save' knop
         toggleReadonly(false); // Verwijder readonly attributen
         mediaInputs.forEach(function(input) {
