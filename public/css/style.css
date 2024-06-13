@@ -282,6 +282,14 @@ input[type="email"]{
   display: none;
 }
 
+.mediaInput{
+  display: block;
+  background-color: var(--textbox-color);
+  width: 100%;
+  margin-top: 10.4em !important;
+  border-bottom: 3px solid var(--primary-color);
+}
+
 .submitButton,
 #saveButton{
   width: 100% !important;
