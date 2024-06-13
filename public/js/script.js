@@ -622,13 +622,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Function to toggle visibility of media inputs
+    function toggleMediaInputs(visible) {
+        mediaInputs.forEach(function(input) {
+            if (visible) {
+                input.style.display = 'block';
+            } else {
+                input.style.display = 'none';
+            }
+        });
+    }
+
+    // Initially hide media inputs
+    toggleMediaInputs(false);
+
     // Event listener for the 'Save' button
     saveButton?.addEventListener('click', function() {
         saveButton.style.display = 'none'; // Verberg de 'Save' knop
         toggleReadonly(true); // Schakel readonly attributen weer in
-        mediaInputs.forEach(function(input) {
-            input.style.display = 'none'; // Verberg het bestand-input
-        });
+        toggleMediaInputs(false); // Verberg het bestand-input
+
         // Verberg ongecheckte buttons en verwijder de .check class van alle buttons
         choiceButtons.forEach(function(button) {
             const checkbox = button.querySelector('input[type="checkbox"]');
@@ -644,9 +657,8 @@ document.addEventListener('DOMContentLoaded', function() {
     editIcon?.addEventListener('click', function() {
         saveButton.style.display = 'block'; // Toon de 'Save' knop
         toggleReadonly(false); // Verwijder readonly attributen
-        mediaInputs.forEach(function(input) {
-            input.style.display = 'block'; // Toon het bestand-input
-        });
+        toggleMediaInputs(true); // Toon het bestand-input
+
         // Toon alle buttons en verwijder .check
         choiceButtons.forEach(function(button) {
             button.classList.remove('hidden');

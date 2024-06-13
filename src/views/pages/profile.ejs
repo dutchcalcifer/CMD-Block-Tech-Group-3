@@ -12,13 +12,14 @@
         <header id="backgroundSection" style="background-image: url('../uploads/<%= user.memberPfp %>');">
             <section id="gradient">
                 <section>
-                    <img src="../img/back_button_icon.svg" id="backButton" alt="back button">
+                    <a href="javascript:history.back()"><img src="../img/back_button_icon.svg" id="backButton" alt="back button"></a>
                     <h1>Profile</h1>
                     <img src="../img/edit_icon.svg" alt="edit icon button" id="editIcon">
                 </section>
             </section>
+            <input type="file" name="memberPfp" class="mediaInput" accept="image/*">
         </header>
-        <input type="file" name="memberPfp" class="mediaInput" accept="image/*">
+
 
         <main>
             <section>
@@ -48,13 +49,29 @@
                 </section>
             </section>
             
-
-            
+            <section>
+                <img src="../img/genre_icon.svg" class="imageIcon" alt="genre icon">
+                <section>
+                    <label class="checkbox-label">Genre(s)</label>
+                    <section class="grid-choice-button">
+                        <% const genress = ['Blues', 'Classical', 'Country', 'Disco', 'Dubstep', 'Electro', 'Folk', 'Funk', 'Hip-hop', 
+                        'House', 'Jazz', 'Metal', 'Pop', 'Punk', 'R&B', 'Reggae', 'Rock', 'Schlager', 'Soul', 'Techno', 'Trance']; %>
+                        <% genress.forEach(function(genre) { %>
+                            <section class="profile-choice <%= user.genres.includes(genre) ? 'checked' : 'hidden' %>">
+                                <input type="checkbox" name="genres" value="<%= genre %>"
+                                <% if (user.genres.includes(genre)) { %> checked <% } %> readonly/>
+                                    <%= genre %>
+                                    <div class="check"></div>
+                             </section>
+                        <% }); %>
+                    </section>
+                </section>
+            </section>         
             
             <section>
                 <img src="../img/instrument_icon.svg" class="imageIcon" alt="instrument icon">
                 <section>
-                    <label class="checkbox-label">Instrument</label>
+                    <label class="checkbox-label">Instrument(s)</label>
                     <section class="grid-choice-button">
                         <% const instruments = ['Accordion', 'Banjo', 'Bass', 'Bongos', 'Cello', 'Clarinet', 'Congas', 'Drums', 'Flute', 'Guitar', 
                         'Harmonica', 'Keyboard', 'Maracas', 'Piano', 'Saxophone', 'Synthesizer', 'Trombone', 'Trumpet', 'Ukelele', 'Violin', 'Voice']; %>
@@ -69,25 +86,6 @@
                     </section>
                 </section>
             </section>
-
-            <section>
-                <img src="../img/genre_icon.svg" class="imageIcon" alt="genre icon">
-                <section>
-                    <label class="checkbox-label">Genre</label>
-                    <section class="grid-choice-button">
-                        <% const genress = ['Blues', 'Classical', 'Country', 'Disco', 'Dubstep', 'Electro', 'Folk', 'Funk', 'Hip-hop', 
-                        'House', 'Jazz', 'Metal', 'Pop', 'Punk', 'R&B', 'Reggae', 'Rock', 'Schlager', 'Soul', 'Techno', 'Trance']; %>
-                        <% genress.forEach(function(genre) { %>
-                            <section class="profile-choice <%= user.genres.includes(genre) ? 'checked' : 'hidden' %>">
-                                <input type="checkbox" name="genres" value="<%= genre %>"
-                                <% if (user.genres.includes(genre)) { %> checked <% } %> readonly/>
-                                    <%= genre %>
-                                    <div class="check"></div>
-                             </section>
-                        <% }); %>
-                    </section>
-                </section>
-            </section>
             
                     <button type="submit" id="saveButton">Save</button>
 
@@ -98,13 +96,13 @@
         <h2>Content</h2>
         <div id="video-display">
             <% user.media.forEach(media => { %>
-                    <div>
+                    <div class="container-media">
                         <video width="320" height="240" controls>
                             <source src="../uploads/<%= media %>" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                         <form action="/deleteMedia/<%= media %>" method="POST" style="display: inline;">
-                            <button type="submit">Delete</button>
+                            <button id="deleteMedia" type="submit">Delete</button>
                         </form>
                     </div>
             <% }); %>
@@ -112,7 +110,7 @@
         <h2>Add Media</h2>
         <form action="/addMedia" method="POST" enctype="multipart/form-data">
             <input type="file" name="media" placeholder="Enter media filename">
-            <button type="submit">Add Media</button>
+            <button class="submitButton" type="submit">Add</button>
         </form>
     </section>
 

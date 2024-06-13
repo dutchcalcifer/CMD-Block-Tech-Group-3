@@ -9,7 +9,7 @@
   <body class="settings">
 
     <header>
-        <img src="../img/back_button_icon.svg" id="backButton" alt="back button">
+        <a href="javascript:history.back()"><img src="../img/back_button_icon.svg" id="backButton" alt="back button"></a>
         <h1>Settings</h1>
         <div></div>        
     </header>
@@ -73,7 +73,7 @@
                 <label for="email"><E-mail></E-mail></label>
                 <input type="email" id="email" name="email"/>
 
-                <button type="submit">Submit</button>
+                <button class="submitButton" type="submit">Submit</button>
             </section>
         </form>
 
@@ -87,7 +87,7 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password"/>
 
-                <button type="submit">Submit</button>
+                <button class="submitButton" type="submit">Submit</button>
             </section> 
         </form>
 
