@@ -1,15 +1,9 @@
-// import mongoose module
+// import module
 const mongoose = require("mongoose");
 
 // user schema
 const UserSchema = mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-
     email: {
       type: String,
       required: true,
@@ -17,23 +11,74 @@ const UserSchema = mongoose.Schema(
       trim: true,
     },
 
+    bandMembers: {
+      type: Number,
+      required: true,
+    },
+
     password: {
       type: String,
       required: true,
-      unique: true,
+      trim: true,
     },
+
+    bandName: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+    },
+
+    memberPfp: {
+      type: String,
+    },
+
+    isAdult: {
+      type: Boolean,
+    },
+
+    genres: [
+      {
+        type: String,
+      },
+    ],
 
     userInstruments: [
       {
         type: String,
-        trim: true,
       },
     ],
 
-    userInstrumentsRequest: [
+    description: {
+      type: String,
+      required: true,
+      max: 125,
+    },
+
+    country: {
+      type: String,
+      required: true,
+    },
+
+    city: {
+      type: String,
+      required: true,
+    },
+
+    postalCode: {
+      type: String,
+      required: true,
+    },
+
+    language: [
       {
         type: String,
-        trim: true,
+      },
+    ],
+
+    media: [
+      {
+        type: String,
       },
     ],
   },
@@ -42,8 +87,8 @@ const UserSchema = mongoose.Schema(
   }
 );
 
-// set user model
+// set model to schema
 const User = mongoose.model("User", UserSchema);
 
-// export user model
+// export model
 module.exports = User;

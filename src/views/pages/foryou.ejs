@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For you</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body id="backgroundtest"> <!-- test!!-->
+
+    <header id="foryouheader">
+        <button id="filter" aria-label="Filter button"><img src="../img/filter.svg" alt="Filter icon"></button>
+        <!-- To-Do: filter fucntie -->
+        <h1>For you</h1>
+        <form action="/foryou" method="get">
+            <input type="search" id="searchInput" placeholder="">
+        </form>
+        <!-- <button id="search" aria-label="Search button"><img src="../img/search.svg" alt="search icon"></button> -->
+    
+        
+        
+    </header>
+
+    <main>
+        <div id="filter-pop-up">
+            <ul>
+                <li><h2>Filter</h2></li>
+                <li><button aria-label="Close filter"></button></li>
+            </ul>
+            <section id="sort">
+                <form action="/foryou" method="get">
+                    <fieldset>
+                        <legend>Sort</legend>
+                        <label class="stockCheck">
+                            <input type="radio" name="sort" value="old posts" checked>
+                            Old posts <img src="../img/buttoncheck.svg" alt="Checked">
+                        </label>
+
+                        <label>
+                            <input type="radio" name="sort" value="new posts">
+                            New posts
+                        </label>
+
+                        <label>
+                            <input type="radio" name="sort" value="members_high_to_low">
+                            Members <span>High to low</span>
+                        </label>
+
+                        <label>
+                            <input type="radio" name="sort" value="members_low_to_high">
+                            Members <span>Low to high</span>
+                        </label>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Genres</legend>
+                        <label>
+                            <input type="checkbox" name="genres" value="classical">
+                            Classical 
+                        </label>
+                        <label>
+                            <input type="checkbox" name="genres" value="country">
+                            Country
+                        </label>
+                        <label>
+                            <input type="checkbox" name="genres" value="disco">
+                            Disco
+                        </label>
+                        <label>
+                            <input type="checkbox" name="genres" value="dubstep">
+                            Dubstep
+                        </label>
+                        <label>
+                            <input type="checkbox" name="genres" value="electro">
+                            Electro
+                        </label>
+                        <label>
+                            <input type="checkbox" name="genres" value="folk">
+                            Folk
+                        </label>
+                        <label>
+                            <input type="checkbox" name="genres" value="funk">
+                            Funk
+                        </label>
+                        <label>
+                            <input type="checkbox" name="genres" value="hip-hop">
+                            Hip-hop
+                        </label>
+                        <label>
+                            <input type="checkbox" name="genres" value="house">
+                            House
+                        </label>
+                        <label>
+                            <input type="checkbox" name="genres" value="jazz">
+                            Jazz
+                        </label>
+                        <label>
+                            <input type="checkbox" name="genres" value="metal">
+                            Metal
+                        </label>
+                        <label>
+                            <input type="checkbox" name="genres" value="pop">
+                            Pop
+                        </label>
+                        <label>
+                            <input type="checkbox" name="genres" value="punk">
+                            Punk
+                        </label>
+                        <label>
+                            <input type="checkbox" name="genres" value="r&b">
+                            R&B
+                        </label>
+                        <label>
+                            <input type="checkbox" name="genres" value="reggae">
+                            Reggae
+                        </label>
+                        <label>
+                            <input type="checkbox" name="genres" value="rock">
+                            Rock
+                        </label>
+                        <label>
+                            <input type="checkbox" name="genres" value="schlager">
+                            Schlager
+                        </label>
+                        <label>
+                            <input type="checkbox" name="genres" value="soul">
+                            Soul
+                        </label>
+                        <label>
+                            <input type="checkbox" name="genres" value="techno">
+                            Techno
+                        </label>
+                        <label>
+                            <input type="checkbox" name="genres" value="trance">
+                            Trance
+                        </label>
+                    </fieldset>
+
+
+                    <fieldset>
+                        <legend>Members</legend>
+                        <label>
+                            <input type="checkbox" name="members" value="1">
+                            1
+                        </label>
+                        <label>
+                            <input type="checkbox" name="members" value="2">
+                            2
+                        </label>
+                        <label>
+                            <input type="checkbox" name="members" value="3">
+                            3
+                        </label>
+                        <label>
+                            <input type="checkbox" name="members" value="4">
+                            4
+                        </label>
+                        <label>
+                            <input type="checkbox" name="members" value="5">
+                            5
+                        </label>
+                        <label>
+                            <input type="checkbox" name="members" value="6">
+                            6
+                        </label>
+                        <label>
+                            <input type="checkbox" name="members" value="7">
+                            7
+                        </label>
+                        <label>
+                            <input type="checkbox" name="members" value="8">
+                            8
+                        </label>
+                        <label>
+                            <input type="checkbox" name="members" value="9">
+                            9
+                        </label>
+                        <label>
+                            <input type="checkbox" name="members" value="10">
+                            10
+                        </label>
+                    </fieldset>
+                    
+                    <button type="submit" class="hidden">Results</button>
+                </form>
+            </section>
+
+            
+        </div>
+        
+        <div id="user-info-container">
+            
+            <% users.forEach(user => { %>
+                <div id="videoBackground">
+                    <span id="accCreated"><%= user.createdAt %></span>
+                    <div id="pauzeButton"></div>
+                    <video loop>
+                          <source src="../uploads/<%= user.media[0]%>" type="video/mp4">  
+                        Your browser does not support the video tag.
+                    </video>
+                    <section>
+                        <ul>
+                            <li>
+                                <ul>
+                                    <% user.genres.forEach(genre => { %>                                                                                 
+                                        <li class="genre"><h3><%= genre %></h3></li>
+                                    <% }); %>
+                                </ul>
+                            </li> 
+                            <li id="memberSort">
+                                <%= user.bandMembers %>
+                            </li>                              
+                        </ul>
+                        <h2><%= user.bandName%></h2>
+                        <p><%= user.description %></p>    
+                        <ul>
+                            <li><img src="../img/location_icon.svg" alt="Location icon"></li>
+                            <li><h4><%= user.city %>, <%= user.country %></h4></li>
+                        </ul>  
+                        <div>
+                            <ul>
+                                <li>
+                                    <ul>
+                                        <li><img src="../img/language_icon.svg" alt="Spoken languages icon"></li>
+                                        <li><h4><%= user.language %></h4></li>
+                                    </ul>
+                                </li> 
+                                <li><a href="/profile/<%= user._id%>">Visit profile</a></li>
+                            </ul>
+                        </div>              
+                    </section>
+                </div>
+            <% }); %>            
+        </div>
+    </main>
+
+    <footer>
+        <nav >
+            <ul>
+                <li><a href="foryou"><img src="../img/housepurple.svg" alt="Go to for you page"></a></li>
+                <li><a href="profile"><img src="../img/profile.svg" alt="Go to profile page"></a></li>
+                <li><a href="settings"><img src="../img/settings.svg" alt="Go to settings page"></a></li>
+            </ul>
+        </nav>
+    </footer>
+    
+    <script src="/js/script.js"></script>
+</body>
+
+</html>
+

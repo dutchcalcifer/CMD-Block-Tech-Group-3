@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Form</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <form action="/register" method="POST" enctype="multipart/form-data">
+      <h1>User Registration Form</h1>
+
+      <section class="container-progressbar">
+        <ul id="progressbar-ul">
+            <li class="progressbar active"></li>
+            <li class="progressbar"></li>
+            <li class="progressbar"></li>
+            <li class="progressbar"></li>
+            <li class="progressbar"></li>
+            <li class="progressbar"></li>
+            <li class="progressbar"></li>
+            <li class="progressbar"></li>
+            <li class="progressbar"></li>
+        </ul>
+    </section>
+
+    <div id="partials-container">
+      <div class="partial"><%- include ("../partials/isAdult.ejs") %></div>
+      <div class="partial"><%- include ("../partials/soloOrBand") %></div>
+      <div class="partial"><%- include ("../partials/bandSigningUp.ejs") %></div>
+      <div class="partial"><%- include ("../partials/genreSelect") %></div>
+      <div class="partial"><%- include ("../partials/instrumentSelect") %></div>
+      <div class="partial"><%- include ("../partials/addVideo") %></div>
+      <div class="partial"><%- include ("../partials/addDiscription") %></div>
+      <div class="partial"><%- include ("../partials/addLocation") %></div>
+      <div class="partial"><%- include ("../partials/emailAndPassword") %></div>
+    </div>
+
+      <section id="buttons_NextPrev">
+        <ul>
+          <li><button type="button" id="prevBtn">Previous</button></li>
+          <li><button type="button" id="nextBtn">Next</button></li>
+      </ul>
+      </section>
+
+    </form>
+
+    <script src="/js/script.js"></script>
+   
+  </body> <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+</html>

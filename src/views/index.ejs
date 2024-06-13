@@ -3,31 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Band Buddy</title>
     <link rel="stylesheet" href="/css/style.css" />
+    <title>Welcome</title>
   </head>
-  <body>
-    <h1>Band Buddy</h1>
-    <ul>
-      <% users.forEach(user => { %>
-      <li>
-        <h2><%= user.name %></h2>
-        <p><%= user.email %></p>
-        <p><%= user.password %></p>
-        <h3>User Instruments</h3>
-        <ul>
-          <%user.userInstruments.forEach(userInstruments => { %>
-          <li><%= userInstruments %></li>
-          <% }); %>
-        </ul>
-        <h3>User Instruments Request</h3>
-        <ul>
-          <%user.userInstrumentsRequest.forEach(userInstrumentsRequest => { %>
-          <li><%= userInstrumentsRequest %></li>
-          <% }); %>
-        </ul>
-      </li>
-      <% }); %>
-    </ul>
+  <body id="patternBackground">
+      <img src="../img/logo.svg" alt="Band Buddy logo">
+
+      <section id="log-reg">
+        <a href="login">Login</a>
+
+        <div id="divider">
+          <span></span>
+          <p>Or</p>
+          <span></span>
+        </div>
+        
+        <a href="register">Register</a>
+      </section>
+
   </body>
 </html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body id="patternBackground">
+    <img src="../img/logo.svg" alt="Band Buddy logo">
+
+    <div id="loginPage">
+
+      <header>
+        <h1>Login</h1>
+        <a href="/"><img src="../img/backbutton_login.svg" alt="back button"></a>
+      </header>
+      <main>
+        <form action="/login" method="POST">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+          <button type="submit">Login</button>
+        </form>
+      </main>
+
+      <footer>
+        
+      </footer>
+    </div>
+  </body>
+</html>
