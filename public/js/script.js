@@ -164,7 +164,7 @@ radioButtons?.forEach(function(radioButton) {
                 img.setAttribute('alt', 'Checked');
                 label.appendChild(img);
                 const elementToRemove = document.querySelector('.stockCheck');
-                elementToRemove.classList.remove('stockCheck');
+                elementToRemove?.classList.remove('stockCheck');
 
             }
         }
@@ -522,6 +522,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Progress bar update function
     function updateProgressBar(isNext) {
         const steps = document.querySelectorAll('.progressbar');
+        const submitButton = document.querySelector('.register button[type="submit"]');
         if (isNext) {
             if (currentStep < steps.length) {
                 steps[currentStep].classList.add('active');
@@ -533,6 +534,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 steps[currentStep].classList.remove('active');
             }
         }
+        if (currentStep === steps.length) {
+            submitButton.classList.remove('hidden');
+        } else {
+            submitButton.classList.add('hidden');
+        }
+    
     }
 
     // Edit partials functionality
