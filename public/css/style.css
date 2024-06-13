@@ -64,7 +64,6 @@ h4{
 body,
 form,
 form .form-group{
-  display: flex;
   flex-direction: column;
 }
 
@@ -81,30 +80,36 @@ label, textarea {
 
 
 /* Display */
+body,
+form,
+form .form-group,
+#log-reg a, 
+#loginPage main button,
+#divider,
 .profile form > header > section:nth-of-type(1)> section:nth-of-type(1), 
 .profile form > header > section:nth-of-type(1)> section:nth-of-type(2),
 .profile #descriptionLabel,
 .profile form > main > section:nth-of-type(2),
 .profile form > main > section:nth-of-type(3),
+.profile section label,
+.profile section textarea,
+.profile-choice,
+.register-choice,
+.register-choice.checked .check,
+#video-style,
 .settings header,
 .settings main > section:nth-of-type(1),
-.settings .button-display,
-#buttons_NextPrev {
+.settings .button-display{
   display: flex;
 }
 
+#sort fieldset,
+.profile .grid-choice-button,
 .container-choice,
 #video-display{
   display: grid;
   gap: 1em;
   grid-template-columns: repeat(2, 175px);
-}
-
-.profile section label,
-.profile section textarea,
-.register-choice.checked .check,
-#video-style {
-  display: flex;
 }
 
 label, 
@@ -252,7 +257,6 @@ input[type="email"]{
 
 .profile-choice,
 .register-choice {
-  display: flex;
   justify-content: center;
   padding: 0.4em;
   font-size: 0.9em;
@@ -291,8 +295,7 @@ input[type="email"]{
 }
 
 .container-choice{
-  grid-template-columns: repeat(3, 100px);
-  height: 60vh;
+  grid-template-columns: repeat(3, 109px);
 }
 
 .checkbox-color {
@@ -401,7 +404,6 @@ input[type="email"]{
   height: 3.375em;
   width: 20.5em;
   border-radius: 3em;
-  display: flex;
   justify-content: center; 
   margin: 0 auto;
   align-items: center; 
@@ -420,7 +422,6 @@ input[type="email"]{
 }
 
 #divider{
-  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -732,7 +733,6 @@ video {
 }
 
 .profile .grid-choice-button{
-  display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px; 
 }
@@ -1226,7 +1226,6 @@ span #accCreated{
 }
 
 #sort fieldset{
-  display: grid;
   grid-template-columns: 1fr 1fr 1fr; 
   padding: 0;
   
@@ -1279,6 +1278,18 @@ span #accCreated{
 
 
 /* footer navigatie */
+.register footer,
+footer nav ul{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 3.4375em;
+}
+
+.register footer{
+  padding-right: 2em;
+}
+
 footer nav ul{
   background-color: var(--body-background);
   list-style-type: none;
@@ -1286,10 +1297,6 @@ footer nav ul{
   justify-content: space-between;
   padding-left: 1.5625em;
   padding-right: 1.5625em;
-  position:fixed; 
-  bottom:0; 
-  width:100%; 
-  height:3.4375em; 
   align-items: center;
   box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.1);
 }
