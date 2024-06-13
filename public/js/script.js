@@ -1,3 +1,32 @@
+//18+ check
+const ageChecks = document.querySelectorAll('#members input[type="checkbox"]');
+const ageCheckLabels = document.querySelectorAll('#members > label');
+
+function ageCheckFunction(event) {
+    const index = Array.from(ageChecks).indexOf(event.target);
+    const label = ageCheckLabels[index]; 
+
+    if (event.target.checked) {
+        label.style.border = 'solid 0.125em var(--primary-color)';
+        
+        
+        if (!label.querySelector('img')) {
+            var img = document.createElement('img');
+            img.setAttribute('src', '../img/buttoncheck.svg');
+            img.setAttribute('alt', 'Checked');
+            label.appendChild(img);
+        }
+    } else {
+        label.style.border = '';
+        
+        
+        var imgToRemove = label.querySelector('img');
+        if (imgToRemove) {
+            imgToRemove.remove();
+        }
+    }
+}
+
 function previewMedia(event) {
     const file = event.target.files[0];
     const inputId = event.target.id;
@@ -27,37 +56,45 @@ function previewMedia(event) {
 
 // pauze for you
 function videoPauze() {
-    var videos = document.querySelectorAll("video");
+    const videos = document.querySelectorAll("video");
     const contentElement = document.getElementById('user-info-container');
 
     videos.forEach(function(video) {
+        const pauzeB = video.parentElement.querySelector("#pauzeButton");
+
         video.addEventListener("click", function() {
             if (video.paused) {
                 video.play();
+                pauzeB.style.display = 'none'; //pauze button uit
+
             } else {
                 video.pause();
+                pauzeB.style.display = 'block'; //pauze button aan
             }
         });
+
         //pauze on scroll
         contentElement?.addEventListener('scroll', () => {
             video.pause();
+            pauzeB.style.display = 'block'; //pauze button aan
         });
     });
 }
 videoPauze();
 
-// Filter 
+
+// Filter knop
 const filterButton = document.getElementById('filter');
 const filterCloseButton = document.querySelector('#filter-pop-up button:first-child');
 const filterSubmit = document.querySelector('#filter-pop-up form > button');
 
-// open
+// open filter
 filterButton?.addEventListener('click', function(){
     document.getElementById('filter-pop-up').style.height = "100%";
     filterSubmit.classList.remove('hidden');
 });
 
-//close
+//sluit filter
 filterCloseButton?.addEventListener('click', function(){
     document.getElementById('filter-pop-up').style.height = "0%";
     filterSubmit.classList.add('hidden');
@@ -65,17 +102,64 @@ filterCloseButton?.addEventListener('click', function(){
 
 
 
-// Filter checks
-const genreButtons = document.querySelectorAll('#sort fieldset input');
-const labels = document.querySelectorAll('#sort fieldset label');
+// Filter knoppen styling
+const checkboxes = document.querySelectorAll('#sort fieldset:nth-of-type(2) input, #sort fieldset:nth-of-type(3) input');
+const labels = document.querySelectorAll('#sort fieldset:nth-of-type(2) label, #sort fieldset:nth-of-type(3) label');
 
-genreButtons?.forEach(function(button) {
-    button.addEventListener('change', function() {
-        const index = Array.from(genreButtons).indexOf(button);
-        if (button.checked) {
-            labels[index].style.border = 'solid 0.125em var(--primary-color)';
+checkboxes?.forEach(function(checkbox) {
+    checkbox.addEventListener('change', function() {
+        const index = Array.from(checkboxes).indexOf(checkbox);
+        const label = labels[index]; 
+
+        if (checkbox.checked) {
+            labels[index].style.border = 'solid 0.125em var(--primary-color)'; 
+            if (!label.querySelector('img')) {
+                var img = document.createElement('img');
+                img.setAttribute('src', '../img/buttoncheck.svg');
+                img.setAttribute('alt', 'Checked');
+                label.appendChild(img);
+            }
         } else {
-            labels[index].style.border = ''; 
+            labels[index].style.border = '';
+            var imgToRemove = label.querySelector('img');
+            if (imgToRemove) {
+                imgToRemove.remove();
+            }
+        }
+    });
+});
+
+
+
+// Sorting knoppen styling
+const radioButtons = document.querySelectorAll('#sort fieldset:nth-of-type(1) input[type="radio"]');
+const labelsRadio = document.querySelectorAll('#sort fieldset:nth-of-type(1) label');
+
+radioButtons?.forEach(function(radioButton) {
+    radioButton.addEventListener('change', function() {
+        labelsRadio.forEach(label => {
+            label.style.border = '';
+            var imgToRemove = label.querySelector('img');
+            if (imgToRemove) {
+                imgToRemove.remove();
+                
+            }
+        });
+
+        const index = Array.from(radioButtons).indexOf(radioButton);
+        const label = labelsRadio[index]; 
+
+        if (radioButton.checked) {
+            label.style.border = 'solid 0.125em var(--primary-color)';
+            if (!label.querySelector('img')) {
+                var img = document.createElement('img');
+                img.setAttribute('src', '../img/buttoncheck.svg');
+                img.setAttribute('alt', 'Checked');
+                label.appendChild(img);
+                const elementToRemove = document.querySelector('.stockCheck');
+                elementToRemove.classList.remove('stockCheck');
+
+            }
         }
     });
 });
@@ -83,39 +167,51 @@ genreButtons?.forEach(function(button) {
 
 // filter checkboxes
 document.addEventListener('DOMContentLoaded', function() {
-    const filterButton = document.getElementById('filter'); 
+    const filterButton = document.getElementById('filter');
 
     document.querySelector('#filter-pop-up form')?.addEventListener('submit', function(event) {
         event.preventDefault();
 
-        let filterFieldsetMember = document.querySelector('#sort fieldset:nth-of-type(3)');
-        let checkboxesMembers = filterFieldsetMember.querySelectorAll('input[type="checkbox"]:checked');
+        document.getElementById('filter-pop-up').style.height = "0%";
+        filterSubmit.classList.add('hidden');
 
-        let filterFieldsetGenres = document.querySelector('#sort fieldset:nth-of-type(2)');
-        let checkboxesGenres = filterFieldsetGenres.querySelectorAll('input[type="checkbox"]:checked');
+        const filterFieldsetMember = document.querySelector('#sort fieldset:nth-of-type(3)');
+        const checkboxesMembers = filterFieldsetMember.querySelectorAll('input[type="checkbox"]:checked');
 
-        //bron: chatgpt
-        let selectedValuesGenres = Array.from(checkboxesGenres).map(cb => cb.value);
-        console.log('Selected genre Values:', selectedValuesGenres);
+        const filterFieldsetGenres = document.querySelector('#sort fieldset:nth-of-type(2)');
+        const checkboxesGenres = filterFieldsetGenres.querySelectorAll('input[type="checkbox"]:checked');
 
-        //bron: chatgpt
-        let selectedValuesMembers = Array.from(checkboxesMembers).map(cb => cb.value);
-        console.log('Selected Member Values:', selectedValuesMembers);
-
-        let videoBackgrounds = document.querySelectorAll('#videoBackground');
-        console.log('Video Backgrounds:', videoBackgrounds);
-
+        //maakt een nieuwe array van aangevinkte genres
+        const selectedValuesGenres = Array.from(checkboxesGenres).map(function(checkbox) { 
+            return checkbox.value;
+        });
+        
+        //maakt een nieuwe array van aangevinkte members
+        const selectedValuesMembers = Array.from(checkboxesMembers).map(function(checkbox) { 
+            return checkbox.value;
+        });
+        
+    
+        const videoBackgrounds = document.querySelectorAll('#videoBackground');
+        
+        //Controleerd of de items voorkomen op de for you
         videoBackgrounds.forEach(function(videoBackground) {
-            let genreElements = videoBackground.querySelectorAll('.genre h3');
-            let memberElement = videoBackground.querySelector('section > ul > li:nth-child(2)');
+            const genreElements = videoBackground.querySelectorAll('.genre h3');
+            const memberElement = videoBackground.querySelector('section > ul > li:nth-child(2)');
 
-            let hasGenreMatch = !selectedValuesGenres.length || Array.from(genreElements).some(function(genreElement) {
-                let genreName = genreElement.textContent.trim();
+            // Controleert of er geen geselecteerde genres zijn OF ten minste één van de genres in het huidige 
+            //video-element overeenkomt met een geselecteerd genre.
+            const hasGenreMatch = !selectedValuesGenres.length || Array.from(genreElements).some(function(genreElement) { //bron: chatgpt
+                const genreName = genreElement.textContent.trim();
                 return selectedValuesGenres.includes(genreName);
             });
 
-            let hasMemberMatch = !selectedValuesMembers.length || !memberElement || selectedValuesMembers.includes(memberElement.textContent.trim());
+            // Controleert of er geen geselecteerde members zijn 
+            // OF dat de tekstinhoud van het lid overeenkomt met ten minste één van de geselecteerde leden.
+            const hasMemberMatch = !selectedValuesMembers.length || selectedValuesMembers.includes(memberElement.textContent.trim());//bron: chatgpt
+            // return checkbox.value;
 
+            //Hide videos gebaseerd op de matches
             if (hasGenreMatch && hasMemberMatch) {
                 videoBackground.classList.remove('hidden');
             } else {
@@ -123,104 +219,220 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-    
+        //ALs er ook maar 1 filter aan staat word de filterknop lichtpaars
         if (selectedValuesGenres.length > 0 || selectedValuesMembers.length > 0) {
             filterButton.style.backgroundColor = 'var(--secondary-color)'; 
         } else {
             filterButton.style.backgroundColor = ''; 
         }
-    });
 
-    
+
+        // No results
+        let noResultP = document.getElementById('noResultsMessage');
+
+        //als er geen filters zijn gevonden of er geen zichtbare video-elementen zijn met het ID 'videoBackground'
+        if (!document.querySelectorAll('#videoBackground:not(.hidden)').length) {
+            
+            //als het bericht nog niet bestaat word het aangemaakt
+            if (!noResultP) {
+                noResultP = document.createElement('p');
+                noResultP.id = 'noResultsMessage';
+                noResultP.textContent = 'No results found';
+                document.body.appendChild(noResultP);
+            }}
+
+        //start de sorteerfunctie
+        sorting();
+
+            
+        //wanneer je sorteert of filtert, begin je boven
+        function scrollToTop() {
+            const scrollUp = document.getElementById('user-info-container');
+            if (scrollUp) {
+            
+                scrollUp.scrollTop = 0;
+            } else {
+                console.error("Cant scroll up");
+            }
+        }
+        scrollToTop();  
+    });  
 });
 
+
+
+//sorteren
+function sorting(sortOption) {
+
+    // Selecteer de video achtergronden
+    const videoBackgrounds = document.querySelectorAll('#videoBackground');
+    
+    const sortFieldset = document.querySelector('#sort fieldset:nth-of-type(1)');
+    const sortFieldsetRadios = sortFieldset.querySelectorAll('input[type="radio"]:checked');
+
+    const selectedSort = Array.from(sortFieldsetRadios).map(function(radio) { 
+        return radio.value; 
+    });
+    
+    // Array voor de resultaten
+    const resultsArray = [];
+    const resultsArrayId = [];
+
+    // Loop door de video achtergronden en voeg de tekstinhoud van #memberSort toe aan resultsArray
+    videoBackgrounds.forEach(videoBackground => {
+        const memberElement = videoBackground.querySelector('section > ul > li:nth-child(2)');
+        resultsArray.push({
+            member: parseInt(memberElement.textContent),
+            videoBackground: videoBackground
+        });
+    });
+
+    const parseDateString = (dateStr) => {
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const dateParts = dateStr.split(" ");
+    
+        // Maak een datumstring in de indeling: "Wed Jun 05 2024 13:34:25"
+        const formattedDateStr = `${dateParts[0]} ${months.indexOf(dateParts[1]) + 1} ${dateParts[2]} ${dateParts[3]} ${dateParts[4]}`;
+        return new Date(formattedDateStr);
+    };
+    
+    // Data naar datum
+    videoBackgrounds.forEach(videoBackground => {
+        const userId = videoBackground.querySelector('#videoBackground #accCreated');
+        resultsArrayId.push({
+            id: parseDateString(userId.textContent),
+            videoBackground: videoBackground
+        });
+    });
+
+    if (selectedSort == 'members_low_to_high') {
+        resultsArray.sort((a, b) => a.member - b.member);
+        console.log("Members low to high");
+    } else if (selectedSort == 'members_high_to_low') {
+        resultsArray.sort((a, b) => b.member - a.member);
+        console.log("Members high to low");
+    } else if (selectedSort == 'old posts') {
+        resultsArrayId.sort((a, b) => a.id.getTime() - b.id.getTime());
+        console.log("Old posts");
+    } else if (selectedSort == 'new posts') {
+        resultsArrayId.sort((a, b) => b.id.getTime() - a.id.getTime());
+        console.log("New posts");
+    } else {
+        console.log("Werkt niet");
+    }
+    
+
+    // Selecteer de container waar de video achtergronden zich bevinden
+    const videoContainer = document.getElementById('user-info-container');
+
+    // Verwijderd de huidige inhoud van de container
+    while (videoContainer.firstChild) {
+        videoContainer.removeChild(videoContainer.firstChild);
+    }
+
+    if (selectedSort == 'members_low_to_high' || selectedSort == 'members_high_to_low') {
+        resultsArray.forEach(result => {
+            videoContainer.appendChild(result.videoBackground);
+        });
+    } else { 
+        resultsArrayId.forEach(result => {
+            videoContainer.appendChild(result.videoBackground);
+        });
+    }
+}
 
 // search 
 document.querySelector('#foryouheader form')?.addEventListener('submit', function(event) {
     event.preventDefault(); 
 
-    
-
-    let filter = document.getElementById('searchInput').value.toLowerCase();
-    let videoBackgrounds = document.querySelectorAll('#videoBackground');
+    const filter = document.getElementById('searchInput').value.toLowerCase();
+    const videoBackgrounds = document.querySelectorAll('#videoBackground');
 
     videoBackgrounds.forEach(function(videoBackground) {
-        let bandNameElement = videoBackground.querySelector('h2');
-        let bandName = bandNameElement.textContent.toLowerCase();
+        const bandNameElement = videoBackground.querySelector('h2');
+        const bandName = bandNameElement.textContent.toLowerCase();
 
+        //Checkt of de search waarde overeenkomt in de genres en laat de posts met deze genres zien
         if (bandName.includes(filter)) {
-            videoBackground.classList.remove('hidden');
+            videoBackground.classList.remove('hiddenSearch');
             if (filter !== "") { 
                 videoBackground.scrollIntoView({ behavior: 'auto' });
             }
         } else {
-            videoBackground.classList.add('hidden');
+            videoBackground.classList.add('hiddenSearch');
         }
     });
 
-    // No results
-    let noResultParagraph = document.getElementById('noResultsMessage');
-    if (!filter || !document.querySelectorAll('#videoBackground:not(.hidden)').length) {
-        if (!noResultParagraph) {
-            noResultParagraph = document.createElement('p');
-            noResultParagraph.id = 'noResultsMessage';
-            noResultParagraph.textContent = 'Geen resultaten gevonden';
-            document.body.appendChild(noResultParagraph);
-        }
-    } else {
-        if (noResultParagraph) {
-            noResultParagraph.remove();
-        }
+
+
+// No results
+let noResultP = document.getElementById('noResultsMessage');
+
+// Als er geen filters zijn gevonden of er geen zichtbare video-elementen zijn met het ID 'videoBackground'
+if (!filter || !document.querySelectorAll('#videoBackground:not(.hiddenSearch)').length) {
+    
+    // Als het bericht nog niet bestaat, wordt het aangemaakt
+    if (!noResultP) {
+        noResultP = document.createElement('p');
+        noResultP.id = 'noResultsMessage';
+        noResultP.textContent = 'No results found';
+        document.body.appendChild(noResultP);
     }
+}
 });
 
-// Scroll back to before searching
+
+
+// Laat weer alle resultaten zien als je wegklikt van de searchbar en hij leeg is
 const searchInput = document.getElementById('searchInput');
 const videoBackgrounds = document.querySelectorAll('#videoBackground');
 
+//als de searchbar focus verliest
 searchInput?.addEventListener('blur', function() {
     if (this.value.trim() === '') {
         videoBackgrounds.forEach(function(videoBackground) {
-            videoBackground.classList.remove('hidden');
+            videoBackground.classList.remove('hiddenSearch');
         });
     }
 });
 
 
-
+//Slaar scrollpositie op om hier later naar terug te keren na het zoeken
 const scrollableElement = document.getElementById('user-info-container');
 let scrollPosition = 0; 
 
-searchInput?.addEventListener('blur', function() {
-
-    if (this.value.trim() === '') {
-        const anyHidden = Array.from(document.querySelectorAll('[id^="videoBackground"]'))
-        .some(videoBackground => videoBackground.classList.contains('hidden'));
-        
-        if (!anyHidden) {
-            videoBackgrounds.forEach(function(videoBackground) {
-            videoBackground.classList.remove('hidden');
-            });
-
-            console.log("Scrollpositie terugkeren naar: ", scrollPosition);
-    
-            scrollableElement.scrollTop = scrollPosition;
-        } else {
-            scrollPosition = 0;
-        }
-    }
-});
-
-
+// Controleer of searcbar leeg is en of er hidden videobackgrounds zijn
 searchInput?.addEventListener('focus', function() {
-    const anyHidden = Array.from(document.querySelectorAll('[id^="videoBackground"]'))
+    const anyHidden = Array.from(document.querySelectorAll('#videoBackground'))
+    .some(videoBackground => videoBackground.classList.contains('hiddenSearch'));
 
-    .some(videoBackground => videoBackground.classList.contains('hidden'));
+    //als er geen .hidden zijn dan slaat hij je scrollpositie op
     if (!anyHidden) {
         scrollPosition = scrollableElement.scrollTop;
         console.log("Huidige scrollpositie: ", scrollPosition);
     }
 });
+
+
+//Terugkeren naar scrollpositie voordat je zocht
+searchInput?.addEventListener('blur', function() {
+
+    // Controleer of searcbar leeg is en of er hidden videobackgrounds zijn
+    if (this.value.trim() === '') {
+        const anyHidden = Array.from(document.querySelectorAll('#videoBackground'))
+        .some(videoBackground => videoBackground.classList.contains('hiddenSearch'));
+        
+        //als er geen .hidden zijn dan keer je terug naar de positie waar je was voor het scrollen
+        if (!anyHidden) {
+            videoBackgrounds.forEach(function(videoBackground) {
+                console.log("Scrollpositie terugkeren naar: ", scrollPosition);
+    
+                scrollableElement.scrollTop = scrollPosition;
+            });  
+        } 
+    }
+});
+
 
 
 // Next and prev button
@@ -420,19 +632,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
