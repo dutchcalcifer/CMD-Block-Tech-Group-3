@@ -27,5 +27,5 @@ This project is licensed under the MIT License.
 ## Contributors
 - Dante Piekart
 - Laurens Mudde
-- ziggy van de Weetering
+- Ziggy van de Weetering
 - Amber Venema
