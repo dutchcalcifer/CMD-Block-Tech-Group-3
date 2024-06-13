@@ -793,6 +793,7 @@ input[type="search"]:not(:placeholder-shown) {
 
 .container-media {
   margin-bottom: 4.2em;
+  overflow: visible;
 }
 
 /* Profile  */
@@ -864,7 +865,7 @@ padding: 1em;
   }
 
   .profile form > header > section:nth-of-type(1)> section:nth-of-type(1){
-  height: 5vh; 
+  height: 5.5vh; 
 }
 
 .profile form > header > #gradient, .profile #userProfile > header > #gradient{
@@ -980,6 +981,7 @@ padding: 1em;
   background: #fff;
   border-radius: 5px;
   position: relative;
+  overflow: visible;
 }
 
 .popup .close {

@@ -27,7 +27,13 @@
         <section>
             <h3>Account</h3>
             <section class="setting-container">
-                <a class="setting-menu" href="#emailPopup">
+                <!-- Using onclick="..." instead of href
+                     This was done to use the replace() function from window.location, 
+                     which doesn't add a new index to the browser history, 
+                     making the back button work as expected, 
+                     instead of returning to a previously opened settings menu.
+                     For more info: https://developer.mozilla.org/en-US/docs/Web/API/Location/replace -->
+                <a class="setting-menu" onclick="window.location.replace('#emailPopup')">
                     <img src="../img/mail_icon.svg" alt="email icon">
                     <h4>Change email</h4>
                     <div>
@@ -35,7 +41,7 @@
                     </div>
                 </a>
                     <div class="purple-stripe"></div>
-                <a class="setting-menu" href="#passwordPopup">
+                <a class="setting-menu" onclick="window.location.replace('#passwordPopup')">
                     <img src="../img/password_icon.svg" alt="password icon">
                     <h4>Change password</h4>
                     <div>
@@ -43,7 +49,7 @@
                     </div>
                 </a>
                     <div class="purple-stripe"></div>
-                <a class="setting-menu" href="#deletePopup">
+                <a class="setting-menu" onclick="window.location.replace('#deletePopup')">
                     <img src="../img/delete_icon.svg" alt="delete icon">
                     <h4>Delete account</h4>
                     <div>
@@ -51,7 +57,7 @@
                     </div>
                 </a>
                     <div class="purple-stripe"></div>
-                <a class="setting-menu" href="#logoutPopup">
+                <a class="setting-menu" onclick="window.location.replace('#logoutPopup')">
                     <img src="../img/logout_icon.svg" alt="logout icon">
                     <h4>Log out</h4>
                     <div>
@@ -66,7 +72,7 @@
             <section class="popup">
                 <div class="header-popup">
                     <h2>Change email</h2>
-                    <a class="close" href="#"></a>
+                    <a class="close" onclick="window.location.replace('#')"></a>
                 </div>
                 <p class="text-popup">Current email: <%= user.email %></p>
 
@@ -82,7 +88,7 @@
             <section class="popup">
                 <div class="header-popup">
                     <h2>Change password</h2>
-                    <a class="close" href="#"></a>
+                    <a class="close" onclick="window.location.replace('#')"></a>
                 </div>       
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password"/>
@@ -96,12 +102,12 @@
             <section class="popup">
                 <div class="header-popup">
                     <h2>Delete account</h2>
-                    <a class="close" href="#"></a>
+                    <a class="close" onclick="window.location.replace('#')"></a>
                 </div>    
                 <p class="text-popup">Are you sure you want to delete your account?</p>
 
                 <div class="button-display">
-                    <a class="no" href="#">No</a>
+                    <a class="no" onclick="window.location.replace('#')">No</a>
                     <button class="yes" type="submit">Yes</button>
                 </div>
             </section>
@@ -112,12 +118,12 @@
             <section class="popup">
                 <div class="header-popup">
                     <h2>Log out</h2>
-                    <a class="close" href="#"></a>
+                    <a class="close" onclick="window.location.replace('#')"></a>
                 </div>    
                 <p class="text-popup">Are you sure you want to log out?</p>
 
                 <div class="button-display">
-                    <a class="no" href="#">No</a>
+                    <a class="no" onclick="window.location.replace('#')">No</a>
                     <button class="yes" type="submit">Yes</button>
                 </div>
             </section>  
