@@ -76,6 +76,12 @@ form > * {
   /* max-width: 20rem; */
 }
 
+label, textarea {
+  width: 100%;
+  margin-bottom: 1em; /* Voegt ruimte toe tussen label en textarea, en tussen textarea en volgend element */
+}
+
+
 
 /* Display */
 .profile form > header > section:nth-of-type(1)> section:nth-of-type(1), 
@@ -100,6 +106,15 @@ form > * {
 .profile section label,
 .profile section textarea,
 .register-choice.checked .check {
+#video-style {
+  display: flex;
+}
+
+label, 
+textarea,
+video,
+.profile section label,
+.profile section textarea{
   display: block;
 }
 
@@ -170,8 +185,10 @@ input[type="text"]{
   border-color: var(--primary-color);
   background-color:var(--textbox-color);
   height: 1.8125em;
-  width: 20.875em;
+  width: 100%;
   margin-bottom: 2.75em;
+  background-repeat: no-repeat;
+  background-position: 0.9375em center;
 }
 
 input[type="password"], 
@@ -200,13 +217,6 @@ input[type="email"]{
 .profile textarea{
   width: 100% !important;
   resize: none !important;
-}
-
-
-/* Tekstveld svg position */
-input[type="password"], input[type="email"], input[type="text"]{
-  background-repeat: no-repeat;
-  background-position: 0.9375em center;
 }
 
 
@@ -254,8 +264,8 @@ input[type="email"]{
 .register-choice input[type="checkbox"],
 .register-choice .check,
 .hidden,
-#saveButton,
-.mediaInput {
+#saveButton, 
+.mediaInput{
   display: none;
 }
 
@@ -524,15 +534,25 @@ input[type="search"]:not(:placeholder-shown) {
 
 
 /* Video and audio */
-#mediaPreview {
-  margin-top: 20px;
+#mediaPreview1,
+#mediaPreview2 {
+  height: 40vh;
+  background-color: var(--textbox-color);
 }
 
-video, audio {
-  width: 100%;
-  max-width: 400px;
+video {
+  overflow: hidden;
+  width: 39vw;
+  height: 40vh;
 }
 
+#video-style{
+  margin-bottom: 1em;
+}
+
+#video-margin{
+  margin-right: 0.5em;
+}
 
 /* Profile  */
 .profile form{
