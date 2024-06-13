@@ -285,7 +285,7 @@ input[type="email"]{
     color: var(--light-white);
     width: 5.9375em;
     height: 3.375em;
-    border-color: var(--primary-color);
+    border: none;
     border-radius: 3em;
 }
 
@@ -559,7 +559,7 @@ input[type="email"]{
 
 #members  > label{
   margin-top: 1em;
-  border: solid 0.125em var(--secondary-color);
+  border: solid 0.325em var(--secondary-color);
   border-radius: 10em;
   text-align: center;
   color: var(--primary-color);
@@ -758,7 +758,7 @@ video {
 }
 
 /* Profile  */
-.profile form{
+.profile form, .profile #userProfile{
   padding: 0;
 }
 
@@ -775,18 +775,52 @@ video {
 .profile form > main > section:nth-of-type(2) > section,
 .profile form > main > section:nth-of-type(3) > section,
 .profile form > main > section:nth-of-type(4) > section,
-.profile form > main > section:nth-of-type(5) > section{
+.profile form > main > section:nth-of-type(5) > section,
+.profile #userProfile main > section:nth-of-type(2) > section,
+.profile #userProfile main > section:nth-of-type(3) > section,
+.profile #userProfile main > section:nth-of-type(4) > section,
+.profile #userProfile main > section:nth-of-type(5) > section
+{
   position: relative;
   margin-left: 2.5em;
   margin-bottom: 2.5em;
 }
 
-.profile form > header{
+.profile form > header, .profile #userProfile > header{
   height: 35vh !important;
 }
 
+#userProfile main{
+padding: 1em;
+}
+
+#userProfile > header{
+  align-items: center;
+}
+
+#userProfile > header section{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 0.9375em;
+  padding-left: 0.5em;
+  padding-bottom: 0.5em;
+  height: 2.8125em;
+  overflow: hidden;
+}
+
+#userProfile header section h1{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 0; 
+}
+
 .profile form > header > section:nth-of-type(1)> section:nth-of-type(1), 
-.profile form > header > section:nth-of-type(1)> section:nth-of-type(2){
+.profile form > header > section:nth-of-type(1)> section:nth-of-type(2),
+.profile #userProfile > header > section:nth-of-type(1)> section:nth-of-type(1), 
+.profile #userProfile > header > section:nth-of-type(1)> section:nth-of-type(2){
   align-items: center;
   }
 
@@ -794,7 +828,7 @@ video {
   height: 5vh; 
 }
 
-.profile form > header > #gradient{
+.profile form > header > #gradient, .profile #userProfile > header > #gradient{
   background-image: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,0.7));
   overflow: hidden;
   height: 11vh;

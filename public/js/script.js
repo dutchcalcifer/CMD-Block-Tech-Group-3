@@ -10,7 +10,7 @@ ageChecks.forEach(function(ageCheck) {
 
         //geeft de border een donkere selectie kleur
         if (event.target.checked) {
-            label.style.border = 'solid 0.125em var(--primary-color)';
+            label.style.border = 'solid 0.325em var(--primary-color)';
 
             //Maakt een check img aan onder in de label, en deze style ik dan in css
             if (!label.querySelector('img')) {
