@@ -118,6 +118,9 @@ router.get("/profile", async (req, res) => {
     if (req.session && req.session.user) {
       // Render the "profile" view with the user object
       res.render("pages/profile", { user: req.session.user });
+      const user = req.session.user
+      console.log("User genres", user)
+
     } else {
       // Redirect the user to the login page
       res.redirect("/login");

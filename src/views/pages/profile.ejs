@@ -48,24 +48,8 @@
                 </section>
             </section>
             
-            <section>
-                <img src="../img/genre_icon.svg" class="imageIcon" alt="genre icon">
-                <section>
-                    <label class="checkbox-label">Genre</label>
-                    <section class="grid-choice-button">
-                        <% const genres = ['Blues', 'Classical', 'Country', 'Disco', 'Dubstep', 'Electro', 'Folk', 'Funk', 'Hip-hop', 
-                        'House', 'Jazz', 'Metal', 'Pop', 'Punk', 'R&B', 'Reggae', 'Rock', 'Schlager', 'Soul', 'Techno', 'Trance']; %>
-                        <% genres.forEach(function(genre) { %>
-                            <section class="profile-choice <%= user.genres.includes(genre) ? 'checked' : 'hidden' %>">
-                                <input type="checkbox" name="genres" value="<%= genre %>"
-                                <% if (user.genres.includes(genre)) { %> checked <% } %> readonly/>
-                                    <%= genre %>
-                                    <div class="check"></div>
-                             </section>
-                        <% }); %>
-                    </section>
-                </section>
-            </section>
+
+            
             
             <section>
                 <img src="../img/instrument_icon.svg" class="imageIcon" alt="instrument icon">
@@ -85,6 +69,26 @@
                     </section>
                 </section>
             </section>
+
+            <section>
+                <img src="../img/genre_icon.svg" class="imageIcon" alt="genre icon">
+                <section>
+                    <label class="checkbox-label">Genre</label>
+                    <section class="grid-choice-button">
+                        <% const genress = ['Blues', 'Classical', 'Country', 'Disco', 'Dubstep', 'Electro', 'Folk', 'Funk', 'Hip-hop', 
+                        'House', 'Jazz', 'Metal', 'Pop', 'Punk', 'R&B', 'Reggae', 'Rock', 'Schlager', 'Soul', 'Techno', 'Trance']; %>
+                        <% genress.forEach(function(genre) { %>
+                            <section class="profile-choice <%= user.genres.includes(genre) ? 'checked' : 'hidden' %>">
+                                <input type="checkbox" name="genres" value="<%= genre %>"
+                                <% if (user.genres.includes(genre)) { %> checked <% } %> readonly/>
+                                    <%= genre %>
+                                    <div class="check"></div>
+                             </section>
+                        <% }); %>
+                    </section>
+                </section>
+            </section>
+            
                     <button type="submit" id="saveButton">Save</button>
 
         </main>
