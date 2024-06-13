@@ -27,21 +27,32 @@ function ageCheckFunction(event) {
     }
 }
 
-ageChecks.forEach(ageCheck => {
-    ageCheck.addEventListener('change', ageCheckFunction);
-});
+function previewMedia(event) {
+    const file = event.target.files[0];
+    const inputId = event.target.id;
+    let mediaPreview;
 
+    if (inputId === 'video1') {
+        mediaPreview = document.getElementById('mediaPreview1');
+    } else if (inputId === 'video2') {
+        mediaPreview = document.getElementById('mediaPreview2');
+    }
 
+    if (file) {
+        const fileType = file.type;
+        const fileURL = URL.createObjectURL(file);
 
+        // Clear previous preview
+        mediaPreview.innerHTML = '';
 
-
-
-
-
-
-
-
-
+        if (fileType.startsWith('video')) {
+            const videoElement = document.createElement('video');
+            videoElement.setAttribute('controls', '');
+            videoElement.src = fileURL;
+            mediaPreview.appendChild(videoElement);
+        }
+    }
+}
 
 // pauze for you
 function videoPauze() {
@@ -294,7 +305,6 @@ function sorting(sortOption) {
         });
     });
 
-
     if (selectedSort == 'members_low_to_high') {
         resultsArray.sort((a, b) => a.member - b.member);
         console.log("Members low to high");
@@ -427,22 +437,41 @@ searchInput?.addEventListener('blur', function() {
 
 // Next and prev button
 document.addEventListener('DOMContentLoaded', function() {
+    const choiceButtons = document.querySelectorAll('.register-choice');
     const partials = document.querySelectorAll('.partial');
     let currentIndex = 0;
     let currentStep = 1;
+    let lastClickedButton = null;
 
-    function showPartial(index) {
-        partials.forEach((partial, i) => {
-            if (i === index) {
-                partial.classList.remove('hidden');
-            } else {
-                partial.classList.add('hidden');
-            }
-        });
+    // Function to toggle visibility of .check
+    function toggleCheckVisibility(button, visible) {
+        const check = button.querySelector('.check');
+        if (visible) {
+            check.style.display = 'block';
+        } else {
+            check.style.display = 'none';
+        }
     }
 
-    const prevBtn = document.getElementById('prevBtn');
+    // Event listener for choice buttons
+    choiceButtons.forEach(function(button) {
+        const checkbox = button.querySelector('input[type="checkbox"]');
+        button?.addEventListener('click', function() {
+            checkbox.checked = !checkbox.checked;
+            button.classList.toggle('checked', checkbox.checked);
+            toggleCheckVisibility(button, checkbox.checked);
+            if (lastClickedButton && lastClickedButton !== button) {
+                lastClickedButton.classList.remove('check');
+            }
+            lastClickedButton = button;
 
+            // Check genres and instruments each time an input is clicked
+            checkGenres();
+            checkInstruments();
+        });
+    });
+
+    const prevBtn = document.getElementById('prevBtn');
     prevBtn?.addEventListener('click', function() {
         if (currentIndex > 0) {
             currentIndex--;
@@ -452,36 +481,38 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const nextBtn = document.getElementById('nextBtn');
-    
     nextBtn?.addEventListener('click', function() {
         if (validateForm()) {
             if (currentIndex < partials.length - 1) {
                 currentIndex++;
                 showPartial(currentIndex);
-            } else {
-                // Handle what happens when reaching the last partial
-                alert('You have reached the last step.');
             }
         }
     });
 
-    showPartial(currentIndex); // Initialize the first partial to be visible
-
+    // Function to validate the form before allowing the user to proceed
     function validateForm() {
         const currentPartial = partials[currentIndex];
-        const inputs = currentPartial.querySelectorAll('input[required], textarea[required]');
-        for (let i = 0; i < inputs.length; i++) {
-            if (!inputs[i].value) {
-                alert('Please fill in all required fields.');
-                return false;
-            }
-        }
+
         // Update the progress bar here if validation succeeds
         updateProgressBar(true);
         return true;
     }
 
-    // Progressbar
+    // Function to show partials
+    function showPartial(index) {
+        partials.forEach((partial, i) => {
+            if (i === index) {
+                partial.classList.remove('hidden');
+                partial.style.display = 'block'; // Ensure the partial is visible
+            } else {
+                partial.classList.add('hidden');
+                partial.style.display = 'none'; // Ensure other partials are hidden
+            }
+        });
+    }
+
+    // Progress bar update function
     function updateProgressBar(isNext) {
         const steps = document.querySelectorAll('.progressbar');
         if (isNext) {
@@ -496,23 +527,39 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
+
+    // Edit partials functionality
+    const editDescriptionIcon = document.getElementById('editDescriptionIcon');
+
+    function hideAllPartials() {
+        partials.forEach(partial => {
+            partial.style.display = 'none';
+        });
+    }
+
+    function showEditPartial(partialId) {
+        hideAllPartials();
+        document.getElementById(partialId).style.display = 'block';
+    }
+
+    editDescriptionIcon?.addEventListener('click', function() {
+        showEditPartial('partial-description');
+    });
+
+    // Initially hide all partials and then show the first one
+    hideAllPartials();
+    showPartial(currentIndex);
 });
 
-
-
-
-// Back button profile
-document.getElementById('backButton').addEventListener('click', function() {
-    window.location.href = '/foryou';
-  });    
-
-
-  document.addEventListener('DOMContentLoaded', function() {
+// Profile edit button  
+document.addEventListener('DOMContentLoaded', function() {
     const editIcon = document.querySelector('#editIcon');
     const saveButton = document.querySelector('#saveButton');
     const inputs = document.querySelectorAll('input[type="text"], textarea'); // Selecteer alle input- en textarea-elementen
     const mediaInputs = document.querySelectorAll('.mediaInput');
-    const choiceButtons = document.querySelectorAll('.style-choice-button');
+    const choiceButtons = document.querySelectorAll('.profile-choice');
+
+    let lastClickedButton = null;
 
     // Function to toggle readonly attributes
     function toggleReadonly(enable) {
@@ -527,6 +574,16 @@ document.getElementById('backButton').addEventListener('click', function() {
         });
     }
 
+    // Function to toggle visibility of .check
+    function toggleCheckVisibility(button, visible) {
+        const check = button.querySelector('.check');
+        if (visible) {
+            check.style.display = 'block';
+        } else {
+            check.style.display = 'none';
+        }
+    }
+
     // Event listener for the 'Save' button
     saveButton.addEventListener('click', function() {
         saveButton.style.display = 'none'; // Verberg de 'Save' knop
@@ -534,12 +591,14 @@ document.getElementById('backButton').addEventListener('click', function() {
         mediaInputs.forEach(function(input) {
             input.style.display = 'none'; // Verberg het bestand-input
         });
-        // Verberg ongecheckte buttons
+        // Verberg ongecheckte buttons en verwijder de .check class van alle buttons
         choiceButtons.forEach(function(button) {
             const checkbox = button.querySelector('input[type="checkbox"]');
             if (!checkbox.checked) {
                 button.classList.add('hidden');
             }
+            button.classList.remove('check');
+            toggleCheckVisibility(button, checkbox.checked);
         });
     });
 
@@ -550,18 +609,13 @@ document.getElementById('backButton').addEventListener('click', function() {
         mediaInputs.forEach(function(input) {
             input.style.display = 'block'; // Toon het bestand-input
         });
-        // Toon alle buttons
+        // Toon alle buttons en verwijder .check
         choiceButtons.forEach(function(button) {
             button.classList.remove('hidden');
+            button.classList.remove('check');
+            const checkbox = button.querySelector('input[type="checkbox"]');
+            toggleCheckVisibility(button, checkbox.checked);
         });
-    });
-
-    // Initial hiding of unchecked buttons
-    choiceButtons.forEach(function(button) {
-        const checkbox = button.querySelector('input[type="checkbox"]');
-        if (!checkbox.checked) {
-            button.classList.add('hidden');
-        }
     });
 
     // Toggle 'checked' class on click
@@ -570,49 +624,11 @@ document.getElementById('backButton').addEventListener('click', function() {
         button.addEventListener('click', function() {
             checkbox.checked = !checkbox.checked;
             button.classList.toggle('checked', checkbox.checked);
+            toggleCheckVisibility(button, checkbox.checked);
+            if (lastClickedButton && lastClickedButton !== button) {
+                lastClickedButton.classList.remove('check');
+            }
+            lastClickedButton = button;
         });
     });
 });
-
-
-
-// Edit partials 
-document.addEventListener('DOMContentLoaded', function() {
-    const editDescriptionIcon = document.getElementById('editDescriptionIcon');
-
-    const partials = document.querySelectorAll('.partial');
-
-    function hideAllPartials() {
-        partials.forEach(partial => {
-            partial.style.display = 'none';
-        });
-    }
-
-    function showPartial(partialId) {
-        hideAllPartials();
-        document.getElementById(partialId).style.display = 'block';
-    }
-
-    editDescriptionIcon?.addEventListener('click', function() {
-        showPartial('partial-description');
-    });
-
-        // Initially hide all partials
-        hideAllPartials();
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  

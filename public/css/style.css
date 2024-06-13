@@ -41,7 +41,7 @@ body{
 #backgroundtest h1,
 .profile h1,
 .profile h2,
-.profile label,
+#profileName,
 .settings h1,
 a, 
 button, 
@@ -57,9 +57,13 @@ h4{
   font-family:Jost-Regular;
 }
 
+#profileName{
+  font-size: 1em;
+}
+
 body,
 form,
-form .form-group {
+form .form-group{
   display: flex;
   flex-direction: column;
 }
@@ -73,6 +77,12 @@ form > * {
   /* max-width: 20rem; */
 }
 
+label, textarea {
+  width: 100%;
+  margin-bottom: 1em; /* Voegt ruimte toe tussen label en textarea, en tussen textarea en volgend element */
+}
+
+
 
 /* Display */
 .profile form > header > section:nth-of-type(1)> section:nth-of-type(1), 
@@ -81,13 +91,39 @@ form > * {
 .profile form > main > section:nth-of-type(2),
 .profile form > main > section:nth-of-type(3),
 .settings header,
-.settings main > section:nth-of-type(1){
+.settings main > section:nth-of-type(1),
+.settings .button-display,
+#buttons_NextPrev {
   display: flex;
+}
+
+.container-choice,
+#video-display{
+  display: grid;
+  gap: 1em;
+  grid-template-columns: repeat(2, 175px);
+}
+
+.profile section label,
+.profile section textarea,
+.register-choice.checked .check {
+#video-style {
+  display: flex;
+}
+
+label, 
+textarea,
+video,
+.profile section label,
+.profile section textarea{
+  display: block;
 }
 
 /* Element spaces */
 .profile form > header > section:nth-of-type(1)> section:nth-of-type(1),
-.settings header{
+.settings header,
+.settings .button-display,
+#buttons_NextPrev{
   justify-content: space-between;
 }
 
@@ -110,6 +146,10 @@ h1{
   color: var(--textbox-color); 
 }
 
+.profile h2{
+  margin-bottom: 1em;
+}
+
 h2{
   font-weight: 600;
 }
@@ -125,7 +165,7 @@ p{
 }
 
 .profile h2, 
-.profile label,
+#profileName,
 .settings h1, 
 h4{
   color: var(--primary-color);
@@ -146,8 +186,10 @@ input[type="text"]{
   border-color: var(--primary-color);
   background-color:var(--textbox-color);
   height: 1.8125em;
-  width: 20.875em;
+  width: 100%;
   margin-bottom: 2.75em;
+  background-repeat: no-repeat;
+  background-position: 0.9375em center;
 }
 
 input[type="password"], 
@@ -185,7 +227,6 @@ input[type="password"], input[type="email"], input[type="text"]{
   background-position: 0.9375em center;
 }
 
-
 /* Tekstveld svgs */
 input[type="password"]{
   background-image: url(../img/password_icon.svg);
@@ -197,27 +238,38 @@ input[type="email"]{
 
 
 /* Buttons */
-.progressbar, .style-choice-button, #savePhotoButton{
+.progressbar,
+.profile-choice,
+.register-choice,
+#savePhotoButton {
   border-radius: 20px;
-  border: 2px solid var(--secondary-color);  
+  border: 2px solid var(--secondary-color);
 }
 
-.style-choice-button, #savePhotoButton{
+.profile-choice,
+.register-choice,
+#savePhotoButton {
   color: var(--primary-color);
   box-shadow: var(--drop-shadow-button);
-  height: 4.5vh;
+  height: 5.1vh;
 }
 
-.style-choice-button{
-  text-align: center;
-  align-content: center;
+.profile-choice,
+.register-choice {
+  display: flex;
+  justify-content: center;
+  padding: 0.4em;
+  font-size: 0.9em;
 }
 
-.style-choice-button.checked {
+.profile-choice.checked,
+.register-choice.checked {
   border-color: var(--primary-color);
 }
 
-.style-choice-button input[type="checkbox"],
+.profile-choice input[type="checkbox"],
+.register-choice input[type="checkbox"],
+.register-choice .check,
 .hidden,
 #saveButton, 
 .mediaInput, .hiddenSearch {
@@ -225,7 +277,9 @@ input[type="email"]{
 }
 
 #saveButton,
-#nextBtn{
+#nextBtn,
+.settings .yes,
+.settings .no{
   background-color: var(--primary-color);
     color: var(--light-white);
     width: 5.9375em;
@@ -241,10 +295,89 @@ input[type="email"]{
 }
 
 .container-choice{
-  display: grid;
   grid-template-columns: repeat(3, 100px);
-  gap: 1em;
+  height: 60vh;
 }
+
+.checkbox-color {
+  box-shadow: 0 0 0 24px var(--primary-color) inset !important;
+} 
+
+.check {
+  position: relative; /* Maakt het mogelijk om absoluut gepositioneerde kinderen relatief aan dit element te positioneren */
+  height: 20px;
+  width: 20px; 
+  background-color: var(--primary-color); 
+  border-radius: 50%; 
+  margin-left: 0.5em; 
+  overflow: hidden; /* Zorgt ervoor dat de inhoud van het element niet buiten de randen van het element komt */
+  animation: fillCheck 1s forwards; /* Past de fillCheck animatie toe die 1 seconde duurt en blijft in de eindtoestand */
+}
+
+.check::after {
+  content: ''; /* Maakt een leeg pseudo-element */
+  position: absolute; /* Positioneert het pseudo-element absoluut relatief aan de ouder (.check) */
+  top: 50%; 
+  left: 50%; 
+  width: 0; 
+  height: 0; 
+  background: url('../img/checkMark_icon.svg') no-repeat center center; 
+  transform: translate(-50%, -50%); /* Verplaatst het pseudo-element zodat het perfect gecentreerd is binnen de ouder */
+  border-radius: 50%;
+}
+
+@keyframes fillCheck {
+  0% {
+      width: 20px; 
+      height: 20px; 
+  }
+  100% {
+      width: 20px; 
+      height: 20px; 
+      background-color: #fff; 
+  }
+}
+
+@keyframes fill {
+  0% {
+      width: 0; 
+      height: 0; 
+      background-color: var(--primary-color); 
+  }
+  100% {
+      width: 100%; 
+      height: 100%; 
+      background-color: var(--primary-color); 
+  }
+}
+
+
+.check::after {
+  animation: fill 1s forwards;
+}
+
+.scaleNormal {
+  transform: scale(1) !important;
+}
+
+.settings .no{
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  text-decoration: none;
+  height: 12vw;
+  font-size: 0.8em;
+  width: 20vw;
+  background-color: transparent;
+  color: var(--primary-color);
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.settings .button-display{
+  margin-top: 1em;
+}
+
 
 /* startscherm */
 #patternBackground{
@@ -572,15 +705,25 @@ input[type="search"]:not(:placeholder-shown) {
 
 
 /* Video and audio */
-#mediaPreview {
-  margin-top: 20px;
+#mediaPreview1,
+#mediaPreview2 {
+  height: 40vh;
+  background-color: var(--textbox-color);
 }
 
-video, audio {
-  width: 100%;
-  max-width: 400px;
+video {
+  overflow: hidden;
+  width: 39vw;
+  height: 40vh;
 }
 
+#video-style{
+  margin-bottom: 1em;
+}
+
+#video-margin{
+  margin-right: 0.5em;
+}
 
 /* Profile  */
 .profile form{
@@ -617,7 +760,7 @@ video, audio {
   }
 
   .profile form > header > section:nth-of-type(1)> section:nth-of-type(1){
-  height: 4vh; 
+  height: 5vh; 
 }
 
 .profile form > header > #gradient{
@@ -642,13 +785,12 @@ video, audio {
   height: 0.2vh;
   width: 100%;
   margin-top: 1em;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   background-color: var(--primary-color);
 }
 
 .profile section label,
 .profile section textarea {
-  display: block;
   width: 100%;
   margin-bottom: 0.4em;
 }
@@ -668,6 +810,10 @@ video, audio {
 
 
 /* Settings  */
+.settings a{
+  text-decoration: none;
+}
+
 .settings #profileImage{
   width: 40%;
 }
@@ -685,16 +831,68 @@ video, audio {
 .settings .setting-menu{
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  border: none;
+  width: 100%;
 }
 
 .settings h3{
   margin-bottom: 0.3em;
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.header-popup{
+  margin-bottom: 0.5em;
+}
+
+.text-popup{
+  margin-bottom: 0.3em;
+}
+
+.popup {
+  margin: 14em auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  position: relative;
+}
+
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  height: 4vh;
+  width: 4vw;
+  background-image: url(../img/close_icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.settings input[type="email"]{
+  width: 80vw;
+}
 
 /* Profile and settings padding */
 .profile form > main,
 .profile form > header > #gradient,
+.profile #padding,
 .settings header,
 .settings main > section:nth-of-type(1),
 .settings main > section:nth-of-type(2),
@@ -705,7 +903,7 @@ video, audio {
 
 /* Margin */
 .profile input{
-  margin-bottom: 1em;
+  margin: 0;
 }
 
 
@@ -1113,6 +1311,8 @@ footer{
   height: 10vh;
 }
 
-
-
-
+/* Error handling */
+.error-message {
+  color: red;
+  /* display: none; Verberg standaard de foutmelding */
+}
