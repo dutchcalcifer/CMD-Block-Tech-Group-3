@@ -241,7 +241,7 @@ input[type="email"]{
 .register-choice,
 #savePhotoButton,
 #deleteMedia,
-#submitMedia,
+.submitButton,
 .completeRegistration a {
   border-radius: 20px;
   border: 2px solid var(--secondary-color);
@@ -249,7 +249,7 @@ input[type="email"]{
 
 .profile-choice,
 .register-choice,
-#submitMedia,
+.submitButton,
 #deleteMedia,
 #savePhotoButton {
   color: var(--primary-color);
@@ -282,17 +282,17 @@ input[type="email"]{
   display: none;
 }
 
-#submitMedia,
+.submitButton,
 #saveButton{
   width: 100% !important;
   margin-top: 2em;
 }
 
-#submitMedia{
+.submitButton{
   margin-top: 1em !important;
 }
 
-#submitMedia,
+.submitButton,
 #saveButton,
 #nextBtn,
 .settings .yes,
@@ -303,6 +303,11 @@ input[type="email"]{
     height: 3.375em;
     border: none;
     border-radius: 3em;
+}
+
+.settings .yes{
+  color: white;
+  background-color: red;
 }
 
 #prevBtn{
@@ -984,7 +989,9 @@ padding: 1em;
   background-size: contain;
 }
 
-.settings input[type="email"]{
+.settings input[type="password"],
+.settings input[type="email"],
+.settings .text-popup{
   width: 80vw;
 }
 
