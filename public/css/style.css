@@ -769,12 +769,6 @@ input[type="search"]:not(:placeholder-shown) {
 
 
 /* Video and audio */
-#mediaPreview1,
-#mediaPreview2 {
-  height: 40vh;
-  background-color: var(--textbox-color);
-}
-
 .profile video{
   overflow: hidden;
   object-fit: cover;
