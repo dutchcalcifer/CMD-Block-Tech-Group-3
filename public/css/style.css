@@ -31,13 +31,18 @@ src: url(../fonts/Jost-Regular.ttf);
 * {
   box-sizing: border-box;
   margin: 0;
+  overflow-x: hidden;
+}
+
+.forYouBody{
+  overflow-x: hidden;
 }
 
 body{
   background-color:var(--body-background) ;
 }
 
-#backgroundtest h1,
+.forYouBody h1,
 .profile h1,
 .profile h2,
 #profileName,
@@ -190,10 +195,7 @@ input[type="text"]{
   background-position: 0.9375em center;
 }
 
-input[type="password"], 
-input[type="email"]{
-  text-indent: 3.5em;
-}
+
 
 .profile .toggleInput{
   border: none !important;
@@ -219,20 +221,7 @@ input[type="email"]{
 }
 
 
-Tekstveld svg position
-input[type="password"], input[type="email"], input[type="text"]{
-  background-repeat: no-repeat;
-  background-position: 0.9375em center;
-}
 
-/* Tekstveld svgs */
-input[type="password"]{
-  background-image: url(../img/password_icon.svg);
-}
-
-input[type="email"]{
-  background-image: url(../img/mail_icon.svg) 
-}
 
 
 /* Buttons */
@@ -430,7 +419,7 @@ input[type="email"]{
   transform: translate(-50%, -50%); 
 }
 
-#log-reg a, #loginPage main button  {
+#log-reg a, #loginPage main button{
   height: 3.375em;
   width: 20.5em;
   border-radius: 3em;
@@ -438,6 +427,18 @@ input[type="email"]{
   margin: 0 auto;
   align-items: center; 
   text-decoration: none;
+}
+
+.register button[type="submit"]{
+  height: 3.375em;
+  width: 100%;
+  border-radius: 3em;
+  justify-content: center; 
+  margin: 0 auto;
+  align-items: center; 
+  background-color: var(--primary-color);
+  color: var(--body-background);
+  border: none;
 }
 
 #log-reg a:first-of-type, #loginPage main button{
@@ -526,6 +527,7 @@ input[type="email"]{
 #loginPage main label{
   color: var(--body-background);
   text-align: left;
+  margin-bottom:0 ;
 }
 
 #loginPage main button{
@@ -614,6 +616,7 @@ input[type="email"]{
   justify-content: center;
 }
 
+
 #members  img {
   position: absolute;
   top: 1.7em;
@@ -637,7 +640,7 @@ input[type="email"]{
 
 /* bandname */
 .member input{
-  width: 100%;
+  width: 90vw;
 }
 
 .member > label:nth-of-type(1){
@@ -1340,6 +1343,7 @@ span #accCreated{
 #sort fieldset{
   grid-template-columns: 1fr 1fr 1fr; 
   padding: 0;
+  gap: 0 !important;
   
 }
 

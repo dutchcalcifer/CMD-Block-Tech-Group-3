@@ -546,6 +546,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateProgressBar(isNext) {
         const steps = document.querySelectorAll('.progressbar');
         const submitButton = document.querySelector('.register button[type="submit"]');
+        const nextButton = document.querySelector('.register #buttons_NextPrev #nextBtn ');
+
         if (isNext) {
             if (currentStep < steps.length) {
                 steps[currentStep].classList.add('active');
@@ -560,8 +562,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }//Laat alleen submit zien op de laatste registratie pagina
         if (currentStep === steps.length) {
             submitButton.classList.remove('hidden');
+            nextButton.classList.add('hidden');
         } else {
             submitButton.classList.add('hidden');
+            nextButton.classList.remove('hidden');
         }
     
     }
