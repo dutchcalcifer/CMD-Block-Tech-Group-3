@@ -2,30 +2,36 @@
 const ageChecks = document.querySelectorAll('#members input[type="checkbox"]');
 const ageCheckLabels = document.querySelectorAll('#members > label');
 
-function ageCheckFunction(event) {
-    const index = Array.from(ageChecks).indexOf(event.target);
-    const label = ageCheckLabels[index]; 
+//Gaat over de checkboxes en voer de functie uit wanneer er een gecheckt is
+ageChecks.forEach(function(ageCheck) {
+    ageCheck.addEventListener('click', function ageCheckFunction(event) {
+        const index = Array.from(ageChecks).indexOf(event.target);
+        const label = ageCheckLabels[index];
 
-    if (event.target.checked) {
-        label.style.border = 'solid 0.125em var(--primary-color)';
-        
-        
-        if (!label.querySelector('img')) {
-            var img = document.createElement('img');
-            img.setAttribute('src', '../img/buttoncheck.svg');
-            img.setAttribute('alt', 'Checked');
-            label.appendChild(img);
+        //geeft de border een donkere selectie kleur
+        if (event.target.checked) {
+            label.style.border = 'solid 0.325em var(--primary-color)';
+
+            //Maakt een check img aan onder in de label, en deze style ik dan in css
+            if (!label.querySelector('img')) {
+                var img = document.createElement('img');
+                img.setAttribute('src', '../img/buttoncheck.svg');
+                img.setAttribute('alt', 'Checked');
+                label.appendChild(img);
+            }
+            //haalt de donkere selectie kleur van de border af
+        } else {
+            label.style.border = '';
+            //verwijderd de img
+            var imgToRemove = label.querySelector('img');
+            if (imgToRemove) {
+                imgToRemove.remove();
+            }
         }
-    } else {
-        label.style.border = '';
-        
-        
-        var imgToRemove = label.querySelector('img');
-        if (imgToRemove) {
-            imgToRemove.remove();
-        }
-    }
-}
+    });
+});
+
+
 
 function previewMedia(event) {
     const file = event.target.files[0];
@@ -64,7 +70,7 @@ function videoPauze() {
 
         video.addEventListener("click", function() {
             if (video.paused) {
-                video.play();
+                video.play(); //video speelt af
                 pauzeB.style.display = 'none'; //pauze button uit
 
             } else {
@@ -73,9 +79,9 @@ function videoPauze() {
             }
         });
 
-        //pauze on scroll
+        //pauze wanneer er gescrolled word
         contentElement?.addEventListener('scroll', () => {
-            video.pause();
+            video.pause(); //video gaat op pauze
             pauzeB.style.display = 'block'; //pauze button aan
         });
     });
@@ -83,33 +89,36 @@ function videoPauze() {
 videoPauze();
 
 
-// Filter knop
+// Filter tab openen
 const filterButton = document.getElementById('filter');
 const filterCloseButton = document.querySelector('#filter-pop-up button:first-child');
 const filterSubmit = document.querySelector('#filter-pop-up form > button');
 
-// open filter
+// open filter tab
 filterButton?.addEventListener('click', function(){
     document.getElementById('filter-pop-up').style.height = "100%";
-    filterSubmit.classList.remove('hidden');
+    filterSubmit.classList.remove('hidden'); //laat de resulataten button zien
 });
 
-//sluit filter
+//sluit filter tab
 filterCloseButton?.addEventListener('click', function(){
     document.getElementById('filter-pop-up').style.height = "0%";
-    filterSubmit.classList.add('hidden');
+    filterSubmit.classList.add('hidden'); //Haalt de resultaten button weg
 });
 
 
 
-// Filter knoppen styling
+// Filter knoppen styling (genres en members)
 const checkboxes = document.querySelectorAll('#sort fieldset:nth-of-type(2) input, #sort fieldset:nth-of-type(3) input');
 const labels = document.querySelectorAll('#sort fieldset:nth-of-type(2) label, #sort fieldset:nth-of-type(3) label');
 
+//Gaat over elke checkbox heen  
 checkboxes?.forEach(function(checkbox) {
     checkbox.addEventListener('change', function() {
+        //kijkt welke checks aan staan
         const index = Array.from(checkboxes).indexOf(checkbox);
         const label = labels[index]; 
+        
 
         if (checkbox.checked) {
             labels[index].style.border = 'solid 0.125em var(--primary-color)'; 
@@ -135,29 +144,32 @@ checkboxes?.forEach(function(checkbox) {
 const radioButtons = document.querySelectorAll('#sort fieldset:nth-of-type(1) input[type="radio"]');
 const labelsRadio = document.querySelectorAll('#sort fieldset:nth-of-type(1) label');
 
+//Gaat over elke radiobutton heen  
 radioButtons?.forEach(function(radioButton) {
     radioButton.addEventListener('change', function() {
         labelsRadio.forEach(label => {
             label.style.border = '';
+            //als de label al in gevinkt, word het verwijderd
             var imgToRemove = label.querySelector('img');
             if (imgToRemove) {
                 imgToRemove.remove();
                 
             }
         });
-
+    //kijkt welke radio button aan staat
         const index = Array.from(radioButtons).indexOf(radioButton);
         const label = labelsRadio[index]; 
 
         if (radioButton.checked) {
             label.style.border = 'solid 0.125em var(--primary-color)';
+            //als er nog geen check img op zit word deze gemaakt en toegevoegd
             if (!label.querySelector('img')) {
                 var img = document.createElement('img');
                 img.setAttribute('src', '../img/buttoncheck.svg');
                 img.setAttribute('alt', 'Checked');
                 label.appendChild(img);
                 const elementToRemove = document.querySelector('.stockCheck');
-                elementToRemove.classList.remove('stockCheck');
+                elementToRemove?.classList.remove('stockCheck');
 
             }
         }
@@ -169,9 +181,11 @@ radioButtons?.forEach(function(radioButton) {
 document.addEventListener('DOMContentLoaded', function() {
     const filterButton = document.getElementById('filter');
 
+    //Alles start wanneer een gebruiker submit
     document.querySelector('#filter-pop-up form')?.addEventListener('submit', function(event) {
         event.preventDefault();
 
+        //laat de filter tab naar beneden gaan
         document.getElementById('filter-pop-up').style.height = "0%";
         filterSubmit.classList.add('hidden');
 
@@ -201,15 +215,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Controleert of er geen geselecteerde genres zijn OF ten minste één van de genres in het huidige 
             //video-element overeenkomt met een geselecteerd genre.
-            const hasGenreMatch = !selectedValuesGenres.length || Array.from(genreElements).some(function(genreElement) { //bron: chatgpt
+            //bron: chatgpt
+            const hasGenreMatch = !selectedValuesGenres.length || Array.from(genreElements).some(function(genreElement) { 
                 const genreName = genreElement.textContent.trim();
                 return selectedValuesGenres.includes(genreName);
             });
 
             // Controleert of er geen geselecteerde members zijn 
             // OF dat de tekstinhoud van het lid overeenkomt met ten minste één van de geselecteerde leden.
-            const hasMemberMatch = !selectedValuesMembers.length || selectedValuesMembers.includes(memberElement.textContent.trim());//bron: chatgpt
-            // return checkbox.value;
+            //bron: chatgpt
+            const hasMemberMatch = !selectedValuesMembers.length || selectedValuesMembers.includes(memberElement.textContent.trim());
+            
 
             //Hide videos gebaseerd op de matches
             if (hasGenreMatch && hasMemberMatch) {
@@ -227,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
 
-        // No results
+        // No results bericht
         let noResultP = document.getElementById('noResultsMessage');
 
         //als er geen filters zijn gevonden of er geen zichtbare video-elementen zijn met het ID 'videoBackground'
@@ -245,14 +261,11 @@ document.addEventListener('DOMContentLoaded', function() {
         sorting();
 
             
-        //wanneer je sorteert of filtert, begin je boven
+        //wanneer je sorteert of filtert, begin je boven aan de pagina
         function scrollToTop() {
             const scrollUp = document.getElementById('user-info-container');
             if (scrollUp) {
-            
                 scrollUp.scrollTop = 0;
-            } else {
-                console.error("Cant scroll up");
             }
         }
         scrollToTop();  
@@ -264,21 +277,26 @@ document.addEventListener('DOMContentLoaded', function() {
 //sorteren
 function sorting(sortOption) {
 
-    // Selecteer de video achtergronden
+  
     const videoBackgrounds = document.querySelectorAll('#videoBackground');
     
     const sortFieldset = document.querySelector('#sort fieldset:nth-of-type(1)');
     const sortFieldsetRadios = sortFieldset.querySelectorAll('input[type="radio"]:checked');
 
+    //Maakt een array aan van de aangevinkte radiobutton
     const selectedSort = Array.from(sortFieldsetRadios).map(function(radio) { 
         return radio.value; 
     });
     
-    // Array voor de resultaten
+    // Array voor de members + videobackground
+    //Bron: ChatGPT
     const resultsArray = [];
+    // Array voor voor datum + videobackground
+    //Bron: ChatGPT
     const resultsArrayId = [];
 
-    // Loop door de video achtergronden en voeg de tekstinhoud van #memberSort toe aan resultsArray
+    // Haalt de members (integer) op en matched met de juiste video
+    //Bron: ChatGPT
     videoBackgrounds.forEach(videoBackground => {
         const memberElement = videoBackground.querySelector('section > ul > li:nth-child(2)');
         resultsArray.push({
@@ -287,6 +305,8 @@ function sorting(sortOption) {
         });
     });
 
+    //Bron: ChatGPT
+    //Zet datum van het aanmaken van een acc om naar een datum die javascript kan lezen
     const parseDateString = (dateStr) => {
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         const dateParts = dateStr.split(" ");
@@ -296,7 +316,8 @@ function sorting(sortOption) {
         return new Date(formattedDateStr);
     };
     
-    // Data naar datum
+    // Haalt de datum op van wanneer een acc is gemaakt en matched het aan een video
+    //Bron: ChatGPT
     videoBackgrounds.forEach(videoBackground => {
         const userId = videoBackground.querySelector('#videoBackground #accCreated');
         resultsArrayId.push({
@@ -305,16 +326,21 @@ function sorting(sortOption) {
         });
     });
 
+    //Sorteren
+    //Van laag naar hoog
     if (selectedSort == 'members_low_to_high') {
         resultsArray.sort((a, b) => a.member - b.member);
         console.log("Members low to high");
+         //Van hoog naar laag
     } else if (selectedSort == 'members_high_to_low') {
         resultsArray.sort((a, b) => b.member - a.member);
         console.log("Members high to low");
-    } else if (selectedSort == 'old posts') {
+         //Van laag naar hoog
+    } else if (selectedSort == 'old posts') { //Checkt huidige tijd //Bron: ChatGPT
         resultsArrayId.sort((a, b) => a.id.getTime() - b.id.getTime());
         console.log("Old posts");
-    } else if (selectedSort == 'new posts') {
+        //Van hoog naar laag
+    } else if (selectedSort == 'new posts') {//Checkt huidige tijd //Bron: ChatGPT
         resultsArrayId.sort((a, b) => b.id.getTime() - a.id.getTime());
         console.log("New posts");
     } else {
@@ -322,7 +348,7 @@ function sorting(sortOption) {
     }
     
 
-    // Selecteer de container waar de video achtergronden zich bevinden
+    // Selecteer de container waar de video achtergronden zich bevinden om het terug te plaatsen
     const videoContainer = document.getElementById('user-info-container');
 
     // Verwijderd de huidige inhoud van de container
@@ -330,16 +356,20 @@ function sorting(sortOption) {
         videoContainer.removeChild(videoContainer.firstChild);
     }
 
+    //Voegt weer toe in de juiste volgorde
+    //Members
     if (selectedSort == 'members_low_to_high' || selectedSort == 'members_high_to_low') {
         resultsArray.forEach(result => {
             videoContainer.appendChild(result.videoBackground);
         });
+    //Datum
     } else { 
         resultsArrayId.forEach(result => {
             videoContainer.appendChild(result.videoBackground);
         });
     }
 }
+
 
 // search 
 document.querySelector('#foryouheader form')?.addEventListener('submit', function(event) {
@@ -352,7 +382,7 @@ document.querySelector('#foryouheader form')?.addEventListener('submit', functio
         const bandNameElement = videoBackground.querySelector('h2');
         const bandName = bandNameElement.textContent.toLowerCase();
 
-        //Checkt of de search waarde overeenkomt in de genres en laat de posts met deze genres zien
+        //Checkt of de search waarde voorkomt in de bandname en laat de posts met deze bandname zien
         if (bandName.includes(filter)) {
             videoBackground.classList.remove('hiddenSearch');
             if (filter !== "") { 
@@ -515,6 +545,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Progress bar update function
     function updateProgressBar(isNext) {
         const steps = document.querySelectorAll('.progressbar');
+        const submitButton = document.querySelector('.register button[type="submit"]');
+        const nextButton = document.querySelector('.register #buttons_NextPrev #nextBtn ');
+
         if (isNext) {
             if (currentStep < steps.length) {
                 steps[currentStep].classList.add('active');
@@ -525,7 +558,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentStep--;
                 steps[currentStep].classList.remove('active');
             }
+            
+        }//Laat alleen submit zien op de laatste registratie pagina
+        if (currentStep === steps.length) {
+            submitButton.classList.remove('hidden');
+            nextButton.classList.add('hidden');
+        } else {
+            submitButton.classList.add('hidden');
+            nextButton.classList.remove('hidden');
         }
+    
     }
 
     // Edit partials functionality
@@ -584,13 +626,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Function to toggle visibility of media inputs
+    function toggleMediaInputs(visible) {
+        mediaInputs.forEach(function(input) {
+            if (visible) {
+                input.style.display = 'block';
+            } else {
+                input.style.display = 'none';
+            }
+        });
+    }
+
+    // Initially hide media inputs
+    toggleMediaInputs(false);
+
     // Event listener for the 'Save' button
-    saveButton.addEventListener('click', function() {
+    saveButton?.addEventListener('click', function() {
         saveButton.style.display = 'none'; // Verberg de 'Save' knop
         toggleReadonly(true); // Schakel readonly attributen weer in
-        mediaInputs.forEach(function(input) {
-            input.style.display = 'none'; // Verberg het bestand-input
-        });
+        toggleMediaInputs(false); // Verberg het bestand-input
+
         // Verberg ongecheckte buttons en verwijder de .check class van alle buttons
         choiceButtons.forEach(function(button) {
             const checkbox = button.querySelector('input[type="checkbox"]');
@@ -603,12 +658,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Event listener for the main edit icon
-    editIcon.addEventListener('click', function() {
+    editIcon?.addEventListener('click', function() {
         saveButton.style.display = 'block'; // Toon de 'Save' knop
         toggleReadonly(false); // Verwijder readonly attributen
-        mediaInputs.forEach(function(input) {
-            input.style.display = 'block'; // Toon het bestand-input
-        });
+        toggleMediaInputs(true); // Toon het bestand-input
+
         // Toon alle buttons en verwijder .check
         choiceButtons.forEach(function(button) {
             button.classList.remove('hidden');

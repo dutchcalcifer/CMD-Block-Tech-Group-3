@@ -27,17 +27,11 @@ app.set("view engine", "ejs");
 // set view engine path
 app.set("views", path.join(__dirname, "src/views"));
 
-// db connection
-mongoose
-  .connect(process.env.URI)
-  .then(() => {
-    app.listen(process.env.PORT, () => {
-      console.log("Node running on port", process.env.PORT);
-    });
-  })
-  .catch((error) => {
-    console.error("Connection error:", error);
-    process.exit(1);
+// import db
+const connectDB = require("./db");
+// connect db
+connectDB().then(() => {
+  app.listen(process.env.PORT, () => {
+    console.log("Node running on port", process.env.PORT);
   });
-
-
+});

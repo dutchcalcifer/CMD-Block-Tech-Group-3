@@ -6,7 +6,7 @@
     <title>User Form</title>
     <link rel="stylesheet" href="/css/style.css" />
   </head>
-  <body>
+  <body class="register">
     <form action="/register" method="POST" enctype="multipart/form-data">
       <h1>User Registration Form</h1>
 
@@ -36,12 +36,16 @@
       <div class="partial"><%- include ("../partials/emailAndPassword") %></div>
     </div>
 
-      <section id="buttons_NextPrev">
-        <ul>
-          <li><button type="button" id="prevBtn">Previous</button></li>
-          <li><button type="button" id="nextBtn">Next</button></li>
-      </ul>
-      </section>
+    <button type="submit" class="hidden">Submit</button>
+
+    <footer>
+        <section id="buttons_NextPrev">
+          <ul>
+            <li><button type="button" id="prevBtn">Previous</button></li>
+            <li><button type="button" id="nextBtn">Next</button></li>
+          </ul>
+        </section>
+    </footer>
 
     </form>
 

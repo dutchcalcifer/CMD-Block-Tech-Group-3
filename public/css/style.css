@@ -34,11 +34,15 @@ src: url(../fonts/Jost-Regular.ttf);
   overflow-x: hidden;
 }
 
+.forYouBody{
+  overflow-x: hidden;
+}
+
 body{
   background-color:var(--body-background) ;
 }
 
-#backgroundtest h1,
+.forYouBody h1,
 .profile h1,
 .profile h2,
 #profileName,
@@ -64,7 +68,6 @@ h4{
 body,
 form,
 form .form-group{
-  display: flex;
   flex-direction: column;
 }
 
@@ -81,30 +84,35 @@ label, textarea {
 
 
 /* Display */
+body,
+form,
+form .form-group,
+#log-reg a, 
+#loginPage main button,
+#divider,
 .profile form > header > section:nth-of-type(1)> section:nth-of-type(1), 
 .profile form > header > section:nth-of-type(1)> section:nth-of-type(2),
 .profile #descriptionLabel,
 .profile form > main > section:nth-of-type(2),
 .profile form > main > section:nth-of-type(3),
+.profile section label,
+.profile section textarea,
+.profile-choice,
+.register-choice,
+.register-choice.checked .check,
 .settings header,
 .settings main > section:nth-of-type(1),
-.settings .button-display,
-#buttons_NextPrev {
+.settings .button-display{
   display: flex;
 }
 
+#sort fieldset,
+.profile .grid-choice-button,
 .container-choice,
 #video-display{
   display: grid;
-  gap: 1em;
+  gap: 0.5em;
   grid-template-columns: repeat(2, 175px);
-}
-
-.profile section label,
-.profile section textarea,
-.register-choice.checked .check,
-#video-style {
-  display: flex;
 }
 
 label, 
@@ -143,10 +151,12 @@ h1{
 }
 
 .profile h2{
-  margin-bottom: 1em;
+  margin-bottom: 0.3em;
+  font-weight: 700;
 }
 
-h2{
+h2,
+.profile label{
   font-weight: 600;
 }
 
@@ -156,10 +166,7 @@ p{
   text-align: left !important;
 }
 
-.profile h2{
-  font-weight: 700;
-}
-
+.profile label,
 .profile h2, 
 #profileName,
 .settings h1, 
@@ -188,10 +195,7 @@ input[type="text"]{
   background-position: 0.9375em center;
 }
 
-input[type="password"], 
-input[type="email"]{
-  text-indent: 3.5em;
-}
+
 
 .profile .toggleInput{
   border: none !important;
@@ -208,7 +212,7 @@ input[type="email"]{
 
 .profile .toggleInput,
 .profile input[type="text"]{
-  width: 20vw;
+  width: 30vw;
 } 
 
 .profile textarea{
@@ -217,42 +221,37 @@ input[type="email"]{
 }
 
 
-Tekstveld svg position
-input[type="password"], input[type="email"], input[type="text"]{
-  background-repeat: no-repeat;
-  background-position: 0.9375em center;
-}
 
-/* Tekstveld svgs */
-input[type="password"]{
-  background-image: url(../img/password_icon.svg);
-}
-
-input[type="email"]{
-  background-image: url(../img/mail_icon.svg) 
-}
 
 
 /* Buttons */
 .progressbar,
 .profile-choice,
 .register-choice,
-#savePhotoButton {
+#savePhotoButton,
+#deleteMedia,
+.submitButton,
+.completeRegistration a {
   border-radius: 20px;
   border: 2px solid var(--secondary-color);
 }
 
 .profile-choice,
 .register-choice,
+.submitButton,
+#deleteMedia,
 #savePhotoButton {
   color: var(--primary-color);
   box-shadow: var(--drop-shadow-button);
   height: 5.1vh;
 }
 
+#deleteMedia{
+  width: 44vw;
+}
+
 .profile-choice,
 .register-choice {
-  display: flex;
   justify-content: center;
   padding: 0.4em;
   font-size: 0.9em;
@@ -272,6 +271,25 @@ input[type="email"]{
   display: none;
 }
 
+.mediaInput{
+  display: block;
+  background-color: var(--textbox-color);
+  width: 100%;
+  margin-top: 10.4em !important;
+  border-bottom: 3px solid var(--primary-color);
+}
+
+.submitButton,
+#saveButton{
+  width: 100% !important;
+  margin-top: 2em;
+}
+
+.submitButton{
+  margin-top: 1em !important;
+}
+
+.submitButton,
 #saveButton,
 #nextBtn,
 .settings .yes,
@@ -280,8 +298,13 @@ input[type="email"]{
     color: var(--light-white);
     width: 5.9375em;
     height: 3.375em;
-    border-color: var(--primary-color);
+    border: none;
     border-radius: 3em;
+}
+
+.settings .yes{
+  color: white;
+  background-color: red;
 }
 
 #prevBtn{
@@ -291,8 +314,7 @@ input[type="email"]{
 }
 
 .container-choice{
-  grid-template-columns: repeat(3, 100px);
-  height: 60vh;
+  grid-template-columns: repeat(3, 109px);
 }
 
 .checkbox-color {
@@ -397,15 +419,26 @@ input[type="email"]{
   transform: translate(-50%, -50%); 
 }
 
-#log-reg a, #loginPage main button  {
+#log-reg a, #loginPage main button{
   height: 3.375em;
   width: 20.5em;
   border-radius: 3em;
-  display: flex;
   justify-content: center; 
   margin: 0 auto;
   align-items: center; 
   text-decoration: none;
+}
+
+.register button[type="submit"]{
+  height: 3.375em;
+  width: 100%;
+  border-radius: 3em;
+  justify-content: center; 
+  margin: 0 auto;
+  align-items: center; 
+  background-color: var(--primary-color);
+  color: var(--body-background);
+  border: none;
 }
 
 #log-reg a:first-of-type, #loginPage main button{
@@ -420,7 +453,6 @@ input[type="email"]{
 }
 
 #divider{
-  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -495,6 +527,7 @@ input[type="email"]{
 #loginPage main label{
   color: var(--body-background);
   text-align: left;
+  margin-bottom:0 ;
 }
 
 #loginPage main button{
@@ -557,7 +590,7 @@ input[type="email"]{
 
 #members  > label{
   margin-top: 1em;
-  border: solid 0.125em var(--secondary-color);
+  border: solid 0.325em var(--secondary-color);
   border-radius: 10em;
   text-align: center;
   color: var(--primary-color);
@@ -583,6 +616,7 @@ input[type="email"]{
   justify-content: center;
 }
 
+
 #members  img {
   position: absolute;
   top: 1.7em;
@@ -606,11 +640,45 @@ input[type="email"]{
 
 /* bandname */
 .member input{
-  width: 100%;
+  width: 90vw;
 }
 
 .member > label:nth-of-type(1){
   display: none;
+}
+
+
+/* Complete page */
+.completeRegistration article{
+  padding: 2em;
+  height: 35vh;
+}
+
+.completeRegistration article,
+.completeRegistration p{
+  text-align: center !important;
+}
+
+.completeRegistration p,
+.completeRegistration img{
+  margin-bottom: 3em;
+}
+
+.completeRegistration a{
+  background-color: green;
+  color: white;
+  text-decoration: none;
+  border: none;
+  padding: 0.7em;
+  padding-right: 8em;
+  padding-left: 8em;
+}
+
+.completeRegistration h1{
+  color: green;
+  font-size: 1.6em;
+  font-weight: bold;
+  margin-bottom: 0.2em;
 }
 
 
@@ -701,28 +769,35 @@ input[type="search"]:not(:placeholder-shown) {
 
 
 /* Video and audio */
-#mediaPreview1,
-#mediaPreview2 {
-  height: 40vh;
-  background-color: var(--textbox-color);
-}
-
-video {
+.profile video{
   overflow: hidden;
-  width: 39vw;
-  height: 40vh;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
-#video-style{
+#video1,
+.profile video,
+#video-style,
+#video-display{
   margin-bottom: 1em;
+}
+
+#video-style video{
+  width: 50%;
 }
 
 #video-margin{
   margin-right: 0.5em;
 }
 
+.container-media {
+  margin-bottom: 4.2em;
+  overflow: visible;
+}
+
 /* Profile  */
-.profile form{
+.profile form, .profile #userProfile{
   padding: 0;
 }
 
@@ -732,34 +807,68 @@ video {
 }
 
 .profile .grid-choice-button{
-  display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px; 
+  font-family: Jost-Medium;
 }
 
 .profile form > main > section:nth-of-type(2) > section,
 .profile form > main > section:nth-of-type(3) > section,
 .profile form > main > section:nth-of-type(4) > section,
-.profile form > main > section:nth-of-type(5) > section{
+.profile form > main > section:nth-of-type(5) > section,
+.profile #userProfile main > section:nth-of-type(2) > section,
+.profile #userProfile main > section:nth-of-type(3) > section,
+.profile #userProfile main > section:nth-of-type(4) > section,
+.profile #userProfile main > section:nth-of-type(5) > section
+{
   position: relative;
   margin-left: 2.5em;
   margin-bottom: 2.5em;
 }
 
-.profile form > header{
+.profile form > header, .profile #userProfile > header{
   height: 35vh !important;
 }
 
+#userProfile main{
+padding: 1em;
+}
+
+#userProfile > header{
+  align-items: center;
+}
+
+#userProfile > header section{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 0.9375em;
+  padding-left: 0.5em;
+  padding-bottom: 0.5em;
+  height: 2.8125em;
+  overflow: hidden;
+}
+
+#userProfile header section h1{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 0; 
+}
+
 .profile form > header > section:nth-of-type(1)> section:nth-of-type(1), 
-.profile form > header > section:nth-of-type(1)> section:nth-of-type(2){
+.profile form > header > section:nth-of-type(1)> section:nth-of-type(2),
+.profile #userProfile > header > section:nth-of-type(1)> section:nth-of-type(1), 
+.profile #userProfile > header > section:nth-of-type(1)> section:nth-of-type(2){
   align-items: center;
   }
 
   .profile form > header > section:nth-of-type(1)> section:nth-of-type(1){
-  height: 5vh; 
+  height: 5.5vh; 
 }
 
-.profile form > header > #gradient{
+.profile form > header > #gradient, .profile #userProfile > header > #gradient{
   background-image: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,0.7));
   overflow: hidden;
   height: 11vh;
@@ -767,6 +876,10 @@ video {
 
 .profile form > header > section:nth-of-type(1)> section:nth-of-type(2) {
   gap: 10px;
+}
+
+.profile form > main > section:nth-of-type(5) > section{
+  margin-bottom: 0 !important;
 }
 
 .profile .imageIcon{
@@ -778,7 +891,7 @@ video {
 }
 
 .purple-stripe{
-  height: 0.2vh;
+  height: 1px;
   width: 100%;
   margin-top: 1em;
   margin-bottom: 1em;
@@ -790,6 +903,7 @@ video {
   width: 100%;
   margin-bottom: 0.4em;
 }
+
 
 .profile section textarea {
   height: 5em; 
@@ -867,6 +981,7 @@ video {
   background: #fff;
   border-radius: 5px;
   position: relative;
+  overflow: visible;
 }
 
 .popup .close {
@@ -881,7 +996,9 @@ video {
   background-size: contain;
 }
 
-.settings input[type="email"]{
+.settings input[type="password"],
+.settings input[type="email"],
+.settings .text-popup{
   width: 80vw;
 }
 
@@ -1100,12 +1217,6 @@ span #accCreated{
 }
 
 
-
-
-
-
-
-
 /* Filter pop up */
 #filter-pop-up{
   height: 0%;
@@ -1226,9 +1337,9 @@ span #accCreated{
 }
 
 #sort fieldset{
-  display: grid;
   grid-template-columns: 1fr 1fr 1fr; 
   padding: 0;
+  gap: 0 !important;
   
 }
 
@@ -1279,6 +1390,18 @@ span #accCreated{
 
 
 /* footer navigatie */
+.register footer,
+footer nav ul{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 3.4375em;
+}
+
+.register footer{
+  padding-right: 2em;
+}
+
 footer nav ul{
   background-color: var(--body-background);
   list-style-type: none;
@@ -1286,10 +1409,6 @@ footer nav ul{
   justify-content: space-between;
   padding-left: 1.5625em;
   padding-right: 1.5625em;
-  position:fixed; 
-  bottom:0; 
-  width:100%; 
-  height:3.4375em; 
   align-items: center;
   box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.1);
 }

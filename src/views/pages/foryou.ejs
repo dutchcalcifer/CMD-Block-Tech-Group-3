@@ -6,7 +6,7 @@
     <title>For you</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body id="backgroundtest"> <!-- test!!-->
+<body class="forYouBody"> <!-- test!!-->
 
     <header id="foryouheader">
         <button id="filter" aria-label="Filter button"><img src="../img/filter.svg" alt="Filter icon"></button>
@@ -55,83 +55,83 @@
                     <fieldset>
                         <legend>Genres</legend>
                         <label>
-                            <input type="checkbox" name="genres" value="classical">
+                            <input type="checkbox" name="genres" value="Classical">
                             Classical 
                         </label>
                         <label>
-                            <input type="checkbox" name="genres" value="country">
+                            <input type="checkbox" name="genres" value="Country">
                             Country
                         </label>
                         <label>
-                            <input type="checkbox" name="genres" value="disco">
+                            <input type="checkbox" name="genres" value="Disco">
                             Disco
                         </label>
                         <label>
-                            <input type="checkbox" name="genres" value="dubstep">
+                            <input type="checkbox" name="genres" value="Dubstep">
                             Dubstep
                         </label>
                         <label>
-                            <input type="checkbox" name="genres" value="electro">
+                            <input type="checkbox" name="genres" value="Electro">
                             Electro
                         </label>
                         <label>
-                            <input type="checkbox" name="genres" value="folk">
+                            <input type="checkbox" name="genres" value="Folk">
                             Folk
                         </label>
                         <label>
-                            <input type="checkbox" name="genres" value="funk">
+                            <input type="checkbox" name="genres" value="Funk">
                             Funk
                         </label>
                         <label>
-                            <input type="checkbox" name="genres" value="hip-hop">
+                            <input type="checkbox" name="genres" value="Hip-hop">
                             Hip-hop
                         </label>
                         <label>
-                            <input type="checkbox" name="genres" value="house">
+                            <input type="checkbox" name="genres" value="House">
                             House
                         </label>
                         <label>
-                            <input type="checkbox" name="genres" value="jazz">
+                            <input type="checkbox" name="genres" value="Jazz">
                             Jazz
                         </label>
                         <label>
-                            <input type="checkbox" name="genres" value="metal">
+                            <input type="checkbox" name="genres" value="Metal">
                             Metal
                         </label>
                         <label>
-                            <input type="checkbox" name="genres" value="pop">
+                            <input type="checkbox" name="genres" value="Pop">
                             Pop
                         </label>
                         <label>
-                            <input type="checkbox" name="genres" value="punk">
+                            <input type="checkbox" name="genres" value="Punk">
                             Punk
                         </label>
                         <label>
-                            <input type="checkbox" name="genres" value="r&b">
+                            <input type="checkbox" name="genres" value="R&b">
                             R&B
                         </label>
                         <label>
-                            <input type="checkbox" name="genres" value="reggae">
+                            <input type="checkbox" name="genres" value="Reggae">
                             Reggae
                         </label>
                         <label>
-                            <input type="checkbox" name="genres" value="rock">
+                            <input type="checkbox" name="genres" value="Rock">
                             Rock
                         </label>
                         <label>
-                            <input type="checkbox" name="genres" value="schlager">
+                            <input type="checkbox" name="genres" value="Schlager">
                             Schlager
                         </label>
                         <label>
-                            <input type="checkbox" name="genres" value="soul">
+                            <input type="checkbox" name="genres" value="Soul">
                             Soul
                         </label>
                         <label>
-                            <input type="checkbox" name="genres" value="techno">
+                            <input type="checkbox" name="genres" value="Techno">
                             Techno
                         </label>
                         <label>
-                            <input type="checkbox" name="genres" value="trance">
+                            <input type="checkbox" name="genres" value="Trance">
                             Trance
                         </label>
                     </fieldset>
@@ -190,12 +190,14 @@
         
         <div id="user-info-container">
             
-            <% users.forEach(user => { %>
+            <% users.forEach(user => { 
+                const randomIndex = Math.floor(Math.random() * 2); 
+            %>
                 <div id="videoBackground">
                     <span id="accCreated"><%= user.createdAt %></span>
                     <div id="pauzeButton"></div>
                     <video loop>
-                          <source src="../uploads/<%= user.media[0]%>" type="video/mp4">  
+                          <source src="../uploads/<%= user.media[randomIndex]%>" type="video/mp4">  
                         Your browser does not support the video tag.
                     </video>
                     <section>
@@ -237,9 +239,9 @@
     <footer>
         <nav >
             <ul>
-                <li><a href="foryou"><img src="../img/housepurple.svg" alt="Go to for you page"></a></li>
-                <li><a href="profile"><img src="../img/profile.svg" alt="Go to profile page"></a></li>
-                <li><a href="settings"><img src="../img/settings.svg" alt="Go to settings page"></a></li>
+                <li><a href="/foryou"><img src="../img/housepurple.svg" alt="Go to for you page"></a></li>
+                <li><a href="/profile"><img src="../img/profile.svg" alt="Go to profile page"></a></li>
+                <li><a href="/settings"><img src="../img/settings.svg" alt="Go to settings page"></a></li>
             </ul>
         </nav>
     </footer>
