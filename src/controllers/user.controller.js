@@ -264,9 +264,6 @@ const deleteMedia = async (req, res) => {
     // Get the user's ID from the session
     const userId = req.session.user._id;
 
-    // Log the parameters
-    console.log(req.params);
-
     // Find and update the user document in the database
     // Remove the media from the user's media array
     await User.findByIdAndUpdate(userId, {

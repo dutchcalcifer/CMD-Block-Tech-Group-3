@@ -1,6 +1,6 @@
 {
   "name": "cmd-block-tech-group-3",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Repository for CMD Block Tech Group 3.",
   "main": "app.js",
   "scripts": {
