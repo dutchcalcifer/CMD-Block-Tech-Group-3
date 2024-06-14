@@ -115,6 +115,10 @@ form .form-group,
   grid-template-columns: repeat(2, 175px);
 }
 
+.container-choice{
+  gap: 1em;
+}
+
 label, 
 textarea,
 video,
