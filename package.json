@@ -4,7 +4,7 @@
   "description": "Repository for CMD Block Tech Group 3.",
   "main": "app.js",
   "scripts": {
-    "build": "node app.js",
+    "build": "pm2 start app.js",
     "dev": "nodemon app.js"
   },
   "license": "MIT",
@@ -17,7 +17,7 @@
     "express-session": "^1.18.0",
     "mongoose": "^8.3.3",
     "multer": "^1.4.5-lts.1",
-    "nodemailer": "^6.9.13"
+    "pm2": "^5.4.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
